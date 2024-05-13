@@ -5,7 +5,6 @@ export default function Recipes() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Recipes</Text>
     </View>
   );
 
@@ -16,14 +15,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#40146B',
+    
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+    color: '#F5A318',
   },
 });

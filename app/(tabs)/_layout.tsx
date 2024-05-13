@@ -5,31 +5,39 @@ import { Pressable } from 'react-native';
 
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof AntDesign>['name'];
-  color: string;
-}) {
-  return <AntDesign size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+
 
 export default function TabLayout() {
 
   return (
-    <Tabs>
+    <Tabs screenOptions={{
+      tabBarActiveBackgroundColor:"#5200A3",
+      tabBarInactiveBackgroundColor: "#40146B",
+    }} >
       <Tabs.Screen
         name="index"
         options={{
           title: 'List',
           headerTitle: 'Shopping List',
-          tabBarIcon: ({ color }) => <TabBarIcon name="shoppingcart" color={color} />
+          tabBarActiveTintColor:"#F5A318",
+          tabBarInactiveTintColor: "#F5A318",
+          headerTintColor:"#F5A318",
+          headerTitleAlign: "center",
+          headerTransparent: true,
+          tabBarIcon: ({ color }) => <AntDesign name="shoppingcart" color={"#F5A318"} size={28} style={{marginBottom: -3}} />,
         }}
-        
+
       />
       <Tabs.Screen
         name="recipes"
         options={{
           title: 'Recipes',
-          tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
+          tabBarActiveTintColor:"#F5A318",
+          tabBarInactiveTintColor: "#F5A318",
+          headerTintColor:"#F5A318",
+          headerTitleAlign: "center",
+          headerTransparent: true,
+          tabBarIcon: ({ color }) => <AntDesign name="book" color={"#F5A318"} size={28} style={{marginBottom: -3}} />,
         }}
       />
     </Tabs>
