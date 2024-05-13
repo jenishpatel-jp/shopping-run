@@ -1,20 +1,18 @@
 import Store from '@/components/Store';
-import { StyleSheet } from 'react-native';
+import { SafeAreaView, SafeAreaViewBase, StyleSheet } from 'react-native';
 import { Text, View } from 'react-native';
 
 export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Store/>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#40146B',
   },
   title: {
