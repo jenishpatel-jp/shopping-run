@@ -1,40 +1,58 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Text, TextInput, SafeAreaView, Pressable, Platform } from 'react-native'
+import { StyleSheet, View, Text, TextInput, Pressable, Platform } from 'react-native'
 
-const Store = () => {
+interface StoreProps {
+    addStore: (storeName: string ) => void;
+}
+
+const Store: React.FC<StoreProps> = ( {addStore} ) => {
 
     const [storeName, setStoreName] = useState("");
-
+    const [buttonPressed, setButtonPressed] = useState(false);
+ 
     return (
-            <SafeAreaView style= {styles.card} >
-                <TextInput 
+        <View style= {styles.card} >
+            <TextInput 
                 style={styles.textInput}
                 placeholder='Enter store name...'
                 placeholderTextColor={"#F5A418"}
                 textAlign='center'
-                >
-                </TextInput>
-                <View style={styles.addButtonContainer} >
-                    <Pressable
-                    onPress={() => console.log("Add button has been pressed")}
-                    >
-                        <Text style={styles.button}>
-                            Add
-                        </Text>
-                    </Pressable>
-                </View>
-            </SafeAreaView>
+                value={storeName}
+                onChangeText={setStoreName}
+            />
 
+            <View style={styles.addButtonContainer} >
+                <Pressable
+                onPress={() => {
+                    addStore(storeName);
+                    setStoreName("");
+                }}
+
+
+                onPressIn={() => setButtonPressed(true)}
+                onPressOut={() => setButtonPressed(false)}
+                style={( {pressed} ) => [
+                    {
+                        backgroundColor: pressed || buttonPressed ? "#5200A3" : "#40146B"
+                    }
+                ]}
+                >
+                    <Text style={styles.buttonText}>
+                        Add
+                    </Text>
+                </Pressable>
+            </View>
+        </View>
     )
     }
 
     const styles = StyleSheet.create({
+
         card: {
             borderColor: "#F5A418",
             borderWidth: 1,
             borderRadius: 5,
             padding: 10,
-            top: 100,
             margin: 10,
             ...Platform.select({
                 ios: {
@@ -72,7 +90,7 @@ const Store = () => {
             marginBottom: 1,
         }, 
 
-        button:{
+        buttonText:{
             color:"#F5A418",
             fontSize: 18,
             borderColor: "#F5A418",
@@ -80,8 +98,8 @@ const Store = () => {
             borderRadius: 5,
             paddingHorizontal: 20, 
             paddingVertical: 6,
+        },
 
-        }
     });
 
 export default Store
