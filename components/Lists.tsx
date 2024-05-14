@@ -1,35 +1,44 @@
 import React from 'react';
-import { View, Text, StyleSheet, Platform, FlatList} from 'react-native';
+import { View, Text, StyleSheet, Platform, SectionList} from 'react-native';
 import Checkbox from 'expo-checkbox';
 
 interface ListsProps {
     shoppingList: { [key: string]: string []};
 }
 
+interface Section {
+    title: string;
+    data: string[];
+}
+
 const Lists: React.FC<ListsProps> = ( {shoppingList} ) => {
+
+    const sections: Section[] = Object.keys(shoppingList).map((store) => ({
+        title: store,
+        data: shoppingList[store]
+    }));
+
     return (
         <View style={styles.card} >
-            {Object.keys(shoppingList).map((store, index) => (
-                <View key={store} >
-                    <Text style={styles.storeName} >{store}</Text>
-                    <FlatList
-                        data={shoppingList[store]}
-                        renderItem={({item}) => (
-                            <View key={index} style={styles.checkboxContainer} >
-                                <Checkbox 
-                                    style={styles.checkbox} 
-                                    color={store ? "#F5A418": "#F5A418"}
-                                    />
-                                <Text style={styles.checkboxText} >{item}</Text>
-                            </View>)}
-                        keyExtractor={( index) => index.toString() }
-                    />
-
-                </View>
-            ))}
+            <SectionList 
+                sections={sections}
+                renderSectionHeader={ ({section: {title} } ) => (
+                    <Text style={styles.storeName} >{title}</Text>)}
+                renderItem={ ({ item }) => (
+                    <View style={styles.checkboxContainer} > 
+                        <Checkbox 
+                            style={styles.checkbox}
+                            color={item ? "#F5A418": "#F5A418"}
+                        />
+                        <Text style={styles.checkboxText}> {item} </Text>
+                    </View>                    
+                )}
+                keyExtractor={(item, index) => index.toString()}
+            />
         </View>
-    );
-};
+
+        );
+    }; 
 
 const styles = StyleSheet.create({
     card: {
