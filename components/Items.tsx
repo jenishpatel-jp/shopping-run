@@ -2,6 +2,8 @@ import React from 'react'
 import { View, Text, StyleSheet, Platform, TextInput, Pressable } from 'react-native'
 import { useState } from 'react';
 import Checkbox from 'expo-checkbox';
+import { Feather } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 interface ItemsProps {
     storeList: string [];
@@ -35,7 +37,8 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem} ) => {
             />
 
             {storeList.map( (store, index) => (
-            <View key={index} style={styles.checkboxContainer} >
+            <View key={index} style={styles.storeContainer} >
+            <View style={styles.checkboxContainer} >
                 <Checkbox 
                     style={styles.checkbox} 
                     value={selectedStore === store}
@@ -43,6 +46,11 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem} ) => {
                     color={selectedStore === store ? "#F5A418": "#F5A418"}
                     />
                 <Text style={styles.checkboxText} >{store}</Text>
+            </View>
+            <View style={styles.updateView} >
+            <Feather style={styles.edit} name="edit" size={26} color="#F5A418" />
+            <MaterialIcons style={styles.delete}  name="delete-outline" size={30} color="#F5A418" />
+            </View>
             </View>
             )
             )}
@@ -128,18 +136,50 @@ const styles = StyleSheet.create({
     checkboxContainer: {
         flexDirection: "row",
         margin: 2,
+        flex: 1,
     },
 
     checkboxText: {
         color:"#F5A418",
-        fontSize: 18,
+        fontSize: 24,
         padding: 2,
         margin: 2,
+        alignItems: "center"
+    },
+
+    storeContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginVertical: 1,
+
+    },
+
+    updateView: {
+        flexDirection: "row",
+        alignItems: "flex-end",
+        justifyContent: "flex-end",
+        
+    },
+
+    edit: {
+        marginVertical: 6,
+        padding: 2,
+        alignItems: "center"
+
+    },
+
+    delete: {
+        marginVertical: 5,
+        padding: 2,
+        alignItems: "center"
+
     },
 
     checkbox: {
-        marginTop: 7,
-        padding: 2,
+        marginTop: 11,
+        marginHorizontal: 4,
+        alignItems: "center"
     }
 
 });

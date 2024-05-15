@@ -2,7 +2,7 @@ import Items from '@/components/Items';
 import Lists from '@/components/Lists';
 import Store from '@/components/Store';
 import { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ShoppingRun() {
@@ -29,9 +29,9 @@ export default function ShoppingRun() {
   return (
     <SafeAreaProvider >
       <SafeAreaView style={styles.container}>
-        <Store addStore={addStore} />
-        <Items storeList={storeList} addItem={addItem}/>
-        <Lists shoppingList={shoppingList}/>
+          <Store addStore={addStore} />
+          <Items storeList={storeList} addItem={addItem}/>
+          <Lists shoppingList={shoppingList}/>
       </SafeAreaView>
     </SafeAreaProvider>
   );
