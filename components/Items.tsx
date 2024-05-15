@@ -8,9 +8,11 @@ import { MaterialIcons } from '@expo/vector-icons';
 interface ItemsProps {
     storeList: string [];
     addItem: (store: string, item: string) => void;
+    editStore: (storeIndex: number) => void;
+    deleteStore: (storeIndex: number) => void;
 }
 
-const Items: React.FC<ItemsProps> = ( {storeList, addItem} ) => {
+const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStore} ) => {
 
     const [buttonPressed, setButtonPressed] = useState(false);
     const [selectedStore, setSelectedStore] = useState <string | null > (null);
@@ -48,8 +50,16 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem} ) => {
                 <Text style={styles.checkboxText} >{store}</Text>
             </View>
             <View style={styles.updateView} >
-            <Feather style={styles.edit} name="edit" size={26} color="#F5A418" />
-            <MaterialIcons style={styles.delete}  name="delete-outline" size={30} color="#F5A418" />
+                <Pressable
+                onPress={() => editStore(index)}
+                >
+                    <Feather style={styles.edit} name="edit" size={26} color="#F5A418" />
+                </Pressable>
+                <Pressable
+                onPress={() => deleteStore(index) }
+                >
+                    <MaterialIcons style={styles.delete}  name="delete-outline" size={30} color="#F5A418" />
+                </Pressable>
             </View>
             </View>
             )
@@ -157,7 +167,7 @@ const styles = StyleSheet.create({
 
     updateView: {
         flexDirection: "row",
-        alignItems: "flex-end",
+        alignItems: "center",
         justifyContent: "flex-end",
         
     },
@@ -165,7 +175,8 @@ const styles = StyleSheet.create({
     edit: {
         marginVertical: 6,
         padding: 2,
-        alignItems: "center"
+        alignItems: "center",
+        marginRight: 5,
 
     },
 

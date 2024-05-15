@@ -100,15 +100,16 @@ const styles = StyleSheet.create({
 
     updateView: {
         flexDirection: "row",
-        alignItems: "flex-end",
+        alignItems: "center",
         justifyContent: "flex-end",
-        
+        marginRight: 10,
     },
 
     edit: {
         marginVertical: 6,
         padding: 2,
-        alignItems: "center"
+        alignItems: "center",
+        marginRight: 5,
 
     },
 
