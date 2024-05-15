@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Platform, SectionList} from 'react-native';
+import { View, Text, StyleSheet, Platform, SectionList, Pressable} from 'react-native';
 import Checkbox from 'expo-checkbox';
 import { Feather } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -7,6 +7,7 @@ import Items from './Items';
 
 interface ListsProps {
     shoppingList: { [key: string]: string []};
+    deleteItem: (store: string, item: string) => void;
 }
 
 interface Section {
@@ -14,7 +15,7 @@ interface Section {
     data: string[];
 }
 
-const Lists: React.FC<ListsProps> = ( {shoppingList} ) => {
+const Lists: React.FC<ListsProps> = ( {shoppingList, deleteItem} ) => {
 
     const sections: Section[] = Object.keys(shoppingList).map((store) => ({
         title: store,
@@ -24,9 +25,9 @@ const Lists: React.FC<ListsProps> = ( {shoppingList} ) => {
     return (
             <SectionList 
                 sections={sections}
-                renderSectionHeader={ ({section: {title} } ) => (
-                    <Text style={styles.storeName} >{title}</Text>)}
-                renderItem={ ({ item }) => (
+                renderSectionHeader={ ({section} ) => (
+                    <Text style={styles.storeName} >{section.title}</Text>)}
+                renderItem={ ({ item, section }) => (
                     <View style={styles.itemsContainer} >
                     <View style={styles.checkboxContainer} > 
                         <Checkbox 
@@ -36,12 +37,20 @@ const Lists: React.FC<ListsProps> = ( {shoppingList} ) => {
                         <Text style={styles.checkboxText}> {item} </Text>
                     </View>
                     <View style={styles.updateView} >
-                    <Feather style={styles.edit} name="edit" size={26} color="#F5A418" />
-                    <MaterialIcons style={styles.delete}  name="delete-outline" size={30} color="#F5A418" />
+                        <Pressable
+                        onPress={() => console.log(`${item}`)}
+                        >
+                            <Feather style={styles.edit} name="edit" size={26} color="#F5A418" />
+                        </Pressable>
+                        <Pressable 
+                        onPress={() => deleteItem(section.title, item)}
+                        >
+                            <MaterialIcons style={styles.delete}  name="delete-outline" size={30} color="#F5A418" />
+                        </Pressable>
                     </View>
                     </View>            
                 )}
-                keyExtractor={(index) => index.toString()}
+                keyExtractor={(item, index) => index.toString()}
             />
         );
     }; 

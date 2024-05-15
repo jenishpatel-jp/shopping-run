@@ -84,7 +84,7 @@ const Store: React.FC<StoreProps> = ( {addStore} ) => {
 
         addButtonContainer: {
             alignItems:'flex-end',
-            justifyContent: 'flex-end',
+            justifyContent: 'center',
             paddingTop: 5,
             marginTop: 4,
             marginBottom: 1,

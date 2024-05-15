@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
 
     addButtonContainer: {
         alignItems:'flex-end',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         paddingTop: 5,
         marginTop: 4,
         marginBottom: 1,
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
 
     checkboxText: {
         color:"#F5A418",
-        fontSize: 24,
+        fontSize: 20,
         padding: 2,
         margin: 2,
         alignItems: "center"

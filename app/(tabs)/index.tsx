@@ -29,7 +29,7 @@ export default function ShoppingRun() {
       delete updatedShoppingList[storeToDelete];
       return updatedShoppingList;
     })
-  }
+  };
 
   const addItem = (store: string, item: string) => {
     if (store && item) {
@@ -41,12 +41,22 @@ export default function ShoppingRun() {
     }
   };
 
+  const deleteItem = (store: string, item: string) => {
+    setShoppingList(prevShoppingList => {
+      const updatedShoppingList = {...prevShoppingList};
+      if (updatedShoppingList[store]){
+        updatedShoppingList[store] = updatedShoppingList[store].filter(i => i !== item);
+      }
+      return updatedShoppingList;
+    })
+  }
+
   return (
     <SafeAreaProvider >
       <SafeAreaView style={styles.container}>
           <Store addStore={addStore} />
           <Items storeList={storeList} addItem={addItem} editStore={editStore} deleteStore={deleteStore} />
-          <Lists shoppingList={shoppingList}/>
+          <Lists shoppingList={shoppingList} deleteItem={deleteItem} />
       </SafeAreaView>
     </SafeAreaProvider>
   );
