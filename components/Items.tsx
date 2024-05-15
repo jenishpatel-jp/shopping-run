@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         margin: 2,
         flex: 1,
+        alignItems: "flex-end",
     },
 
     checkboxText: {
@@ -154,13 +155,13 @@ const styles = StyleSheet.create({
         fontSize: 20,
         padding: 2,
         margin: 2,
-        alignItems: "center"
+        textAlignVertical: 'bottom'
     },
 
     storeContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        alignItems: "center",
+        alignItems: "flex-end",
         marginVertical: 1,
 
     },
@@ -190,7 +191,8 @@ const styles = StyleSheet.create({
     checkbox: {
         marginTop: 11,
         marginHorizontal: 4,
-        alignItems: "center"
+        alignItems: "flex-end",
+        marginBottom: 7,
     }
 
 });
