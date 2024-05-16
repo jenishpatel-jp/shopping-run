@@ -8,8 +8,18 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 export default function ShoppingRun() {
   const [storeList, setStoreList] = useState<string[]>([]);
   const [shoppingList, setShoppingList] = useState<{[key:string]: string[]} > ({});
+  
   const [editingStoreIndex, setEditingStoreIndex] = useState<number | null>(null);
   const [newStoreName, setNewStoreName] = useState<string>('');
+
+  const [newItemName, setNewItemName] = useState<string>("");
+  const [storeOfItem, setStoreOfItem] = useState<string|null >("");
+  const [indexOfItem, setIndexOfItem] = useState<number|null>(null);
+  const [editItemInfo, setEditItemInfo] = useState({
+    newItemName: '',
+    storeOfItem: null, 
+    indexOfItem: null,
+  })
 
 
   const addStore = (storeName: string ) => {
@@ -21,7 +31,7 @@ export default function ShoppingRun() {
   const editStore = (storeIndex:number) => {
     setEditingStoreIndex(storeIndex);
     setNewStoreName(storeList[storeIndex]);
-  }
+  };
 
   const updateStoreName = () => {
     if (editingStoreIndex !== null && newStoreName){
@@ -57,6 +67,7 @@ export default function ShoppingRun() {
     })
   };
 
+
   const addItem = (store: string, item: string) => {
     if (store && item) {
       setShoppingList( prevList => {
@@ -75,6 +86,30 @@ export default function ShoppingRun() {
       }
       return updatedShoppingList;
     })
+  };
+
+  const editItem = (store: string, item: string) => {
+    setStoreOfItem(store);
+    const index = shoppingList[store].indexOf(item);
+    if (index !== -1){
+      setIndexOfItem(index);
+    }
+    setNewItemName(shoppingList[store][index])
+  };
+
+  const updateItemName = () => {
+    if (storeOfItem !== null && newItemName && indexOfItem!== null){
+      const updatedShoppingList = {...shoppingList};
+      const oldItemName = updatedShoppingList[storeOfItem][indexOfItem];
+      updatedShoppingList[storeOfItem][indexOfItem] = newItemName;
+      setShoppingList(updatedShoppingList);
+    }
+
+    setEditItemInfo({
+      newItemName: "",
+      storeOfItem: null, 
+      indexOfItem: null
+    })
   }
 
   return (
@@ -89,8 +124,18 @@ export default function ShoppingRun() {
             updateStoreName={updateStoreName} 
             editingStoreIndex={editingStoreIndex} 
             newStoreName={newStoreName} 
-            setNewStoreName={setNewStoreName} />
-          <Lists shoppingList={shoppingList} deleteItem={deleteItem} />
+            setNewStoreName={setNewStoreName} 
+            />
+          <Lists 
+            shoppingList={shoppingList} 
+            deleteItem={deleteItem}
+            updateItemName={updateItemName}
+            editItem={editItem}
+            newItemName={newItemName}
+            setNewItemName={setNewItemName}
+            indexOfItem={indexOfItem}
+            storeOfItem={storeOfItem}
+            />
       </SafeAreaView>
     </SafeAreaProvider>
   );

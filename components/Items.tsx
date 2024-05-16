@@ -44,11 +44,12 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStor
 
             {storeList.map( (store, index) => (
             <View key={index} style={styles.storeContainer} >
-                {editingStoreIndex === index ? (
-                    <TextInput
-                        style={styles.editTextInput}
-                        value={newStoreName}
-                        onChangeText={setNewStoreName}
+
+            {editingStoreIndex === index ? (
+                <TextInput
+                    style={styles.editTextInput}
+                    value={newStoreName}
+                    onChangeText={setNewStoreName}
                     />
                 ): (
             <View style={styles.checkboxContainer} >
@@ -63,11 +64,14 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStor
                 )}
             
             <View style={styles.updateView} >
+
                 {editingStoreIndex === index ? (
                 <Pressable onPress={updateStoreName} >
                     <Text style={styles.buttonText} >Update</Text>
                 </Pressable>
+
                 ):(
+                    
                 <Pressable
                     onPress={() => editStore(index)}
                 >

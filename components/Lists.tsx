@@ -1,13 +1,18 @@
-import React from 'react';
-import { View, Text, StyleSheet, Platform, SectionList, Pressable} from 'react-native';
+import React, {useMemo} from 'react';
+import { View, Text, StyleSheet, Platform, SectionList, Pressable, TextInput} from 'react-native';
 import Checkbox from 'expo-checkbox';
 import { Feather } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import Items from './Items';
 
 interface ListsProps {
     shoppingList: { [key: string]: string []};
     deleteItem: (store: string, item: string) => void;
+    updateItemName: (store: string, item: string) => void;
+    editItem: (store: string, item: string) => void;
+    newItemName: string;
+    setNewItemName: (name: string) => void;
+    indexOfItem: number|null;
+    storeOfItem: string|null;
 }
 
 interface Section {
@@ -15,12 +20,28 @@ interface Section {
     data: string[];
 }
 
-const Lists: React.FC<ListsProps> = ( {shoppingList, deleteItem} ) => {
+const Lists: React.FC<ListsProps> = ( {
+    shoppingList, 
+    deleteItem, 
+    updateItemName, 
+    editItem, 
+    newItemName, 
+    setNewItemName, 
+    indexOfItem,
+    storeOfItem,
+    } ) => {
 
     const sections: Section[] = Object.keys(shoppingList).map((store) => ({
         title: store,
         data: shoppingList[store]
     }));
+
+    const editItemInput = useMemo(() => 
+    <TextInput
+        style={styles.editTextInput}
+        value={newItemName}
+        onChangeText={setNewItemName}
+    />, [newItemName] )
 
     return (
             <SectionList 
@@ -29,6 +50,14 @@ const Lists: React.FC<ListsProps> = ( {shoppingList, deleteItem} ) => {
                     <Text style={styles.storeName} >{section.title}</Text>)}
                 renderItem={ ({ item, section }) => (
                     <View style={styles.itemsContainer} >
+                    
+                    {storeOfItem === section.title && indexOfItem === shoppingList[section.title].indexOf(item) ? (
+                        <TextInput 
+                            style={styles.editTextInput}
+                            value={newItemName}
+                            onChangeText={setNewItemName}
+                        />
+                    ):(
                     <View style={styles.checkboxContainer} > 
                         <Checkbox 
                             style={styles.checkbox}
@@ -36,12 +65,23 @@ const Lists: React.FC<ListsProps> = ( {shoppingList, deleteItem} ) => {
                         />
                         <Text style={styles.checkboxText}> {item} </Text>
                     </View>
+                    ) }
+                    
                     <View style={styles.updateView} >
+
+                    {storeOfItem === section.title && indexOfItem === shoppingList[section.title].indexOf(item) ?(
+                        <Pressable onPress={() => updateItemName(section.title, item) }>
+                            <Text style={styles.buttonText} >Update</Text>
+                        </Pressable>
+                    ):
+                    (
                         <Pressable
-                        onPress={() => console.log(`${item}`)}
+                        onPress={() => editItem(section.title, item) }  
                         >
                             <Feather style={styles.edit} name="edit" size={26} color="#F5A418" />
                         </Pressable>
+                    )
+                    }
                         <Pressable 
                         onPress={() => deleteItem(section.title, item)}
                         >
@@ -107,6 +147,19 @@ const styles = StyleSheet.create({
         margin: 2,
     },
 
+    editTextInput: {
+        color:"#F5A418",
+        fontSize: 18,
+        backgroundColor: "#5200A3",
+        borderColor: "#F5A418",
+        borderWidth: 1,
+        borderRadius: 5,
+        padding: 10,
+        marginTop:8,
+        marginRight:10,
+        flex: 1,
+    },
+
     updateView: {
         flexDirection: "row",
         alignItems: "center",
@@ -135,6 +188,17 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginVertical: 1,
     },
+
+    buttonText: {
+        color:"#F5A418",
+        fontSize: 18,
+        borderColor: "#F5A418",
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingHorizontal: 20, 
+        paddingVertical: 6,
+
+    }
 })
 
 export default Lists
