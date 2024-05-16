@@ -8,6 +8,9 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 export default function ShoppingRun() {
   const [storeList, setStoreList] = useState<string[]>([]);
   const [shoppingList, setShoppingList] = useState<{[key:string]: string[]} > ({});
+  const [editingStoreIndex, setEditingStoreIndex] = useState<number | null>(null);
+  const [newStoreName, setNewStoreName] = useState<string>('');
+
 
   const addStore = (storeName: string ) => {
     if (storeName && !storeList.includes(storeName)){
@@ -16,7 +19,30 @@ export default function ShoppingRun() {
   };
 
   const editStore = (storeIndex:number) => {
-    console.log(`Editing store: ${storeList[storeIndex]}`)
+    setEditingStoreIndex(storeIndex);
+    setNewStoreName(storeList[storeIndex]);
+  }
+
+  const updateStoreName = () => {
+    if (editingStoreIndex !== null && newStoreName){
+      const updatedStoreList = [...storeList];
+      const oldStoreName = updatedStoreList[editingStoreIndex];
+      updatedStoreList[editingStoreIndex] = newStoreName;
+
+      setStoreList(updatedStoreList);
+      
+      setShoppingList(prevShoppingList =>  {
+        const updatedShoppingList = { ...prevShoppingList };
+        if (updatedShoppingList[oldStoreName]){
+          updatedShoppingList[newStoreName] = updatedShoppingList[oldStoreName]
+          delete updatedShoppingList[oldStoreName];
+        }
+        return updatedShoppingList;
+      });
+
+      setEditingStoreIndex(null);
+      setNewStoreName("");
+    }
   }
 
   const deleteStore = (storeIndex: number) => {
@@ -55,7 +81,15 @@ export default function ShoppingRun() {
     <SafeAreaProvider >
       <SafeAreaView style={styles.container}>
           <Store addStore={addStore} />
-          <Items storeList={storeList} addItem={addItem} editStore={editStore} deleteStore={deleteStore} />
+          <Items 
+            storeList={storeList} 
+            addItem={addItem} 
+            editStore={editStore} 
+            deleteStore={deleteStore} 
+            updateStoreName={updateStoreName} 
+            editingStoreIndex={editingStoreIndex} 
+            newStoreName={newStoreName} 
+            setNewStoreName={setNewStoreName} />
           <Lists shoppingList={shoppingList} deleteItem={deleteItem} />
       </SafeAreaView>
     </SafeAreaProvider>

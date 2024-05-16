@@ -10,9 +10,13 @@ interface ItemsProps {
     addItem: (store: string, item: string) => void;
     editStore: (storeIndex: number) => void;
     deleteStore: (storeIndex: number) => void;
+    updateStoreName: () => void;
+    editingStoreIndex: number | null;
+    newStoreName: string;
+    setNewStoreName: (name: string) => void;
 }
 
-const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStore} ) => {
+const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStore, updateStoreName, editingStoreIndex, newStoreName, setNewStoreName} ) => {
 
     const [buttonPressed, setButtonPressed] = useState(false);
     const [selectedStore, setSelectedStore] = useState <string | null > (null);
@@ -40,6 +44,13 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStor
 
             {storeList.map( (store, index) => (
             <View key={index} style={styles.storeContainer} >
+                {editingStoreIndex === index ? (
+                    <TextInput
+                        style={styles.editTextInput}
+                        value={newStoreName}
+                        onChangeText={setNewStoreName}
+                    />
+                ): (
             <View style={styles.checkboxContainer} >
                 <Checkbox 
                     style={styles.checkbox} 
@@ -49,12 +60,21 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStor
                     />
                 <Text style={styles.checkboxText} >{store}</Text>
             </View>
+                )}
+            
             <View style={styles.updateView} >
+                {editingStoreIndex === index ? (
+                <Pressable onPress={updateStoreName} >
+                    <Text style={styles.buttonText} >Update</Text>
+                </Pressable>
+                ):(
                 <Pressable
-                onPress={() => editStore(index)}
+                    onPress={() => editStore(index)}
                 >
                     <Feather style={styles.edit} name="edit" size={26} color="#F5A418" />
                 </Pressable>
+                )}
+                
                 <Pressable
                 onPress={() => deleteStore(index) }
                 >
@@ -132,6 +152,19 @@ const styles = StyleSheet.create({
         marginTop: 4,
         marginBottom: 1,
     }, 
+
+    editTextInput: {
+        color:"#F5A418",
+        fontSize: 18,
+        backgroundColor: "#5200A3",
+        borderColor: "#F5A418",
+        borderWidth: 1,
+        borderRadius: 5,
+        padding: 10,
+        marginTop:8,
+        marginRight:10,
+        flex: 1,
+    },
 
     buttonText:{
         color:"#F5A418",
