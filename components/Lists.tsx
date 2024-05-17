@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useState} from 'react';
 import { View, Text, StyleSheet, Platform, SectionList, Pressable, TextInput} from 'react-native';
 import Checkbox from 'expo-checkbox';
 import { Feather } from '@expo/vector-icons';
@@ -7,7 +7,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 interface ListsProps {
     shoppingList: { [key: string]: string []};
     deleteItem: (store: string, item: string) => void;
-    updateItemName: (store: string, item: string) => void;
+    updateItemName: () => void;
     editItem: (store: string, item: string) => void;
     newItemName: string;
     setNewItemName: (name: string) => void;
@@ -36,12 +36,9 @@ const Lists: React.FC<ListsProps> = ( {
         data: shoppingList[store]
     }));
 
-    const editItemInput = useMemo(() => 
-    <TextInput
-        style={styles.editTextInput}
-        value={newItemName}
-        onChangeText={setNewItemName}
-    />, [newItemName] )
+    const [selectedItem, setSelectedItem] = useState <string|null> (null);
+
+
 
     return (
             <SectionList 
@@ -61,7 +58,9 @@ const Lists: React.FC<ListsProps> = ( {
                     <View style={styles.checkboxContainer} > 
                         <Checkbox 
                             style={styles.checkbox}
-                            color={item ? "#F5A418": "#F5A418"}
+                            color={selectedItem === item ? "#F5A418": "#F5A418"}
+                            value={selectedItem === item}
+                            onValueChange={() => setSelectedItem(item)}
                         />
                         <Text style={styles.checkboxText}> {item} </Text>
                     </View>
@@ -70,7 +69,7 @@ const Lists: React.FC<ListsProps> = ( {
                     <View style={styles.updateView} >
 
                     {storeOfItem === section.title && indexOfItem === shoppingList[section.title].indexOf(item) ?(
-                        <Pressable onPress={() => updateItemName(section.title, item) }>
+                        <Pressable onPress={updateItemName}>
                             <Text style={styles.buttonText} >Update</Text>
                         </Pressable>
                     ):

@@ -15,11 +15,7 @@ export default function ShoppingRun() {
   const [newItemName, setNewItemName] = useState<string>("");
   const [storeOfItem, setStoreOfItem] = useState<string|null >("");
   const [indexOfItem, setIndexOfItem] = useState<number|null>(null);
-  const [editItemInfo, setEditItemInfo] = useState({
-    newItemName: '',
-    storeOfItem: null, 
-    indexOfItem: null,
-  })
+
 
 
   const addStore = (storeName: string ) => {
@@ -99,18 +95,20 @@ export default function ShoppingRun() {
 
   const updateItemName = () => {
     if (storeOfItem !== null && newItemName && indexOfItem!== null){
-      const updatedShoppingList = {...shoppingList};
-      const oldItemName = updatedShoppingList[storeOfItem][indexOfItem];
-      updatedShoppingList[storeOfItem][indexOfItem] = newItemName;
-      setShoppingList(updatedShoppingList);
-    }
+      setShoppingList(prevShoppingList => {
+        const updatedShoppingList = {...shoppingList};
+        updatedShoppingList[storeOfItem][indexOfItem] = newItemName;
+      return (updatedShoppingList);
+    });
 
-    setEditItemInfo({
-      newItemName: "",
-      storeOfItem: null, 
-      indexOfItem: null
-    })
+    setStoreOfItem(null);
+    setIndexOfItem(null);
+    setNewItemName("");
   }
+};
+      
+
+
 
   return (
     <SafeAreaProvider >
