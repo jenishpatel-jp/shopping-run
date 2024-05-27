@@ -16,8 +16,6 @@ export default function ShoppingRun() {
   const [storeOfItem, setStoreOfItem] = useState<string|null >("");
   const [indexOfItem, setIndexOfItem] = useState<number|null>(null);
 
-
-
   const addStore = (storeName: string ) => {
     if (storeName && !storeList.includes(storeName)){
       setStoreList([...storeList, storeName])

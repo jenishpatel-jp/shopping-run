@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
-import { View, Text, StyleSheet, Platform, SectionList, Pressable, TextInput} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Platform, SectionList, Pressable, TextInput } from 'react-native';
 import Checkbox from 'expo-checkbox';
 import { Feather } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 
 interface ListsProps {
-    shoppingList: { [key: string]: string []};
+    shoppingList: { [key: string]: string[] };
     deleteItem: (store: string, item: string) => void;
     updateItemName: () => void;
     editItem: (store: string, item: string) => void;
     newItemName: string;
     setNewItemName: (name: string) => void;
-    indexOfItem: number|null;
-    storeOfItem: string|null;
+    indexOfItem: number | null;
+    storeOfItem: string | null;
 }
 
 interface Section {
@@ -20,79 +20,96 @@ interface Section {
     data: string[];
 }
 
-const Lists: React.FC<ListsProps> = ( {
-    shoppingList, 
-    deleteItem, 
-    updateItemName, 
-    editItem, 
-    newItemName, 
-    setNewItemName, 
+const Lists: React.FC<ListsProps> = ({
+    shoppingList,
+    deleteItem,
+    updateItemName,
+    editItem,
+    newItemName,
+    setNewItemName,
     indexOfItem,
     storeOfItem,
-    } ) => {
+}) => {
+    const [selectedItem, setSelectedItem] = useState<string | null>(null);
+    const [completedItem, setCompletedItem] = useState<string[]>([]);
+
+    const checkOffItem = (item: string) => {
+        setCompletedItem([...completedItem, item]);
+        deleteItemFromShoppingList(item);
+    };
+
+    const deleteItemFromShoppingList = (item: string) => {
+        for (const store in shoppingList) {
+            if (shoppingList[store].includes(item)) {
+                deleteItem(store, item);
+                break;
+            }
+        }
+    };
 
     const sections: Section[] = Object.keys(shoppingList).map((store) => ({
         title: store,
         data: shoppingList[store]
     }));
 
-    const [selectedItem, setSelectedItem] = useState <string|null> (null);
-
-
+    if (completedItem.length > 0) {
+        sections.push({ title: 'Completed', data: completedItem });
+    }
 
     return (
-            <SectionList 
-                sections={sections}
-                renderSectionHeader={ ({section} ) => (
-                    <Text style={styles.storeName} >{section.title}</Text>)}
-                renderItem={ ({ item, section }) => (
-                    <View style={styles.itemsContainer} >
-                    
-                    {storeOfItem === section.title && indexOfItem === shoppingList[section.title].indexOf(item) ? (
-                        <TextInput 
-                            style={styles.editTextInput}
-                            value={newItemName}
-                            onChangeText={setNewItemName}
-                        />
-                    ):(
-                    <View style={styles.checkboxContainer} > 
-                        <Checkbox 
-                            style={styles.checkbox}
-                            color={selectedItem === item ? "#F5A418": "#F5A418"}
-                            value={selectedItem === item}
-                            onValueChange={() => setSelectedItem(item)}
-                        />
-                        <Text style={styles.checkboxText}> {item} </Text>
-                    </View>
-                    ) }
-                    
-                    <View style={styles.updateView} >
+        <SectionList
+            sections={sections}
+            renderSectionHeader={({ section }) => (
+                <Text style={styles.storeName}>{section.title}</Text>
+            )}
+            renderItem={({ item, section }) => (
+                <View>
+                    {section.title !== 'Completed' ? (
+                        <View style={styles.itemsContainer}>
+                            {storeOfItem === section.title && indexOfItem === shoppingList[section.title].indexOf(item) ? (
+                                <TextInput
+                                    style={styles.editTextInput}
+                                    value={newItemName}
+                                    onChangeText={setNewItemName}
+                                />
+                            ) : (
+                                <View style={styles.checkboxContainer}>
+                                    <Checkbox
+                                        style={styles.checkbox}
+                                        color={selectedItem === item ? "#F5A418" : "#F5A418"}
+                                        value={selectedItem === item}
+                                        onValueChange={() => {
+                                            checkOffItem(item);
+                                        }}
+                                    />
+                                    <Text style={styles.checkboxText}> {item} </Text>
+                                </View>
+                            )}
+                            <View style={styles.updateView}>
+                                {storeOfItem === section.title && indexOfItem === shoppingList[section.title].indexOf(item) ? (
+                                    <Pressable onPress={updateItemName}>
+                                        <Text style={styles.buttonText}>Update</Text>
+                                    </Pressable>
+                                ) : (
+                                    <Pressable onPress={() => editItem(section.title, item)}>
+                                        <Feather style={styles.edit} name="edit" size={26} color="#F5A418" />
+                                    </Pressable>
+                                )}
+                                <Pressable onPress={() => deleteItem(section.title, item)}>
+                                    <MaterialIcons style={styles.delete} name="delete-outline" size={30} color="#F5A418" />
+                                </Pressable>
+                            </View>
+                        </View>
+                    ) : (
+                        <Text style={styles.completedItems}>{item}</Text>
+                    )}
+                </View>
+            )}
+            keyExtractor={(item, index) => item + index}
+        />
+    );
+};
 
-                    {storeOfItem === section.title && indexOfItem === shoppingList[section.title].indexOf(item) ?(
-                        <Pressable onPress={updateItemName}>
-                            <Text style={styles.buttonText} >Update</Text>
-                        </Pressable>
-                    ):
-                    (
-                        <Pressable
-                        onPress={() => editItem(section.title, item) }  
-                        >
-                            <Feather style={styles.edit} name="edit" size={26} color="#F5A418" />
-                        </Pressable>
-                    )
-                    }
-                        <Pressable 
-                        onPress={() => deleteItem(section.title, item)}
-                        >
-                            <MaterialIcons style={styles.delete}  name="delete-outline" size={30} color="#F5A418" />
-                        </Pressable>
-                    </View>
-                    </View>            
-                )}
-                keyExtractor={(item, index) => index.toString()}
-            />
-        );
-    }; 
 
 const styles = StyleSheet.create({
     card: {
@@ -177,7 +194,7 @@ const styles = StyleSheet.create({
     delete: {
         marginVertical: 5,
         padding: 2,
-        alignItems: "center"
+        alignItems: "center",
 
     },
 
@@ -196,7 +213,30 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         paddingHorizontal: 20, 
         paddingVertical: 6,
+    },
 
+    completedTitle: {
+        color:"#F5A418",
+        fontSize: 22,
+        fontWeight:"bold", 
+        marginTop: 5,
+        padding: 2, 
+        marginLeft: 5
+
+    },
+    completedItems: {
+        color:"#F5A418",
+        fontSize: 18, 
+        textDecorationLine:"line-through",
+        marginLeft: 10,
+        padding: 2, 
+        marginVertical: 2,
+    },
+
+    completedContainer: {
+        borderColor: "#F5A418",
+        borderTopWidth: 2,
+        borderRadius: 5,
     }
 })
 

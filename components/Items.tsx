@@ -29,6 +29,14 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStor
         }
     }
 
+    const selectStoreFunction = (store: string) => {
+        if (!selectedStore){
+            setSelectedStore(store)
+        } else {
+            setSelectedStore(null);
+        }
+    }
+
     return (
 
         <View style={styles.card} >
@@ -56,7 +64,7 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStor
                 <Checkbox 
                     style={styles.checkbox} 
                     value={selectedStore === store}
-                    onValueChange={() => setSelectedStore(store) }
+                    onValueChange={() => selectStoreFunction(store) }
                     color={selectedStore === store ? "#F5A418": "#F5A418"}
                     />
                 <Text style={styles.checkboxText} >{store}</Text>
