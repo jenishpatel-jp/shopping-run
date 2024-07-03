@@ -1,6 +1,6 @@
-import React from 'react'
-import { View, Text, TextInput, Pressable } from 'react-native'
-import { styles } from './Items.ts';
+import React from 'react';
+import { View, Text, TextInput, Pressable } from 'react-native';
+import { styles } from './ItemStyles';
 import { useState } from 'react';
 import Checkbox from 'expo-checkbox';
 import { Feather } from '@expo/vector-icons';
@@ -120,6 +120,6 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStor
 
         </View>
     )
-}
+};
 
 export default Items;

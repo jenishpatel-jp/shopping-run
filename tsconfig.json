@@ -11,6 +11,7 @@
   "include": [
     "components/**/*.tsx",
     "components/Lists/**/*.tsx",
+    "components/Items/**/*.tsx",
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",

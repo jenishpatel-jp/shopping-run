@@ -1,11 +1,12 @@
-import Items from '@/components/Items';
-import Lists from '@/components/Lists';
-import Store from '@/components/Store';
+import Items from '@/components/Items/Items';
+import Lists from '@/components/Lists/Lists';
+import Store from '@/components/Store/Store';
 import { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ShoppingRun() {
+
   const [storeList, setStoreList] = useState<string[]>([]);
   const [shoppingList, setShoppingList] = useState<{[key:string]: string[]} > ({});
   
@@ -104,9 +105,6 @@ export default function ShoppingRun() {
     setNewItemName("");
   }
 };
-      
-
-
 
   return (
     <SafeAreaProvider >
