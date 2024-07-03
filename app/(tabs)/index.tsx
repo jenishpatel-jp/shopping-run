@@ -3,6 +3,7 @@ import Lists from '@/components/Lists/Lists';
 import Store from '@/components/Store/Store';
 import { useState } from 'react';
 import { StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ShoppingRun() {
