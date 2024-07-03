@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {View, Text, TextInput, Pressable, Platform } from 'react-native'
+import {View, Text, TextInput, Pressable } from 'react-native'
 import { styles } from './StoreStyles';
 
 interface StoreProps {

@@ -9,10 +9,8 @@ export default function ShoppingRun() {
 
   const [storeList, setStoreList] = useState<string[]>([]);
   const [shoppingList, setShoppingList] = useState<{[key:string]: string[]} > ({});
-  
   const [editingStoreIndex, setEditingStoreIndex] = useState<number | null>(null);
   const [newStoreName, setNewStoreName] = useState<string>('');
-
   const [newItemName, setNewItemName] = useState<string>("");
   const [storeOfItem, setStoreOfItem] = useState<string|null >("");
   const [indexOfItem, setIndexOfItem] = useState<number|null>(null);
@@ -61,7 +59,6 @@ export default function ShoppingRun() {
       return updatedShoppingList;
     })
   };
-
 
   const addItem = (store: string, item: string) => {
     if (store && item) {
