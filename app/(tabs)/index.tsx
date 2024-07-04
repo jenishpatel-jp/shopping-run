@@ -8,7 +8,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 export default function ShoppingRun() {
 
   const [storeList, setStoreList] = useState<string[]>([]);
-  const [shoppingList, setShoppingList] = useState<{[key:string]: string[]} > ({});
+  const [shoppingList, setShoppingList] = useState<{[key:string]: string[]}> ({});
   const [editingStoreIndex, setEditingStoreIndex] = useState<number | null>(null);
   const [newStoreName, setNewStoreName] = useState<string>('');
   const [newItemName, setNewItemName] = useState<string>("");
