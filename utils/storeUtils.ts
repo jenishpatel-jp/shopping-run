@@ -1,5 +1,3 @@
-import { SetStateAction } from "react";
-
 export const addStore = (
     storeName: string, 
     storeList: string[], 
@@ -46,7 +44,6 @@ export const updateStoreName = (
             }
             return updatedShoppingList
         });
-
         setEditingStoreIndex(null);
         setNewStoreName("");
     }
