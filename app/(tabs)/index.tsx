@@ -1,13 +1,13 @@
 import Items from '@/components/Items/Items';
 import Lists from '@/components/Lists/Lists';
 import Store from '@/components/Store/Store';
-import { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { Component, useState } from 'react';
+import { StyleSheet, View, FlatList, ListRenderItem } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { addStore, editStore, updateStoreName, deleteStore } from '../../utils/storeUtils';
 import { addItem, deleteItem, editItem, updateItemName } from '../../utils/itemsUtils';
 
-export default function ShoppingRun() {
+export default function ShoppingRun(){
 
   const [storeList, setStoreList] = useState<string[]>([]);
   const [shoppingList, setShoppingList] = useState<{[key:string]: string[]}> ({});
@@ -17,30 +17,58 @@ export default function ShoppingRun() {
   const [storeOfItem, setStoreOfItem] = useState<string|null >("");
   const [indexOfItem, setIndexOfItem] = useState<number|null>(null);
 
+  interface ListItem {
+    key: string, 
+    component: JSX.Element
+  }
+
+  const data: ListItem[] = [
+    { key: 'store', component:
+      <Store 
+        addStore={(storeName: string) => addStore(storeName, storeList, setStoreList)}
+      />
+    },
+    { key: 'items', component:
+      <Items
+        storeList={storeList}
+        addItem={(store: string, item: string) => addItem(store, item, setShoppingList)}
+        editStore={(storeIndex: number) => editStore(storeIndex, storeList, setEditingStoreIndex, setNewStoreName)}
+        deleteStore={(storeIndex: number) => deleteStore(storeIndex, storeList, setStoreList, setShoppingList)}
+        updateStoreName={() => updateStoreName(editingStoreIndex, newStoreName, storeList, setStoreList, setShoppingList, setEditingStoreIndex, setNewStoreName)}
+        editingStoreIndex={editingStoreIndex}
+        newStoreName={newStoreName}
+        setNewStoreName={setNewStoreName}
+      />
+    },
+    { key: 'lists', component:
+      <Lists 
+        shoppingList={shoppingList} 
+        deleteItem={(store: string, item: string) => deleteItem(store, item, setShoppingList)}
+        updateItemName={() => updateItemName(storeOfItem, newItemName, indexOfItem, setShoppingList, setStoreOfItem, setIndexOfItem, setNewItemName)}
+        editItem={(store: string, item: string) => editItem(store, item, shoppingList, setStoreOfItem, setIndexOfItem, setNewItemName)}
+        newItemName={newItemName}
+        setNewItemName={setNewItemName}
+        indexOfItem={indexOfItem}
+        storeOfItem={storeOfItem}
+      />
+    },
+  ];
+  
+  const renderItem: ListRenderItem<ListItem> = ({ item }) => (
+    <View style={styles.itemContainer} >
+      {item.component}
+    </View>
+  );
+
   return (
     <SafeAreaProvider >
       <SafeAreaView style={styles.container}>
-          <Store addStore={(storeName: string) => addStore(storeName, storeList, setStoreList) } />
-          <Items 
-            storeList={storeList} 
-            addItem={(store: string, item: string) => addItem(store, item, setShoppingList)} 
-            editStore={(storeIndex: number) => editStore(storeIndex, storeList, setEditingStoreIndex, setNewStoreName)} 
-            deleteStore={(storeIndex: number) => deleteStore(storeIndex, storeList, setStoreList, setShoppingList)} 
-            updateStoreName={() => updateStoreName(editingStoreIndex, newStoreName, storeList, setStoreList, setShoppingList, setEditingStoreIndex, setNewStoreName)} 
-            editingStoreIndex={editingStoreIndex} 
-            newStoreName={newStoreName} 
-            setNewStoreName={setNewStoreName} 
-            />
-          <Lists 
-            shoppingList={shoppingList} 
-            deleteItem={(store: string, item: string) => deleteItem(store, item, setShoppingList)}
-            updateItemName={() => updateItemName(storeOfItem, newItemName, indexOfItem, setShoppingList, setStoreOfItem, setIndexOfItem, setNewItemName)}
-            editItem={(store: string, item: string) => editItem(store, item, shoppingList, setStoreOfItem, setIndexOfItem, setNewItemName)}
-            newItemName={newItemName}
-            setNewItemName={setNewItemName}
-            indexOfItem={indexOfItem}
-            storeOfItem={storeOfItem}
-            />
+          <FlatList
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.key}
+          
+          />
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -57,4 +85,7 @@ export default function ShoppingRun() {
       fontWeight: 'bold',
       color: '#F5A318',
     },
+    itemContainer: {
+      marginBottom: 20
+    }
   });

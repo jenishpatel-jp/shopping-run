@@ -28,7 +28,7 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStor
             addItem(selectedStore, itemName);
             setItemName("");
         }
-    }
+    };
 
     const selectStoreFunction = (store: string) => {
         if (!selectedStore){
@@ -36,7 +36,7 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStor
         } else {
             setSelectedStore(null);
         }
-    }
+    };
 
     return (
 
