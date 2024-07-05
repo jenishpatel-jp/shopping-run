@@ -73,13 +73,18 @@ export const deleteStoreIfNoItems = (
     setShoppingList: React.Dispatch<React.SetStateAction< { [key:string] : string[] } >>
 ) => {
 
-    let storeToDelete: string;
+    let storeToDelete: string | undefined = undefined;
 
     for (const store in shoppingList){
         if (shoppingList[store].length === 0){
             storeToDelete = store;
-        }
+            break;
+        } 
     };
+    
+    if(!storeToDelete){
+        return;
+    }
 
     setShoppingList(prevShoppingList => {
         const updatedShoppingList = { ...prevShoppingList };

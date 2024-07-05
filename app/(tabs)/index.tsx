@@ -1,7 +1,7 @@
 import Items from '@/components/Items/Items';
 import Lists from '@/components/Lists/Lists';
 import Store from '@/components/Store/Store';
-import { Component, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList, ListRenderItem } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { addStore, editStore, updateStoreName, deleteStore, deleteStoreIfNoItems } from '../../utils/storeUtils';
@@ -16,6 +16,10 @@ export default function ShoppingRun(){
   const [newItemName, setNewItemName] = useState<string>("");
   const [storeOfItem, setStoreOfItem] = useState<string|null >("");
   const [indexOfItem, setIndexOfItem] = useState<number|null>(null);
+
+  useEffect(() => {
+    deleteStoreIfNoItems(shoppingList, setShoppingList)
+  }, [shoppingList])
 
   interface ListItem {
     key: string, 
@@ -50,7 +54,6 @@ export default function ShoppingRun(){
         setNewItemName={setNewItemName}
         indexOfItem={indexOfItem}
         storeOfItem={storeOfItem}
-        deleteStoreIfNoItems={() => deleteStoreIfNoItems(shoppingList, setShoppingList)}
       />
     },
   ];
