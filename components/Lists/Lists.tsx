@@ -14,6 +14,7 @@ interface ListsProps {
     setNewItemName: (name: string) => void;
     indexOfItem: number | null;
     storeOfItem: string | null;
+    deleteStoreIfNoItems: () => void;
 }
 
 interface Section {
@@ -30,6 +31,7 @@ const Lists: React.FC<ListsProps> = ({
     setNewItemName,
     indexOfItem,
     storeOfItem,
+    deleteStoreIfNoItems
 }) => {
     const [selectedItem, setSelectedItem] = useState<string | null>(null);
     const [completedItem, setCompletedItem] = useState<string[]>([]);
@@ -37,6 +39,7 @@ const Lists: React.FC<ListsProps> = ({
     const checkOffItem = (item: string) => {
         setCompletedItem([...completedItem, item]);
         deleteItemFromShoppingList(item);
+        setSelectedItem(null);
     };
 
     const deleteItemFromShoppingList = (item: string) => {
@@ -46,6 +49,7 @@ const Lists: React.FC<ListsProps> = ({
                 break;
             }
         }
+        deleteStoreIfNoItems();
     };
 
     const sections: Section[] = Object.keys(shoppingList).map((store) => ({
@@ -80,6 +84,7 @@ const Lists: React.FC<ListsProps> = ({
                                         color={selectedItem === item ? "#F5A418" : "#F5A418"}
                                         value={selectedItem === item}
                                         onValueChange={() => {
+                                            setSelectedItem(item);
                                             checkOffItem(item);
                                         }}
                                     />

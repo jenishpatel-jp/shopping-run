@@ -68,3 +68,23 @@ export const deleteStore = (
     });
 };
 
+export const deleteStoreIfNoItems = (
+    shoppingList:{ [key:string] : string[] },
+    setShoppingList: React.Dispatch<React.SetStateAction< { [key:string] : string[] } >>
+) => {
+
+    let storeToDelete: string;
+
+    for (const store in shoppingList){
+        if (shoppingList[store].length === 0){
+            storeToDelete = store;
+        }
+    };
+
+    setShoppingList(prevShoppingList => {
+        const updatedShoppingList = { ...prevShoppingList };
+        delete updatedShoppingList[storeToDelete];
+        return updatedShoppingList;
+    })
+}
+
