@@ -14,6 +14,8 @@ interface ListsProps {
     setNewItemName: (name: string) => void;
     indexOfItem: number | null;
     storeOfItem: string | null;
+    completedItem: string[],
+    setCompletedItem: (completedItem: string[]) => void;
 }
 
 interface Section {
@@ -30,9 +32,10 @@ const Lists: React.FC<ListsProps> = ({
     setNewItemName,
     indexOfItem,
     storeOfItem,
+    completedItem,
+    setCompletedItem
 }) => {
     const [selectedItem, setSelectedItem] = useState<string | null>(null);
-    const [completedItem, setCompletedItem] = useState<string[]>([]);
 
     const checkOffItem = (item: string) => {
         setCompletedItem([...completedItem, item]);
