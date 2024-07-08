@@ -2,11 +2,16 @@ import React from 'react'
 import { View, Pressable, Text } from 'react-native';
 import { styles } from './resetButtonStyles';
 
+interface ResetButtonProps {
+    reset: () => void;
+}
 
-function ResetButton() {
+const ResetButton: React.FC<ResetButtonProps> = ({ reset }) => {
   return (
-    <View style={styles.addButtonContainer} >
-        <Pressable>
+    <View style={styles.resetButtonContainer} >
+        <Pressable
+            onPress={() => reset()}
+        >
             <Text style={styles.buttonText}>
                 Reset
             </Text>

@@ -1,3 +1,5 @@
+//Added addButton to possibly use in the future. 
+
 // import React from 'react';
 // import { View, Pressable, Text } from 'react-native';
 // import { styles } from './addButtonStyles';

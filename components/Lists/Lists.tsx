@@ -4,7 +4,6 @@ import { styles } from './ListStyles';
 import Checkbox from 'expo-checkbox';
 import { Feather } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import { deleteStoreIfNoItems } from '@/utils/storeUtils';
 
 interface ListsProps {
     shoppingList: { [key: string]: string[] };

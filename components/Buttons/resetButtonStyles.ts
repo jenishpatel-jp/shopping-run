@@ -10,11 +10,12 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 20, 
         paddingVertical: 6,
     },
-    addButtonContainer: {
+    resetButtonContainer: {
         alignItems:'flex-end',
         justifyContent: 'center',
-        paddingTop: 5,
-        marginTop: 4,
+        paddingTop: 1,
+        marginTop: 2,
         marginBottom: 1,
-    }, 
+        marginRight: 10,
+    }
 });

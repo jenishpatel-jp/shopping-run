@@ -1,11 +1,13 @@
 import Items from '@/components/Items/Items';
 import Lists from '@/components/Lists/Lists';
 import Store from '@/components/Store/Store';
+import ResetButton from '@/components/Buttons/resetButton';
 import { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList, ListRenderItem } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { addStore, editStore, updateStoreName, deleteStore, deleteStoreIfNoItems } from '../../utils/storeUtils';
 import { addItem, deleteItem, editItem, updateItemName } from '../../utils/itemsUtils';
+import { reset } from '../../utils/resetButtonUtils';
 
 export default function ShoppingRun(){
 
@@ -57,6 +59,11 @@ export default function ShoppingRun(){
         storeOfItem={storeOfItem}
       />
     },
+    {key: 'reset', component:
+      <ResetButton
+        reset={() => reset(setShoppingList, setStoreList)}
+      />
+    } 
   ];
   
   const renderItem: ListRenderItem<ListItem> = ({ item }) => (
