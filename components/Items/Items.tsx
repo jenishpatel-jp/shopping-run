@@ -116,7 +116,7 @@ const Items: React.FC<ItemsProps> = ( {storeList, addItem, editStore, deleteStor
                             Add
                         </Text>
                     </Pressable>
-            </View>
+            </View> 
 
         </View>
     )

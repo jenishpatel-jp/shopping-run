@@ -8,13 +8,16 @@
       "distribution": "internal"
     },
     "preview": {
+      "channel":"preview",
       "distribution": "internal",
       "android": {
         "buildType": "apk",
         "gradleCommand": ":app:assembleRelease"
       }
     },
-    "production": {}
+    "production": {
+      "channel": "production"
+    }
   },
   "submit": {
     "production": {}

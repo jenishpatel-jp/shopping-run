@@ -29,7 +29,6 @@ const Store: React.FC<StoreProps> = ( {addStore} ) => {
                     setStoreName("");
                 }}
 
-
                 onPressIn={() => setButtonPressed(true)}
                 onPressOut={() => setButtonPressed(false)}
                 style={( {pressed} ) => [

@@ -13,7 +13,8 @@
       "backgroundColor": "#40146b"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jpcodingboy.shoppingrun"
     },
     "android": {
       "adaptiveIcon": {
@@ -40,6 +41,12 @@
       "eas": {
         "projectId": "b9447121-e657-4dc3-b194-16322705cb71"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/b9447121-e657-4dc3-b194-16322705cb71"
     }
   }
 }

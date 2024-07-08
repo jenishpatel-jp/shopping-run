@@ -17,6 +17,7 @@ export default function ShoppingRun(){
   const [storeOfItem, setStoreOfItem] = useState<string|null >("");
   const [indexOfItem, setIndexOfItem] = useState<number|null>(null);
 
+  //useEffect to check if any of the shopping list keys has an empty array. If so, the key is deleted as it is no longer needed. 
   useEffect(() => {
     deleteStoreIfNoItems(shoppingList, setShoppingList)
   }, [shoppingList])
