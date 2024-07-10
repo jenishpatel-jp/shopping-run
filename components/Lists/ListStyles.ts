@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         padding: 10,
-        margin: 10,
+        marginHorizontal: 10,
+        marginVertical: 1,
         ...Platform.select({
             ios: {
                 shadowOffset: {width: 2, height: 2},

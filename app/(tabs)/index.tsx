@@ -82,7 +82,6 @@ export default function ShoppingRun(){
             data={data}
             renderItem={renderItem}
             keyExtractor={(item) => item.key}
-          
           />
       </SafeAreaView>
     </SafeAreaProvider>
