@@ -91,5 +91,5 @@ export const deleteStoreIfNoItems = (
         delete updatedShoppingList[storeToDelete];
         return updatedShoppingList;
     })
-}
+};
 
