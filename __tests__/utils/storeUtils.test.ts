@@ -22,4 +22,62 @@ describe("storeUtils", ()=> {
             expect(setStoreList).not.toHaveBeenCalled();
         });
     });
+
+    describe('editStore', () => { 
+        it("should set the editing store index and new store name", () => {
+            const setEditingStoreIndex = jest.fn();
+            const setStoreName = jest.fn();
+            const storeList = ['Store A', 'Store B'];
+            const storeIndex = 1;
+
+            editStore(storeIndex, storeList, setStoreName, setEditingStoreIndex);
+
+            expect(setEditingStoreIndex).toHaveBeenCalledWith(storeIndex);
+            expect(setStoreName).toHaveBeenCalledWith('Store B');
+        });
+     });
+
+     describe('updateStoreName', () => {
+        it('should update the store name and shopping list', () => {
+            const setStoreList = jest.fn();
+            const setShoppingList = jest.fn();
+            const setEditingStoreIndex = jest.fn();
+            const setNewStoreName = jest.fn();
+            const storeList =['Store A', 'Store B'];
+            const editingStoreIndex = 1;
+            const newStoreName = 'New Store B';
+
+            updateStoreName(
+                editingStoreIndex, 
+                newStoreName, 
+                storeList, 
+                setStoreList, 
+                setShoppingList, 
+                setEditingStoreIndex, 
+                setNewStoreName
+            );
+
+            expect(setStoreList).toHaveBeenCalledWith(['Store A', 'Store B']);
+            expect(setShoppingList).toHaveBeenCalledWith(
+                expect.objectContaining({ 'New Store B': undefined })
+            );
+            expect(setEditingStoreIndex).toHaveBeenCalledWith(null);
+            expect(setNewStoreName).toHaveBeenCalledWith('');
+        });
+     });
+
+     describe('deleteStore', ()=> {
+        it('should delete the store from the store list and shopping list', ()=> {
+            const setStoreList = jest.fn();
+            const setShoppingList = jest.fn();
+            const storeList = ['Store A', 'Store B'];
+            const storeIndex = 1;
+
+            deleteStore(storeIndex, storeList, setStoreList, setShoppingList);
+
+            expect(setStoreList).toHaveBeenCalledWith(['Store A']);
+            expect(setShoppingList).toHaveBeenCalledWith(expect.objectContaining({}));
+        })
+     })
+
 });
