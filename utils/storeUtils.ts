@@ -8,6 +8,7 @@ export const addStore = (
     }
 };
 
+// function determines the index of the Store that needs to be updated and sets the newStore name to the current store name, which can be updated later with the updateStoreName function. 
 export const editStore = (
     storeIndex: number, 
     storeList: string[],
@@ -15,7 +16,7 @@ export const editStore = (
     setNewStoreName: React.Dispatch<React.SetStateAction<string>>
 ) => {
     setEditingStoreIndex(storeIndex);
-    setNewStoreName(storeList[storeIndex])
+    setNewStoreName(storeList[storeIndex]);
 };
 
 export const updateStoreName = (
@@ -31,7 +32,7 @@ export const updateStoreName = (
     if (editingStoreIndex !== null && newStoreName){
         const updatedStoreList = [...storeList];
         const oldStoreName = updatedStoreList[editingStoreIndex];
-        updatedStoreList[editingStoreIndex] = oldStoreName;
+        updatedStoreList[editingStoreIndex] = newStoreName;
         setStoreList(updatedStoreList);
 
 
