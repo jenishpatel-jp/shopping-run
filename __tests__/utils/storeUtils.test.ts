@@ -86,7 +86,7 @@ describe("storeUtils", ()=> {
 
             expect(setStoreList).toHaveBeenCalledWith(['Store A']);
             expect(setShoppingList).toHaveBeenCalledWith(expect.objectContaining({}));
-        })
-     })
+        });
+     });
 
 });
