@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 
+
 export default function ShoppingList() {
 
   const colorScheme = useColorScheme();
@@ -24,15 +25,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   lightThemeText: {
-
+    color: '#000',
   },
   darkThemeText: {
-    color: 'white',
+    color: 'orange',
   },
   lightContainer: {
     backgroundColor: 'white',
   },
   darkContainer: {
-    backgroundColor: 'black',
+    backgroundColor: 'purple',
   },
 });
