@@ -10,8 +10,8 @@ export default function ShoppingList() {
     colorScheme === 'light' ? styles.lightContainer : styles.darkContainer;
 
   return (
-    <View style={styles.container}>
-      <Text>Starting the shopping run app </Text>
+    <View style={[styles.container, themeContainerStyle]}>
+      <Text style={[styles.text, themeTextStyle]}>Starting the shopping run app </Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  text:{
+    fontSize: 20,
   },
   lightThemeText: {
     color: '#000',
