@@ -11,8 +11,11 @@ export default function ShoppingList() {
 
   return (
     <View style={[styles.container, themeContainerStyle]}>
+      <StatusBar style="auto"/>
       <Text style={[styles.text, themeTextStyle]}>Starting the shopping run app </Text>
-      <StatusBar style="auto" />
+      {/* <AddStoreComponent /> */}
+      {/* <Store List Component /> */}
+
     </View>
   );
 }
