@@ -1,5 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { ThemedView } from '../components/ThemedView';
+import { ThemedText } from '../components/ThemedText';
 
 
 export default function ShoppingList() {
@@ -10,20 +12,19 @@ export default function ShoppingList() {
     colorScheme === 'light' ? styles.lightContainer : styles.darkContainer;
 
   return (
-    <View style={[styles.container, themeContainerStyle]}>
+    <ThemedView style={styles.container}>
       <StatusBar style="auto"/>
-      <Text style={[styles.text, themeTextStyle]}>Starting the shopping run app </Text>
+      <ThemedText >Starting the shopping run app </ThemedText>
       {/* <AddStoreComponent /> */}
       {/* <Store List Component /> */}
 
-    </View>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
