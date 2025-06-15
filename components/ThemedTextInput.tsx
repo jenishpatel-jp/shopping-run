@@ -4,7 +4,7 @@ import { StyleSheet, TextInput } from 'react-native'
 
 const ThemedTextInput = () => {
   return (
-        <ThemedView>
+        <ThemedView style={styles.container}>
             <TextInput 
             
                 placeholder="Enter text here"
@@ -20,7 +20,9 @@ export default ThemedTextInput;
 const styles = StyleSheet.create({
     container: {
         borderRadius: 1,
-        borderColor: '#F5A418'
+        borderWidth: 3,
+        width: '80%',
+        borderColor: '#F5A418',
     }
 
 })
