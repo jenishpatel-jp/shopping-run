@@ -1,6 +1,11 @@
 import React from 'react'
 import { ThemedView } from './ThemedView'
-import { StyleSheet, TextInput } from 'react-native'
+import { StyleSheet, TextInput, type TextInputProps } from 'react-native'
+
+export type ThemedTextInputProps = TextInputProps & {
+  lightColor?: string;
+  darkColor?: string;
+};
 
 const ThemedTextInput = () => {
   return (
