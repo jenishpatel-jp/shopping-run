@@ -3,6 +3,8 @@
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
+import { TextInput } from "react-native";
+
 const tintColorLight = "#0a7ea4";
 const tintColorDark = "#fff";
 
@@ -28,6 +30,9 @@ export const Colors = {
     icon: "#687076",
     tabIconDefault: "#687076",
     tabIconSelected: tintColorLight,
+    border: "#5200A3",
+    borderColor: "#5200A3",
+    TextInputBackground: "#5200A3",
   },
   dark: {
     text: "#F5A418",
@@ -36,5 +41,8 @@ export const Colors = {
     icon: "#40146B",
     tabIconDefault: "#40146B",
     tabIconSelected: tintColorDark,
+    border: "#F5A418",
+    borderColor: "#F5A418",
+    TextInputBackground: "#F5A418",
   },
 };
