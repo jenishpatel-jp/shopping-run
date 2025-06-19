@@ -8,20 +8,17 @@ export type ThemedTextInputProps = TextInputProps & {
 };
 
 const ThemedTextInput = ( { style, lightColor, darkColor, ...otherProps } : ThemedTextInputProps ) => {
-  
+
+    const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
     const placeHolderTextColor = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
-    return <TextInput  style={[  {}, style ]}{...otherProps} />
-}
+    return (
+        <TextInput  
+            style={[ { backgroundColor, padding: 12, borderRadius: 8 }, style ]}
+            placeholderTextColor={placeHolderTextColor}
+            {...otherProps} 
+        />
+    );   
+};
 
 export default ThemedTextInput;
-
-const styles = StyleSheet.create({
-    container: {
-        borderRadius: 1,
-        borderWidth: 3,
-        width: '80%',
-        borderColor: '#F5A418',
-    }
-
-})
