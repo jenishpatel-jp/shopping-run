@@ -32,7 +32,7 @@ export const Colors = {
     tabIconSelected: tintColorLight,
     border: "#5200A3",
     borderColor: "#5200A3",
-    TextInputBackground: "#5200A3",
+    placeHolderTextColor: "#687076",
   },
   dark: {
     text: "#F5A418",
@@ -43,6 +43,7 @@ export const Colors = {
     tabIconSelected: tintColorDark,
     border: "#F5A418",
     borderColor: "#F5A418",
-    TextInputBackground: "#F5A418",
+    placeHolderTextColor: "#F5A418",
+
   },
 };
