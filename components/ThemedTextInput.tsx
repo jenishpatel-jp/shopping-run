@@ -1,4 +1,3 @@
-import React from 'react'
 import { StyleSheet, TextInput, type TextInputProps } from 'react-native'
 import { useThemeColor } from '../hooks/useThemeColour';
 
