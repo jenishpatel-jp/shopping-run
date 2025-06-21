@@ -1,22 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, useColorScheme, View } from 'react-native';
-import { ThemedView } from '../components/ThemedView';
-import { ThemedText } from '../components/ThemedText';
-import ThemedTextInput from '../components/ThemedTextInput';
-
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, useColorScheme, View } from "react-native";
+import { ThemedView } from "../components/themedComponents/ThemedView";
+import { ThemedText } from "../components/themedComponents/ThemedText";
+import ThemedTextInput from "../components/themedComponents/ThemedTextInput";
 
 export default function ShoppingList() {
-
   const colorScheme = useColorScheme();
 
   return (
     <ThemedView style={styles.container}>
-      <StatusBar style="auto"/>
-      <ThemedText >Starting the shopping run app </ThemedText>
+      <StatusBar style="auto" />
+      <ThemedText>Starting the shopping run app </ThemedText>
       <ThemedTextInput />
       {/* <AddStoreComponent /> */}
       {/* <Store List Component /> */}
-
     </ThemedView>
   );
 }
@@ -24,10 +21,10 @@ export default function ShoppingList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
-  text:{
+  text: {
     fontSize: 20,
-  }
+  },
 });
