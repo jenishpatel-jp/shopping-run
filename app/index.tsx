@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, useColorScheme, View } from "react-native";
 import { ThemedView } from "../components/themedComponents/ThemedView";
 import { ThemedText } from "../components/themedComponents/ThemedText";
-import ThemedTextInput from "../components/themedComponents/ThemedTextInput";
+import { ThemedTextInput } from "../components/themedComponents/ThemedTextInput";
 
 export default function ShoppingList() {
   const colorScheme = useColorScheme();
@@ -11,9 +11,6 @@ export default function ShoppingList() {
     <ThemedView style={styles.container}>
       <StatusBar style="auto" />
       <ThemedText>Starting the shopping run app </ThemedText>
-      <ThemedTextInput />
-      {/* <AddStoreComponent /> */}
-      {/* <Store List Component /> */}
     </ThemedView>
   );
 }

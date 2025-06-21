@@ -6,7 +6,7 @@ export type ThemedTextInputProps = TextInputProps & {
   darkColor?: string;
 };
 
-const ThemedTextInput = ({
+export const ThemedTextInput = ({
   style,
   lightColor,
   darkColor,
@@ -30,4 +30,3 @@ const ThemedTextInput = ({
   );
 };
 
-export default ThemedTextInput;

@@ -6,7 +6,7 @@ export type ThemedButtonProps = ButtonProps & {
   darkColor?: string;
 };
 
-const ThemedButton = ({
+export const ThemedButton = ({
   lightColor,
   darkColor,
   ...otherProps
