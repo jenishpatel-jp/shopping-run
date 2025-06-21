@@ -3,6 +3,7 @@ import { StyleSheet, Text, useColorScheme, View } from "react-native";
 import { ThemedView } from "../components/themedComponents/ThemedView";
 import { ThemedText } from "../components/themedComponents/ThemedText";
 import { ThemedTextInput } from "../components/themedComponents/ThemedTextInput";
+import AddStore from "../components/shoppingListComponents/AddStore";
 
 export default function ShoppingList() {
   const colorScheme = useColorScheme();
@@ -11,6 +12,7 @@ export default function ShoppingList() {
     <ThemedView style={styles.container}>
       <StatusBar style="auto" />
       <ThemedText>Starting the shopping run app </ThemedText>
+      <AddStore />
     </ThemedView>
   );
 }
