@@ -23,7 +23,7 @@ export const ThemedTextInput = ({
 
   return (
     <TextInput
-      style={[{ backgroundColor, padding: 12, borderRadius: 8, fontSize: 16, width: '80%'}, style]}
+      style={[{ backgroundColor, padding: 12, fontSize: 16, width: '100%'}, style]}
       placeholderTextColor={placeHolderTextColor}
       {...otherProps}
     />

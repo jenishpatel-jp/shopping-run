@@ -18,5 +18,10 @@ export function ThemedView({
     "background"
   );
 
-  return <View style={[{ backgroundColor }, style]} {...otherProps} />;
+  const borderColor = useThemeColor(
+    { light: lightColor, dark: darkColor },
+    "borderColor"
+  );
+
+  return <View style={[{ backgroundColor, borderColor }, style]} {...otherProps} />;
 }
