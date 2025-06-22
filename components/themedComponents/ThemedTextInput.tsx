@@ -14,16 +14,16 @@ export const ThemedTextInput = ({
 }: ThemedTextInputProps) => {
   const backgroundColor = useThemeColor(
     { light: lightColor, dark: darkColor },
-    "background"
+    "textInputBackgroundColor"
   );
   const placeHolderTextColor = useThemeColor(
     { light: lightColor, dark: darkColor },
-    "text"
+    "textInputColor"
   );
 
   return (
     <TextInput
-      style={[{ backgroundColor, padding: 12, borderRadius: 8 }, style]}
+      style={[{ backgroundColor, padding: 12, borderRadius: 8, fontSize: 16, width: '80%'}, style]}
       placeholderTextColor={placeHolderTextColor}
       {...otherProps}
     />

@@ -33,10 +33,12 @@ export const Colors = {
     border: "#5200A3",
     borderColor: "#5200A3",
     placeHolderTextColor: "#687076",
+    textInputBackgroundColor: "#40146B",
+    textInputColor: "black",
   },
   dark: {
-    text: "#F5A418",
-    background: "#40146B",
+    text: "white",
+    background: "black",
     tint: tintColorDark,
     icon: "#40146B",
     tabIconDefault: "#40146B",
@@ -44,6 +46,8 @@ export const Colors = {
     border: "#F5A418",
     borderColor: "#F5A418",
     placeHolderTextColor: "#F5A418",
+    textInputBackgroundColor: "white",
+    textInputColor: "black",
 
   },
 };

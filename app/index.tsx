@@ -11,7 +11,6 @@ export default function ShoppingList() {
   return (
     <ThemedView style={styles.container}>
       <StatusBar style="auto" />
-      <ThemedText>Starting the shopping run app </ThemedText>
       <AddStore />
     </ThemedView>
   );
