@@ -46,7 +46,7 @@ export const Colors = {
     border: "#F5A418",
     borderColor: "white",
     placeHolderTextColor: "#F5A418",
-    textInputBackgroundColor: "white",
+    textInputBackgroundColor: "darkgrey",
     textInputColor: "black",
 
   },

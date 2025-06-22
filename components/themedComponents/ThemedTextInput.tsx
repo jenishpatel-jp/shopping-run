@@ -18,7 +18,7 @@ export const ThemedTextInput = ({
   );
   const placeHolderTextColor = useThemeColor(
     { light: lightColor, dark: darkColor },
-    "textInputColor"
+    "text"
   );
 
   return (
