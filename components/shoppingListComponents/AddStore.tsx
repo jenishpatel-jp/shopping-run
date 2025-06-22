@@ -12,7 +12,7 @@ const AddStore = () => {
 
             />
             <Pressable style={styles.addButton} >
-                <ThemedText style={styles.addButtonText} >Add</ThemedText>
+                <ThemedText style={styles.addButtonText}>Add</ThemedText>
             </Pressable>
         </ThemedView>
     )
@@ -41,6 +41,9 @@ const styles = StyleSheet.create({
         width: '100%',
         borderColor: 'red',
         borderRadius: 4,
-        borderWidth: 2
+        borderWidth: 2,
+        textAlign: 'right',
+        padding: 10,
+        paddingLeft: 20,
     },
 })
