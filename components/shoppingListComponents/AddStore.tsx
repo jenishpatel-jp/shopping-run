@@ -1,7 +1,6 @@
 import { ThemedView } from "../themedComponents/ThemedView";
 import { ThemedTextInput } from "../themedComponents/ThemedTextInput";
 import { ThemedText } from "../themedComponents/ThemedText";
-import { ThemedButton } from "../themedComponents/ThemedButton";
 import { StyleSheet, Pressable } from "react-native";
 
 const AddStore = () => {
