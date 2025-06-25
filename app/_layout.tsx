@@ -16,6 +16,7 @@ export default function RootLayout(){
                                 headerTitle: 'Shopping List',
                                 presentation: 'formSheet',
                                 sheetGrabberVisible: true,
+                                headerLargeTitle: false,
                             }}
                             
                             />

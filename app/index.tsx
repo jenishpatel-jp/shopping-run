@@ -5,14 +5,28 @@ import { ThemedText } from "../components/themedComponents/ThemedText";
 import { ThemedTextInput } from "../components/themedComponents/ThemedTextInput";
 import AddStore from "../components/shoppingListComponents/AddStore";
 
+import { Stack } from "expo-router";
+
 export default function ShoppingList() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemedView style={styles.container}>
-      <StatusBar style="auto" />
-      <AddStore />
-    </ThemedView>
+    <>
+        <Stack.Screen 
+          options={{
+            headerTitle: "Shopping List",
+            headerRight: () => 
+            <View style={styles.headerRightView}>
+
+            </View>,
+          }}
+        
+        />
+        <ThemedView style={styles.container}>
+          <StatusBar style="auto" />
+          <AddStore />
+        </ThemedView>
+    </>
   );
 }
 
@@ -25,4 +39,8 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
   },
+  headerRightView: {
+    flexDirection: "row",
+    alignItems: "center",
+  }
 });
