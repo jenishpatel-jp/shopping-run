@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, useColorScheme, View } from "react-native";
+import { Pressable, StyleSheet, Text, useColorScheme, View } from "react-native";
 import { ThemedView } from "../components/themedComponents/ThemedView";
 import { ThemedText } from "../components/themedComponents/ThemedText";
 import { ThemedTextInput } from "../components/themedComponents/ThemedTextInput";
@@ -17,6 +17,12 @@ export default function ShoppingList() {
             headerTitle: "Shopping List",
             headerRight: () => 
             <View style={styles.headerRightView}>
+              <Pressable>
+
+              </Pressable>
+              <Pressable>
+                
+              </Pressable>
 
             </View>,
           }}
