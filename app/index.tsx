@@ -20,10 +20,16 @@ export default function ShoppingList() {
             headerTitle: "Shopping List",
             headerRight: () => 
             <View style={styles.headerRightView}>
-              <Pressable style={styles.headerRightButton}> 
+              <Pressable 
+                style={styles.headerRightButton}
+                onPress={() => { console.log("Add Store Pressed") }}
+                > 
                 <MaterialCommunityIcons name="store-plus" size={30} color="black" />
               </Pressable>
-              <Pressable style={styles.headerRightButton}> 
+              <Pressable 
+                style={styles.headerRightButton}
+                onPress={() => { console.log("Add Item Pressed") }}
+                > 
                 <Ionicons name="add-circle-outline" size={30} color="black" />
               </Pressable>
 
