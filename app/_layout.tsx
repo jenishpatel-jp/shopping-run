@@ -1,5 +1,5 @@
 import { Stack } from  'expo-router';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 // SQLite imports 
 import { SQLiteProvider } from 'expo-sqlite';
@@ -9,7 +9,18 @@ export default function RootLayout(){
     return (
         <SQLiteProvider databaseName='shoppingList' onInit={setupDatabase}>
             <SafeAreaProvider>
-                <Stack screenOptions={{ headerShown: false }}/>
+                    <Stack screenOptions={{ headerShown: true, title: 'Shopping List' }}>
+                        <Stack.Screen 
+                            name='index.tsx' 
+                            options={{
+                                headerTitle: 'Shopping List',
+                                presentation: 'formSheet',
+                                sheetGrabberVisible: true,
+                            }}
+                            
+                            />
+                    </Stack>
+      
             </SafeAreaProvider>
         </SQLiteProvider>
     )
