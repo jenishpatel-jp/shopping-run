@@ -39,7 +39,6 @@ export default function ShoppingList() {
         />
         <ThemedView style={styles.container}>
           <StatusBar style="auto" />
-          <AddStore />
         </ThemedView>
     </>
   );
