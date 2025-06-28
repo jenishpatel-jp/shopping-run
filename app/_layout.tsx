@@ -17,7 +17,7 @@ export default function RootLayout(){
                     
                         }}>
                         <Stack.Screen 
-                            name='index.tsx' 
+                            name='/' 
                             options={{
                                 headerTitle: 'Shopping List',
                                 presentation: 'formSheet',
