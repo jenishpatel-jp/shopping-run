@@ -23,13 +23,13 @@ export default function ShoppingList() {
                 style={styles.headerRightButton}
                 onPress={() => router.push("/add")}
                 > 
-                <MaterialCommunityIcons name="store-plus" size={30} color="black" />
+                <MaterialCommunityIcons name="store-plus" size={30} color="white" />
               </Pressable>
               <Pressable 
                 style={styles.headerRightButton}
                 onPress={() =>  router.push("/add/addItem")}
                 > 
-                <Ionicons name="add-circle-outline" size={30} color="black" />
+                <Ionicons name="add-circle-outline" size={30} color="white" />
               </Pressable>
 
             </View>,

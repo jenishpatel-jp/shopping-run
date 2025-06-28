@@ -9,7 +9,13 @@ export default function RootLayout(){
     return (
         <SQLiteProvider databaseName='shoppingList' onInit={setupDatabase}>
             <SafeAreaProvider>
-                    <Stack screenOptions={{ headerShown: true, title: 'Shopping List' }}>
+                    <Stack screenOptions={{ 
+                        headerShown: true, 
+                        title: 'Shopping List', 
+                        headerTintColor: 'white',
+                        headerStyle: { backgroundColor: 'black' }
+                    
+                        }}>
                         <Stack.Screen 
                             name='index.tsx' 
                             options={{
@@ -17,6 +23,8 @@ export default function RootLayout(){
                                 presentation: 'formSheet',
                                 sheetGrabberVisible: true,
                                 headerLargeTitle: false,
+
+                                
                             }}
                             
                             />
