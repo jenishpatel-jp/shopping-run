@@ -9,10 +9,10 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "^53.0.12",
+    "expo": "53.0.13",
     "expo-constants": "~17.1.6",
     "expo-linking": "~7.1.5",
-    "expo-router": "~5.1.0",
+    "expo-router": "~5.1.1",
     "expo-status-bar": "~2.2.3",
     "expo-system-ui": "~5.0.9",
     "react": "19.0.0",
