@@ -6,9 +6,11 @@ import { ThemedView } from "../components/themedComponents/ThemedView";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import { Stack } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 
 export default function ShoppingList() {
+
+  const router = useRouter();
 
   return (
     <>
@@ -19,13 +21,13 @@ export default function ShoppingList() {
             <View style={styles.headerRightView}>
               <Pressable 
                 style={styles.headerRightButton}
-                onPress={() => { console.log("Add Store Pressed") }}
+                onPress={() => router.push("/add/addStore")}
                 > 
                 <MaterialCommunityIcons name="store-plus" size={30} color="black" />
               </Pressable>
               <Pressable 
                 style={styles.headerRightButton}
-                onPress={() => { console.log("Add Item Pressed") }}
+                onPress={() =>  router.push("/add/addItem")}
                 > 
                 <Ionicons name="add-circle-outline" size={30} color="black" />
               </Pressable>
