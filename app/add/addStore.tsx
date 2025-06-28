@@ -1,4 +1,4 @@
-import AddStore from "../components/shoppingListComponents/AddStore"
+import AddStore from "../../components/shoppingListComponents/AddStore"
 
 
 const addStore = () => {
