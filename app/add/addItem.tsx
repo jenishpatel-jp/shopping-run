@@ -6,7 +6,7 @@ import { StyleSheet } from "react-native"
 const addItem = () => {
   return (
     <ThemedView style={styles.container}>
-      <ThemedText></ThemedText>
+      <ThemedText>Add Item</ThemedText>
 
     </ThemedView>
 

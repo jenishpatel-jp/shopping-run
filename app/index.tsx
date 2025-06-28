@@ -21,7 +21,7 @@ export default function ShoppingList() {
             <View style={styles.headerRightView}>
               <Pressable 
                 style={styles.headerRightButton}
-                onPress={() => router.push("/add/addStore")}
+                onPress={() => router.push("/add")}
                 > 
                 <MaterialCommunityIcons name="store-plus" size={30} color="black" />
               </Pressable>
