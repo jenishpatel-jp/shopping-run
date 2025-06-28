@@ -1,18 +1,22 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView";
-import { ThemedTextInput } from "../../components/themedComponents/ThemedTextInput";
 import { ThemedText } from "../../components/themedComponents/ThemedText";
-import { StyleSheet, Pressable } from "react-native";
+import { StyleSheet, Pressable, View, TextInput } from "react-native";
 
 export default function AddStore (){
         return (
             <ThemedView style={styles.container}> 
-                <ThemedTextInput 
-                    placeholder="Enter store name"
-    
-                />
-                <Pressable style={styles.addButton} >
-                    <ThemedText style={styles.addButtonText}>Add</ThemedText>
-                </Pressable>
+                <View style={styles.addStoreContainer}> 
+                    <TextInput 
+                        style={styles.TextInput}
+                        placeholder="Enter store name"
+                        placeholderTextColor="white"
+                        selectionColor="white"
+                        textAlign="center"
+                    />
+                    <Pressable style={styles.addButton} >
+                        <ThemedText style={styles.addButtonText}>Add</ThemedText>
+                    </Pressable>
+                </View>
             </ThemedView>
         )
     };
@@ -21,28 +25,49 @@ const styles = StyleSheet.create({
         container: {
             alignItems: "center",
             justifyContent: "center",
+            width: '100%',
+            flex: 1,
+        },
+        addStoreContainer: {
+            alignItems: "center",
+            justifyContent: "center",
             borderRadius: 8,
-            borderWidth: 4,
             width: '90%',
+            borderWidth: 4,
+            padding: 10,
+            marginBottom: 100,
+        },
+        TextInput: {
+            borderColor: 'white',
+            borderWidth: 2,
+            width: '100%',
+            marginBottom: 10,
+            height: 70,
+            textAlign: 'center',
+            fontSize: 24,
+            color: 'white',
+            borderRadius: 8,
+            padding: 10,
+
         },
         addButton: {
-            backgroundColor: 'white',
-            color: 'black',
+            backgroundColor: 'black',
+            color: 'white',
             width: '100%',
             padding: 4,
             alignItems: 'flex-end',
         },
         addButtonText: {
-            color: 'black',
-            fontSize: 16,
-            fontWeight: 'bold',
+            color: 'white',
+            fontSize: 20,
             width: '40%',
-            borderColor: 'black',
-            borderRadius: 4,
+            borderColor: 'white',
+            borderRadius: 8,
             borderWidth: 2,
             textAlign: 'center',
             padding: 10,
             paddingLeft: 10,
+            
         },
     })
 
