@@ -1,6 +1,6 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView"
 import { ThemedText } from "../../components/themedComponents/ThemedText"
-import { StyleSheet, TextInput } from "react-native"
+import { Pressable, StyleSheet, TextInput } from "react-native"
 
 
 const addItem = () => {
@@ -27,6 +27,12 @@ const addItem = () => {
         returnKeyType="done"
         onSubmitEditing={() => console.log("Quantity added")} // Placeholder for quantity addition logic
       />
+      <Pressable 
+        style={styles.addButton} 
+        onPress={() => console.log("Item added to list")} // Placeholder for item addition logic
+        >
+        <ThemedText style={styles.addButtonText}>Add Item</ThemedText>
+      </Pressable>
 
     </ThemedView>
 
@@ -52,6 +58,22 @@ const styles = StyleSheet.create({
     color: 'white',
     borderRadius: 8,
     padding: 10,
-  }
+  },
+  addButton: {
+    backgroundColor: 'black',
+    color: 'white',
+    width: '80%',
+    padding: 10,
+    alignItems: 'center',
+    borderRadius: 8,
+    borderWidth: 2,
+    borderColor: 'white',
+  }, 
+  addButtonText: {
+    color: 'white',
+    fontSize: 24,
+    width: '100%',
+    textAlign: 'center',
+  },  
 
 })
