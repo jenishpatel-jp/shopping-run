@@ -2,6 +2,8 @@ import { ThemedView } from "../../components/themedComponents/ThemedView";
 import { ThemedText } from "../../components/themedComponents/ThemedText";
 import { StyleSheet, Pressable, View, TextInput } from "react-native";
 
+
+
 export default function AddStore (){
         return (
             <ThemedView style={styles.container}> 
