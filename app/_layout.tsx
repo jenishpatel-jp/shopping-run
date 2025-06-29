@@ -1,5 +1,5 @@
 import { Stack } from  'expo-router';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 // SQLite imports 
 import { SQLiteProvider } from 'expo-sqlite';
@@ -17,7 +17,7 @@ export default function RootLayout(){
                     
                         }}>
                         <Stack.Screen 
-                            name='/' 
+                            name='index' 
                             options={{
                                 headerTitle: 'Shopping List',
                                 presentation: 'formSheet',
