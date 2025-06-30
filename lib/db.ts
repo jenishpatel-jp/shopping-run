@@ -15,7 +15,11 @@ export const setupDatabase = async (db: SQLiteDatabase) => {
 
             CREATE TABLE IF NOT EXISTS items (
                 itemId INTEGER PRIMARY KEY AUTOINCREMENT,
-                itemName TEXT NOT NULL UNIQUE
+                storeId INTEGER NOT NULL,
+                itemName TEXT NOT NULL UNIQUE,
+                completed INTEGER NOT NULL DEFAULT 0,
+                quantity INTEGER NOT NULL,
+                FOREIGN KEY (storeId) REFERENCES stores(storeId) ON DELETE CASCADE
             );
 
             `);
