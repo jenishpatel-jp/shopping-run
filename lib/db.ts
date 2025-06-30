@@ -9,8 +9,13 @@ export const setupDatabase = async (db: SQLiteDatabase) => {
 
         await db.execAsync(`
             CREATE TABLE IF NOT EXISTS stores (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL UNIQUE
+                storeId INTEGER PRIMARY KEY AUTOINCREMENT,
+                storeName TEXT NOT NULL UNIQUE
+            );
+
+            CREATE TABLE IF NOT EXISTS items (
+                itemId INTEGER PRIMARY KEY AUTOINCREMENT,
+                itemName TEXT NOT NULL UNIQUE
             );
 
             `);
