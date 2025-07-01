@@ -28,6 +28,7 @@ export const setupDatabase = async (db: SQLiteDatabase) => {
                 FOREIGN KEY (storeId) REFERENCES stores(storeId) ON DELETE CASCADE
             );
             `);
+        console.log("Database setup complete.");
 
     } catch(error){
         console.error("Error setting up database:", error);
