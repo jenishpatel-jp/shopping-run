@@ -5,7 +5,8 @@ import { type SQLiteDatabase } from "expo-sqlite";
 export const setupDatabase = async (db: SQLiteDatabase) => {
 
     try {
-        await db.execAsync('PRAGMA jounal_mode = WAL;');
+        
+        await db.execAsync(`PRAGMA foreign_keys = ON;`)
 
         await db.execAsync(`
             CREATE TABLE IF NOT EXISTS stores (
