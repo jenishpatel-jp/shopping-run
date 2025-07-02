@@ -32,7 +32,25 @@ export const useDatabase = (db: SQLiteDatabase) => {
         }
     };
 
+    // fetch all stores from the database
+    type Stores = {
+        storeId: number;
+        storeName: string;
+    }
 
-    return { addStore, deleteStore }
+    const fetchStores = async() => {
+        try {
+            const result = await db.getAllAsync<Stores>(
+                `SELECT storeId, storeName FROM stores;`
+            );
+            return result;
+        } catch (error) {
+            console.error("Error fetching stores:", error);
+            throw error;
+        };
+    }
+
+
+    return { addStore, deleteStore, fetchStores }
 
 };
