@@ -1,10 +1,32 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView";
 import { ThemedText } from "../../components/themedComponents/ThemedText";
 import { StyleSheet, Pressable, View, TextInput } from "react-native";
-
-
+import { useSQLiteContext } from "expo-sqlite";
+import { useDatabase } from "../../lib/store";
+import { useState } from "react";
 
 export default function AddStore (){
+
+    const db = useSQLiteContext();
+    const { addStore } = useDatabase(db);
+
+    const [storeName, setStoreName] = useState("");
+
+    const handleAddStore = async () => {
+        if (storeName.trim() === ""){
+            console.warn("Store name cannot be empty");
+            return;
+        }
+        try {
+            await addStore(storeName);
+            setStoreName(""); // Clear input after adding
+            console.log("Store added successfully");
+        } catch (error) {
+            console.error("Error adding store:", error);
+        }
+
+    }
+
         return (
             <ThemedView style={styles.container}> 
                 <View style={styles.addStoreContainer}> 
@@ -14,8 +36,13 @@ export default function AddStore (){
                         placeholderTextColor="white"
                         selectionColor="white"
                         textAlign="center"
+                        value={storeName}
+                        onChangeText={setStoreName}
                     />
-                    <Pressable style={styles.addButton} >
+                    <Pressable 
+                        style={styles.addButton} 
+                        onPress= { () => handleAddStore() }
+                        >
                         <ThemedText style={styles.addButtonText}>Add</ThemedText>
                     </Pressable>
                 </View>
@@ -59,6 +86,7 @@ const styles = StyleSheet.create({
             padding: 4,
             alignItems: 'flex-end',
         },
+
         addButtonText: {
             color: 'white',
             fontSize: 20,
