@@ -5,6 +5,35 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { SQLiteProvider } from 'expo-sqlite';
 import { setupDatabase } from '../lib/db';
 
+// Legend State Imports 
+import { configureSynced, syncObservable } from '@legendapp/state/sync';
+import { observablePersistSqlite } from '@legendapp/state/persist-plugins/expo-sqlite';
+import Storage from 'expo-sqlite/kv-store';
+import { observable } from '@legendapp/state';
+
+// Legend State Global Configuration
+
+export const state$ = observable({
+    stores: [],
+    items: [],
+})
+
+// Global configuration
+const persistOptions = configureSynced({
+    persist: {
+        plugin: observablePersistSqlite(Storage)
+    },
+});
+
+syncObservable(
+    state$,
+    persistOptions({
+        persist: {
+            name: 'store',
+        },
+    }),
+);
+
 export default function RootLayout(){
     return (
         <SQLiteProvider databaseName='shoppingList' onInit={setupDatabase}>
