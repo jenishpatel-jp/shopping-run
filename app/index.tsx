@@ -38,9 +38,17 @@ export default function ShoppingList() {
 
   const storesData = state$.stores.get(); // Access the global state for stores
 
+  type ItemProps = { store: string };
+
+  const Item = ({ store }: ItemProps) => (
+    <View style={styles.item} >
+      <Text style={styles.title}>{store}</Text>
+    </View>
+  );
+
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.container}> 
+      <SafeAreaView style={styles.safeAreaView}> 
           <Stack.Screen 
             options={{
               headerTitle: "Shopping List",
@@ -75,6 +83,12 @@ export default function ShoppingList() {
 }
 
 const styles = StyleSheet.create({
+  safeAreaView: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#121212",
+    flex: 1,
+  },
   container: {
     flex: 1,
     alignItems: "center",
@@ -93,5 +107,16 @@ const styles = StyleSheet.create({
   },
   headerRightButton: {
     padding: 5,
+  },
+  item: {
+    backgroundColor: "#1E1E1E",
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: "white",
   }
 });
