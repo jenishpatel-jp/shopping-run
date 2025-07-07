@@ -4,12 +4,13 @@ import { StyleSheet, Pressable, View, TextInput } from "react-native";
 import { useSQLiteContext } from "expo-sqlite";
 import { useDatabase } from "../../lib/store";
 import { useState } from "react";
+import { state$ } from "../../lib/state"; 
 
 
 export default function AddStore (){
 
     const db = useSQLiteContext();
-    const { addStore } = useDatabase(db);
+    const { addStore, fetchStores } = useDatabase(db);
 
     const [storeName, setStoreName] = useState("");
 
@@ -18,15 +19,17 @@ export default function AddStore (){
             console.warn("Store name cannot be empty");
             return;
         }
+
         try {
             await addStore(storeName);
+            const updatedStores = await fetchStores();
+            state$.stores.set(updatedStores); // Update the global state with the new store list
             setStoreName(""); // Clear input after adding
             console.log("Store added successfully");
         } catch (error) {
             console.error("Error adding store:", error);
         }
-
-    }
+    };
 
         return (
             <ThemedView style={styles.container}> 
