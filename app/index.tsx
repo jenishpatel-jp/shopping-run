@@ -32,7 +32,9 @@ export default function ShoppingList() {
 
     syncInitialData();
 
-  }, [] )
+  }, [] );
+
+  const storesData = state$.stores.get(); // Access the global state for stores
 
   return (
     <>
