@@ -9,34 +9,7 @@ import { setupDatabase } from '../lib/db';
 import { configureSynced, syncObservable } from '@legendapp/state/sync';
 import { observablePersistSqlite } from '@legendapp/state/persist-plugins/expo-sqlite';
 import Storage from 'expo-sqlite/kv-store';
-import { observable } from '@legendapp/state';
-
-// Legend State Global Configuration
-
-type Store = {
-    storeId: number;
-    storeName: string;
-}
-
-type Item = {
-    itemId: number;
-    storeId: number;
-    itemName: string;
-    completed: boolean;
-    quantity: number;
-}
-
-interface ShoppingListState {
-    stores: Store[];
-    items: Item[];
-}
-
-export const state$ = observable<ShoppingListState>({
-    stores: [],
-    items: [],
-});
-
-
+import { state$ } from '../lib/state';  
 
 // Global configuration
 const persistOptions = configureSynced({

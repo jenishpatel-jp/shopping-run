@@ -5,6 +5,7 @@ import { useSQLiteContext } from "expo-sqlite";
 import { useDatabase } from "../../lib/store";
 import { useState } from "react";
 
+
 export default function AddStore (){
 
     const db = useSQLiteContext();
