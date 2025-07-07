@@ -12,6 +12,8 @@ import { useSQLiteContext } from "expo-sqlite";
 import { useDatabase } from "../lib/store";
 
 import { state$ } from "../lib/state"; // Import the global state
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { ThemedText } from "../components/themedComponents/ThemedText";
 
 export default function ShoppingList() {
 
@@ -37,33 +39,38 @@ export default function ShoppingList() {
   const storesData = state$.stores.get(); // Access the global state for stores
 
   return (
-    <>
-        <Stack.Screen 
-          options={{
-            headerTitle: "Shopping List",
-            headerRight: () => 
-            <View style={styles.headerRightView}>
-              <Pressable 
-                style={styles.headerRightButton}
-                onPress={() => router.push("/add")}
-                > 
-                <MaterialCommunityIcons name="store-plus" size={30} color="white" />
-              </Pressable>
-              <Pressable 
-                style={styles.headerRightButton}
-                onPress={() =>  router.push("/add/addItem")}
-                > 
-                <Ionicons name="add-circle-outline" size={30} color="white" />
-              </Pressable>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}> 
+          <Stack.Screen 
+            options={{
+              headerTitle: "Shopping List",
+              headerRight: () => 
+              <View style={styles.headerRightView}>
+                <Pressable 
+                  style={styles.headerRightButton}
+                  onPress={() => router.push("/add")}
+                  > 
+                  <MaterialCommunityIcons name="store-plus" size={30} color="white" />
+                </Pressable>
+                <Pressable 
+                  style={styles.headerRightButton}
+                  onPress={() =>  router.push("/add/addItem")}
+                  > 
+                  <Ionicons name="add-circle-outline" size={30} color="white" />
+                </Pressable>
 
-            </View>,
-          }}
+              </View>,
+            }}
+          
+          />
+          <ThemedView style={styles.container}> 
+            <StatusBar style="auto" />
+            <ThemedText> Shopping List </ThemedText>
+          </ThemedView>
         
-        />
-        <ThemedView style={styles.container}>
-          <StatusBar style="auto" />
-        </ThemedView>
-    </>
+        </SafeAreaView>
+
+    </SafeAreaProvider>
   );
 }
 
@@ -72,6 +79,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#121212",
   },
   text: {
     fontSize: 20,
