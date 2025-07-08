@@ -69,6 +69,8 @@ export default function ShoppingList() {
               data={storesData}
               renderItem={({ item }) => <Stores storeName={item.storeName} />} 
               keyExtractor={item => item.storeId.toString()}
+              style={styles.flatListContainer}
+              contentContainerStyle={styles.flatListContent}
             />
           </ThemedView>
         
@@ -90,6 +92,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#121212",
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "white"
   },
   text: {
     fontSize: 20,
@@ -114,5 +119,16 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: "bold",
     color: "white",
+  },
+  flatListContainer: {
+    width: "100%",
+    borderWidth: 1,
+    borderColor: 'red',
+  },
+  flatListContent: {
+    justifyContent: "center",
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "green", 
   }
 });
