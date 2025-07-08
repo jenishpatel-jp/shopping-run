@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Pressable, StyleSheet, Text, useColorScheme, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, useColorScheme, View } from "react-native";
 import { ThemedView } from "../components/themedComponents/ThemedView";
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
@@ -14,6 +14,8 @@ import { useDatabase } from "../lib/store";
 import { state$ } from "../lib/state"; // Import the global state
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { ThemedText } from "../components/themedComponents/ThemedText";
+
+import { Stores, storesData } from "../components/shoppingListComponents/Stores";
 
 export default function ShoppingList() {
 
@@ -35,16 +37,6 @@ export default function ShoppingList() {
     syncInitialData();
 
   }, [] );
-
-  const storesData = state$.stores.get(); // Access the global state for stores
-
-  type ItemProps = { store: string };
-
-  const Item = ({ store }: ItemProps) => (
-    <View style={styles.item} >
-      <Text style={styles.title}>{store}</Text>
-    </View>
-  );
 
   return (
     <SafeAreaProvider>
@@ -73,7 +65,11 @@ export default function ShoppingList() {
           />
           <ThemedView style={styles.container}> 
             <StatusBar style="auto" />
-            <ThemedText> Shopping List </ThemedText>
+            <FlatList 
+              data={storesData}
+              renderItem={({ item }) => <Stores storeName={item.storeName} />} 
+              keyExtractor={item => item.storeId.toString()}
+            />
           </ThemedView>
         
         </SafeAreaView>
