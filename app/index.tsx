@@ -9,17 +9,19 @@ import { Stack, useRouter } from "expo-router";
 import { useEffect } from "react";
 
 import { useSQLiteContext } from "expo-sqlite";
-import { useDatabase } from "../lib/store";
+import { useStoreDatabase } from "../lib/store";
 
 import { state$ } from "../lib/state"; // Import the global state
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { Stores, storesData } from "../components/shoppingListComponents/Stores";
+import { useItemDatabase } from "../lib/items";
 
 export default function ShoppingList() {
 
   const db = useSQLiteContext();
-  const { fetchStores } = useDatabase(db);
+  const { fetchStores } = useStoreDatabase(db);
+  const { fetchAllItems } = useItemDatabase(db);
 
   const router = useRouter();
 
@@ -27,7 +29,9 @@ export default function ShoppingList() {
     const syncInitialData = async () => {
       try {
         const stores = await fetchStores();
+        const items = await fetchAllItems();
         state$.stores.set(stores); // Update the global state with the fetched stores
+        state$.items.set(items); // Update the global state with the fetched items
       } catch(error){
         console.error("Error during initial data sync:", error);
       }
