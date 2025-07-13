@@ -3,6 +3,7 @@ import { ThemedText } from "../../components/themedComponents/ThemedText"
 import { Pressable, StyleSheet, TextInput } from "react-native"
 import { SelectList } from 'react-native-dropdown-select-list';
 import { useState } from "react";
+import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
 
 const data = [
   { key: '1', value: 'Coles' },
@@ -12,8 +13,6 @@ const data = [
 
 
 const addItem = () => {
-
-  const [selected, setSelected] = useState("");
 
   return (
     <ThemedView style={styles.container}>
@@ -38,33 +37,8 @@ const addItem = () => {
         returnKeyType="done"
         onSubmitEditing={() => console.log("Quantity added")} // Placeholder for quantity addition logic
       />
-      <SelectList 
-        setSelected={(val:string) => setSelected(val)}
-        data={data}
-        save="value"
-        boxStyles={{
-          borderColor: 'white',
-          borderWidth: 2,
-          padding: 10,
-          width: '80%',
-          marginBottom: 10,
-        }}
-        inputStyles={{
-          color: 'white',
-          fontSize: 24,
-          textAlign: 'center',
-        }}
-        dropdownStyles={{
-          backgroundColor: 'black',
-          borderColor: 'white',
-          borderWidth: 2,
-        }}
-        dropdownTextStyles={{
-          color: 'white',
-          fontSize: 24,
-        }}
-      />
       
+      <StoreSelectList data={data} />
       <Pressable 
         style={styles.addButton} 
         onPress={() => console.log("Item added to list")} // Placeholder for item addition logic
