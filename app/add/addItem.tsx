@@ -4,12 +4,14 @@ import { Pressable, StyleSheet, TextInput } from "react-native"
 import { SelectList } from 'react-native-dropdown-select-list';
 import { useState } from "react";
 import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
+import { storesData } from "../../components/shoppingListComponents/Stores";
 
 const data = [
   { key: '1', value: 'Coles' },
   { key: '2', value: 'Aldi' },
   { key: '3', value: 'Grocery Stores' },
 ];
+
 
 
 const addItem = () => {
@@ -38,7 +40,7 @@ const addItem = () => {
         onSubmitEditing={() => console.log("Quantity added")} // Placeholder for quantity addition logic
       />
       
-      <StoreSelectList data={data} />
+      <StoreSelectList data={storesData} />
       <Pressable 
         style={styles.addButton} 
         onPress={() => console.log("Item added to list")} // Placeholder for item addition logic
