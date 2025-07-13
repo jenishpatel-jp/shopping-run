@@ -2,7 +2,7 @@ import { ThemedView } from "../../components/themedComponents/ThemedView";
 import { ThemedText } from "../../components/themedComponents/ThemedText";
 import { StyleSheet, Pressable, View, TextInput } from "react-native";
 import { useSQLiteContext } from "expo-sqlite";
-import { useDatabase } from "../../lib/store";
+import { useStoreDatabase } from "../../lib/store";
 import { useState } from "react";
 import { state$ } from "../../lib/state"; 
 
@@ -10,7 +10,7 @@ import { state$ } from "../../lib/state";
 export default function AddStore (){
 
     const db = useSQLiteContext();
-    const { addStore, fetchStores } = useDatabase(db);
+    const { addStore, fetchStores } = useStoreDatabase(db);
 
     const [storeName, setStoreName] = useState("");
 

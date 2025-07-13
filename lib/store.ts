@@ -1,6 +1,6 @@
 import { type SQLiteDatabase } from "expo-sqlite";
 
-export const useDatabase = (db: SQLiteDatabase) => {
+export const useStoreDatabase = (db: SQLiteDatabase) => {
 
     // Add a new store to the database
     const addStore = async (storeName: string) => {

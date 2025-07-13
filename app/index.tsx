@@ -13,7 +13,6 @@ import { useDatabase } from "../lib/store";
 
 import { state$ } from "../lib/state"; // Import the global state
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { ThemedText } from "../components/themedComponents/ThemedText";
 
 import { Stores, storesData } from "../components/shoppingListComponents/Stores";
 
