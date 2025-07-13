@@ -32,4 +32,27 @@ export const useItemDatabase = (db: SQLiteDatabase) => {
         }
     };
 
+    // Fetch all items from the database
+    type Items = {
+        itemId: number;
+        storeId: number;
+        itemName: string;
+        quantity: number;
+        completed: boolean;
+    };
+
+    const fetchAllItems = async () => {
+        try {
+            const result = await db.getAllAsync<Items>(
+                `SELECT itemId, storeId, itemName, quantity, completed FROM items;`
+            );
+            return result;
+        } catch (error){
+            console.error("Error fetching items:", error);
+            throw error;    
+        }
+    };
+
+    return { addItem, deleteItem, fetchAllItems };
+
 }
