@@ -38,6 +38,8 @@ export const useStoreDatabase = (db: SQLiteDatabase) => {
         storeName: string;
     }
 
+
+    // Returns ann array of objects with storeId and storeName
     const fetchStores = async() => {
         try {
             const result = await db.getAllAsync<Stores>(

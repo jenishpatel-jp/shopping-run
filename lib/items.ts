@@ -16,6 +16,7 @@ export const useItemDatabase = (db: SQLiteDatabase) => {
         }
     };
 
+    // Delete an item from the database
     const deleteItem = async (itemId: number) => {
         try {
             const result = await db.runAsync(
@@ -41,6 +42,8 @@ export const useItemDatabase = (db: SQLiteDatabase) => {
         completed: boolean;
     };
 
+
+    // Returns an array of objects with itemId, storeId, itemName, quantity, and completed
     const fetchAllItems = async () => {
         try {
             const result = await db.getAllAsync<Items>(
