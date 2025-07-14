@@ -5,8 +5,8 @@ const [selected, setSelected] = useState("");
 
 type StoreSlectListProp = {
     data: {
-        storeId: number;
-        storeName: string;
+        key: string;
+        value: string;
     }[];
 };
 

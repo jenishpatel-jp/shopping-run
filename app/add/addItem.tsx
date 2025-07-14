@@ -12,6 +12,10 @@ const data = [
   { key: '3', value: 'Grocery Stores' },
 ];
 
+const formattedData = storesData.map((store) => ({
+  key: store.storeId.toString(),
+  value: store.storeName,
+}));
 
 
 const addItem = () => {
@@ -40,7 +44,7 @@ const addItem = () => {
         onSubmitEditing={() => console.log("Quantity added")} // Placeholder for quantity addition logic
       />
       
-      <StoreSelectList data={storesData} />
+      <StoreSelectList data={formattedData} />
       <Pressable 
         style={styles.addButton} 
         onPress={() => console.log("Item added to list")} // Placeholder for item addition logic
