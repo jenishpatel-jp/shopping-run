@@ -6,7 +6,6 @@ type StoreProps = {
     storeName: string;
 };
 
-export const storesData = state$.stores.get();
 
 export const Stores = ( { storeName } : StoreProps ) => (
     <View style={styles.item}>

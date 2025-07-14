@@ -4,10 +4,10 @@ import { Pressable, StyleSheet, TextInput } from "react-native"
 import { SelectList } from 'react-native-dropdown-select-list';
 import { useState } from "react";
 import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
-import { storesData } from "../../components/shoppingListComponents/Stores";
+import { state$ } from "../../lib/state";
 
 
-const formattedData = storesData.map((store) => ({
+const formattedData =  state$.stores.get().map((store) => ({
   key: store.storeId.toString(),
   value: store.storeName,
 }));
