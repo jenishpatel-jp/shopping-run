@@ -1,11 +1,12 @@
 import { Text, View, StyleSheet } from "react-native";
 import { state$ } from "../../lib/state";
+import { use$ } from "@legendapp/state/react";
 
 type StoreProps = {
     storeName: string;
 };
 
-export const storesData = state$.stores.get(); 
+export const storesData = state$.stores.get();
 
 export const Stores = ( { storeName } : StoreProps ) => (
     <View style={styles.item}>

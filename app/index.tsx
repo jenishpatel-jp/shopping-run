@@ -16,12 +16,14 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { Stores, storesData } from "../components/shoppingListComponents/Stores";
 import { useItemDatabase } from "../lib/items";
+import { use$ } from "@legendapp/state/react";
 
 export default function ShoppingList() {
 
   const db = useSQLiteContext();
   const { fetchStores } = useStoreDatabase(db);
   const { fetchAllItems } = useItemDatabase(db);
+  const stores = use$(state$.stores);
 
   const router = useRouter();
 
@@ -69,7 +71,7 @@ export default function ShoppingList() {
           <ThemedView style={styles.container}> 
             <StatusBar style="auto" />
             <FlatList 
-              data={storesData}
+              data={stores}
               renderItem={({ item }) => <Stores storeName={item.storeName} />} 
               keyExtractor={item => item.storeId.toString()}
               style={styles.flatListContainer}
