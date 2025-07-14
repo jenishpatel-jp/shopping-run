@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { SelectList } from "react-native-dropdown-select-list"
 
+// This component is used to select a store from a dropdown list
+// Doc on the SelectList: https://www.npmjs.com/package/react-native-dropdown-select-list
+
 const [selected, setSelected] = useState("");
 
 type StoreSlectListProp = {

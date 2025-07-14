@@ -6,11 +6,6 @@ import { useState } from "react";
 import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
 import { storesData } from "../../components/shoppingListComponents/Stores";
 
-const data = [
-  { key: '1', value: 'Coles' },
-  { key: '2', value: 'Aldi' },
-  { key: '3', value: 'Grocery Stores' },
-];
 
 const formattedData = storesData.map((store) => ({
   key: store.storeId.toString(),
