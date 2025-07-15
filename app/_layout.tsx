@@ -1,5 +1,6 @@
 import { Stack } from  'expo-router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 // SQLite imports 
 import { SQLiteProvider } from 'expo-sqlite';
@@ -29,30 +30,34 @@ syncObservable(
 
 export default function RootLayout(){
     return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
         <SQLiteProvider databaseName='shoppingList' onInit={setupDatabase}>
-            <SafeAreaProvider>
-                    <Stack screenOptions={{ 
-                        headerShown: true, 
-                        title: 'Shopping List', 
-                        headerTintColor: 'white',
-                        headerStyle: { backgroundColor: 'black' }
-                    
-                        }}>
-                        <Stack.Screen 
-                            name='index' 
-                            options={{
-                                headerTitle: 'Shopping List',
-                                presentation: 'formSheet',
-                                sheetGrabberVisible: true,
-                                headerLargeTitle: false,
+            
+                <SafeAreaProvider>
+                        <Stack screenOptions={{ 
+                            headerShown: true, 
+                            title: 'Shopping List', 
+                            headerTintColor: 'white',
+                            headerStyle: { backgroundColor: 'black' }
+                        
+                            }}>
+                            <Stack.Screen 
+                                name='index' 
+                                options={{
+                                    headerTitle: 'Shopping List',
+                                    presentation: 'formSheet',
+                                    sheetGrabberVisible: true,
+                                    headerLargeTitle: false,
 
+                                    
+                                }}
                                 
-                            }}
-                            
-                            />
-                    </Stack>
-      
-            </SafeAreaProvider>
+                                />
+                        </Stack>
+        
+                </SafeAreaProvider>
+           
         </SQLiteProvider>
+    </GestureHandlerRootView>
     )
 };

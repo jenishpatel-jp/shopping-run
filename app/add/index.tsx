@@ -5,6 +5,7 @@ import { useSQLiteContext } from "expo-sqlite";
 import { useStoreDatabase } from "../../lib/store";
 import { useState } from "react";
 import { state$ } from "../../lib/state"; 
+import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 
 
 export default function AddStore (){
@@ -34,6 +35,7 @@ export default function AddStore (){
         return (
             <ThemedView style={styles.container}> 
                 <View style={styles.addStoreContainer}> 
+                    {/* <ReanimatedSwipeable></ReanimatedSwipeable> */}
                     <TextInput 
                         style={styles.TextInput}
                         placeholder="Enter store name"

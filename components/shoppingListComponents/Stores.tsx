@@ -1,16 +1,18 @@
 import { Text, View, StyleSheet } from "react-native";
-import { state$ } from "../../lib/state";
-import { use$ } from "@legendapp/state/react";
+
+import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
+import Animated from "react-native-reanimated";
 
 type StoreProps = {
     storeName: string;
 };
 
-
 export const Stores = ( { storeName } : StoreProps ) => (
-    <View style={styles.item}>
-        <Text style={styles.title}>{storeName}</Text>
-    </View>
+  
+        <View style={styles.item}>
+            <Text style={styles.title}>{storeName}</Text>
+        </View>
+    
 );
 
 
