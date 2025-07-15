@@ -1,8 +1,6 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView"
 import { ThemedText } from "../../components/themedComponents/ThemedText"
 import { Pressable, StyleSheet, TextInput } from "react-native"
-import { SelectList } from 'react-native-dropdown-select-list';
-import { useState } from "react";
 import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
 import { state$ } from "../../lib/state";
 
