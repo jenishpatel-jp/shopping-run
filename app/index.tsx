@@ -69,7 +69,8 @@ export default function ShoppingList() {
           
           />
           <ThemedView style={styles.container}> 
-            <StatusBar style="auto" />
+            <StatusBar style="auto" />            
+
             <FlatList 
               data={stores}
               renderItem={({ item }) => <Stores storeName={item.storeName} />} 
@@ -135,5 +136,5 @@ const styles = StyleSheet.create({
     width: "100%",
     borderWidth: 1,
     borderColor: "green", 
-  }
+  },
 });

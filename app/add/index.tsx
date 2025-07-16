@@ -6,6 +6,7 @@ import { useStoreDatabase } from "../../lib/store";
 import { useState } from "react";
 import { state$ } from "../../lib/state"; 
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
+import { useRouter } from "expo-router";
 
 
 export default function AddStore (){
@@ -14,6 +15,9 @@ export default function AddStore (){
     const { addStore, fetchStores } = useStoreDatabase(db);
 
     const [storeName, setStoreName] = useState("");
+
+    const router = useRouter();
+
 
     const handleAddStore = async () => {
         if (storeName.trim() === ""){
@@ -27,15 +31,16 @@ export default function AddStore (){
             state$.stores.set(updatedStores); // Update the global state with the new store list
             setStoreName(""); // Clear input after adding
             console.log("Store added successfully");
+            router.push("/"); // Navigate to add item screen after adding store
         } catch (error) {
             console.error("Error adding store:", error);
         }
     };
 
+
         return (
             <ThemedView style={styles.container}> 
                 <View style={styles.addStoreContainer}> 
-                    {/* <ReanimatedSwipeable></ReanimatedSwipeable> */}
                     <TextInput 
                         style={styles.TextInput}
                         placeholder="Enter store name"
