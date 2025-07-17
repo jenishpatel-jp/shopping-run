@@ -41,6 +41,7 @@ export const Stores = ({ storeName }: StoreProps) => {
         enableTrackpadTwoFingerGesture
         rightThreshold={100}
         renderRightActions={RightAction}
+        shouldCancelWhenOutside={false}
       >
         <Text style={styles.title}>{storeName}</Text>
       </ReanimatedSwipeable>
