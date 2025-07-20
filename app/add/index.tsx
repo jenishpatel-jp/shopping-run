@@ -18,12 +18,19 @@ export default function AddStore (){
 
     const router = useRouter();
 
+    const arrayObjectOfStores = state$.stores.get(); 
+    const checkStoreExists = arrayObjectOfStores.some(store => store.storeName === storeName);
 
     const handleAddStore = async () => {
         if (storeName.trim() === ""){
             console.warn("Store name cannot be empty");
             return;
-        }
+        };
+
+        if (checkStoreExists) {
+            console.warn("Store already exists");
+            return;
+        };
 
         try {
             await addStore(storeName);
