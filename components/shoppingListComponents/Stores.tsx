@@ -1,17 +1,11 @@
-import {
-  Text,
-  StyleSheet,
-} from "react-native";
+import { Text, StyleSheet } from "react-native";
 
 import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
-import Reanimated, {
-  SharedValue,
-  useAnimatedStyle,
-} from 'react-native-reanimated';
+import Reanimated, { SharedValue, useAnimatedStyle, } from 'react-native-reanimated';
 
 import { useStoreDatabase } from "../../lib/store";
-
 import { useSQLiteContext } from "expo-sqlite";
+import { state$ } from "../../lib/state";
 
 const db = useSQLiteContext();
 
@@ -21,11 +15,7 @@ type StoreProps = {
   storeName: string;
 };
 
-
-
-const handleDelete = () => {
-
-}
+const arrayObjectOfStores = state$.stores.get();
 
 
 
@@ -49,6 +39,20 @@ function RightAction(prog: SharedValue<number>, drag: SharedValue<number>) {
 
 export const Stores = ({ storeName }: StoreProps) => {
 
+  const storeToDelete = arrayObjectOfStores.find((store) => store.storeName === storeName);
+  const storeId = storeToDelete ? storeToDelete.storeId : null;
+
+  const handlleDeleteStore = async () => {
+    if (storeId !== null){
+      try {
+        await deleteStore(storeId);
+      } catch (error) {
+        console.error("Error deleting store:", error);
+      }
+    } else {
+      console.warn("Store ID is null, cannot delete store.");
+    }
+  };
 
   return (
       <ReanimatedSwipeable 
