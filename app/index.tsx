@@ -78,7 +78,7 @@ export default function ShoppingList() {
 
             <FlatList 
               data={stores}
-              renderItem={({ item }) => <Stores storeName={item.storeName} />} 
+              renderItem={({ item }) => <Stores storeName={item.storeName} db={db}/>} 
               keyExtractor={item => item.storeId.toString()}
               style={styles.flatListContainer}
               contentContainerStyle={styles.flatListContent}

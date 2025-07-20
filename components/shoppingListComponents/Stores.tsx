@@ -4,15 +4,15 @@ import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeabl
 import Reanimated, { SharedValue, useAnimatedStyle, } from 'react-native-reanimated';
 
 import { useStoreDatabase } from "../../lib/store";
-import { useSQLiteContext } from "expo-sqlite";
+import { useSQLiteContext, SQLiteDatabase } from "expo-sqlite";
 import { state$ } from "../../lib/state";
 
-const db = useSQLiteContext();
 
-const { deleteStore } = useStoreDatabase(db);
+
 
 type StoreProps = {
   storeName: string;
+  db: SQLiteDatabase;
 };
 
 const arrayObjectOfStores = state$.stores.get();
@@ -37,7 +37,9 @@ function RightAction(prog: SharedValue<number>, drag: SharedValue<number>) {
 }
 
 
-export const Stores = ({ storeName }: StoreProps) => {
+export const Stores = ({ storeName, db }: StoreProps) => {
+
+  const { deleteStore } = useStoreDatabase(db);
 
   const storeToDelete = arrayObjectOfStores.find((store) => store.storeName === storeName);
   const storeId = storeToDelete ? storeToDelete.storeId : null;
@@ -62,6 +64,12 @@ export const Stores = ({ storeName }: StoreProps) => {
         rightThreshold={100}
         renderRightActions={RightAction}
         shouldCancelWhenOutside={false}
+        onSwipeableOpen={ (direction) => {
+          console.log("Swipeable opened in direction:", direction);
+          if (direction === 'left'){
+            handlleDeleteStore();
+          }
+        }}
       >
         <Text style={styles.title}>{storeName}</Text>
       </ReanimatedSwipeable>
