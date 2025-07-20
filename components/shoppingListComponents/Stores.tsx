@@ -39,7 +39,7 @@ function RightAction(prog: SharedValue<number>, drag: SharedValue<number>) {
 
 export const Stores = ({ storeName, db }: StoreProps) => {
 
-  const { deleteStore } = useStoreDatabase(db);
+  const { deleteStore, fetchStores } = useStoreDatabase(db);
 
   const storeToDelete = arrayObjectOfStores.find((store) => store.storeName === storeName);
   const storeId = storeToDelete ? storeToDelete.storeId : null;
@@ -48,6 +48,8 @@ export const Stores = ({ storeName, db }: StoreProps) => {
     if (storeId !== null){
       try {
         await deleteStore(storeId);
+        const updatedStores = await fetchStores();
+        state$.stores.set(updatedStores); // Update the global state with the new store list
       } catch (error) {
         console.error("Error deleting store:", error);
       }
