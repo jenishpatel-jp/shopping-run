@@ -9,9 +9,25 @@ import Reanimated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 
+import { useStoreDatabase } from "../../lib/store";
+
+import { useSQLiteContext } from "expo-sqlite";
+
+const db = useSQLiteContext();
+
+const { deleteStore } = useStoreDatabase(db);
+
 type StoreProps = {
   storeName: string;
 };
+
+
+
+const handleDelete = () => {
+
+}
+
+
 
 function RightAction(prog: SharedValue<number>, drag: SharedValue<number>) {
   const styleAnimation = useAnimatedStyle(() => {
