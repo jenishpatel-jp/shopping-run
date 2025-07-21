@@ -3,6 +3,7 @@ import { ThemedText } from "../../components/themedComponents/ThemedText"
 import { Pressable, StyleSheet, TextInput } from "react-native"
 import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
 import { state$ } from "../../lib/state";
+import { useState } from "react";
 
 
 const formattedData =  state$.stores.get().map((store) => ({
@@ -12,6 +13,10 @@ const formattedData =  state$.stores.get().map((store) => ({
 
 
 const addItem = () => {
+
+  const [selectedStore, setSelectedStore] = useState("");
+  const [itemName, setItemName] = useState("");
+  const [itemQuantity, setItemQuantity] = useState("");
 
   return (
     <ThemedView style={styles.container}>
