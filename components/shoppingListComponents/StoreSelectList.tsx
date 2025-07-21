@@ -18,6 +18,7 @@ const StoreSelectList  = ( { data, setSelectedStore } : StoreSlectListProp ) => 
   return (
     <SelectList 
         setSelected={setSelectedStore}
+        save="value"
         data={data}
         boxStyles={{
           borderColor: 'white',

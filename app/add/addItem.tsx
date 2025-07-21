@@ -18,6 +18,22 @@ const addItem = () => {
   const [itemName, setItemName] = useState("");
   const [itemQuantity, setItemQuantity] = useState("");
 
+  const handleAddItem = () => {
+    if (itemName.trim() === "" || itemQuantity.trim() === "") {
+      console.warn("Item name and quantity cannot be empty");
+      return;
+    }
+
+    if (!selectedStore) {
+      console.warn("Please select a store");
+      return;
+    }
+
+    // Logic to add item to the shopping list
+    // This would typically involve updating the state or database
+    console.log(`Item added: ${itemName}, Quantity: ${itemQuantity}, Store: ${selectedStore}`);
+  }
+
   return (
     <ThemedView style={styles.container}>
       <TextInput 
@@ -30,7 +46,7 @@ const addItem = () => {
         returnKeyType="done"
         value={itemName}
         onChangeText={setItemName}
-        onSubmitEditing={() => console.log("Item added")} // Placeholder for item addition logic
+    
       
       />
       <TextInput 
@@ -43,13 +59,14 @@ const addItem = () => {
         textAlign="center"
         keyboardType="numeric"
         returnKeyType="done"
-        onSubmitEditing={() => console.log("Quantity added")} // Placeholder for quantity addition logic
+       
       />
       
       <StoreSelectList data={formattedData} setSelectedStore={setSelectedStore} />
+      
       <Pressable 
         style={styles.addButton} 
-        onPress={() => console.log("Item added to list")} // Placeholder for item addition logic
+        onPress={handleAddItem} // Placeholder for item addition logic
         >
         <ThemedText style={styles.addButtonText}>Add Item</ThemedText>
       </Pressable>
