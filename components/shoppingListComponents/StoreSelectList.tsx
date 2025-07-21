@@ -8,16 +8,16 @@ type StoreSlectListProp = {
     data: {
         key: string;
         value: string;
-    }[];
+    }[],
+    setSelectedStore: (value: string) => void; // Optional prop to set selected store
 };
 
-const StoreSelectList  = ( { data } : StoreSlectListProp ) => {
+const StoreSelectList  = ( { data, setSelectedStore } : StoreSlectListProp ) => {
 
-  const [selected, setSelected] = useState("");
 
   return (
     <SelectList 
-        setSelected={setSelected}
+        setSelected={setSelectedStore}
         data={data}
         boxStyles={{
           borderColor: 'white',
