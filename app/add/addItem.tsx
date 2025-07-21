@@ -46,7 +46,7 @@ const addItem = () => {
         onSubmitEditing={() => console.log("Quantity added")} // Placeholder for quantity addition logic
       />
       
-      <StoreSelectList data={formattedData} />
+      <StoreSelectList data={formattedData}  />
       <Pressable 
         style={styles.addButton} 
         onPress={() => console.log("Item added to list")} // Placeholder for item addition logic

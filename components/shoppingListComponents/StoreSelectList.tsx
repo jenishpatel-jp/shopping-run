@@ -4,8 +4,6 @@ import { SelectList } from "react-native-dropdown-select-list"
 // This component is used to select a store from a dropdown list
 // Doc on the SelectList: https://www.npmjs.com/package/react-native-dropdown-select-list
 
-const [selected, setSelected] = useState("");
-
 type StoreSlectListProp = {
     data: {
         key: string;
@@ -15,11 +13,12 @@ type StoreSlectListProp = {
 
 const StoreSelectList  = ( { data } : StoreSlectListProp ) => {
 
+  const [selected, setSelected] = useState("");
+
   return (
     <SelectList 
-        setSelected={(val:string) => setSelected(val)}
+        setSelected={setSelected}
         data={data}
-        save="value"
         boxStyles={{
           borderColor: 'white',
           borderWidth: 2,
