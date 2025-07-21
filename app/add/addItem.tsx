@@ -26,13 +26,17 @@ const addItem = () => {
         placeholderTextColor="white"
         selectionColor="white"
         textAlign="center"
-        autoFocus
+        autoFocus={false}
         returnKeyType="done"
+        value={itemName}
+        onChangeText={setItemName}
         onSubmitEditing={() => console.log("Item added")} // Placeholder for item addition logic
       
       />
       <TextInput 
         style={styles.textInput}
+        value={itemQuantity}
+        onChangeText={setItemQuantity}
         placeholder="Enter item quantity"
         placeholderTextColor="white"
         selectionColor="white"
