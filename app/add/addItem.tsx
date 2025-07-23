@@ -4,6 +4,8 @@ import { Pressable, StyleSheet, TextInput } from "react-native"
 import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
 import { state$ } from "../../lib/state";
 import { useState } from "react";
+import { useItemDatabase } from "../../lib/items";
+import { useSQLiteContext } from "expo-sqlite";
 
 
 const formattedData =  state$.stores.get().map((store) => ({
@@ -11,14 +13,17 @@ const formattedData =  state$.stores.get().map((store) => ({
   value: store.storeName,
 }));
 
+export default function  addItem() {
 
-const addItem = () => {
+  const db = useSQLiteContext();
 
   const [selectedStore, setSelectedStore] = useState("");
   const [itemName, setItemName] = useState("");
   const [itemQuantity, setItemQuantity] = useState("");
 
-  const handleAddItem = () => {
+  const { fetchAllItems, addItem } = useItemDatabase(db);
+
+  const handleAddItem = async () => {
     if (itemName.trim() === "" || itemQuantity.trim() === "") {
       console.warn("Item name and quantity cannot be empty");
       return;
@@ -32,6 +37,8 @@ const addItem = () => {
     // Logic to add item to the shopping list
     // This would typically involve updating the state or database
     console.log(`Item added: ${itemName}, Quantity: ${itemQuantity}, Store: ${selectedStore}`);
+
+
   }
 
   return (
@@ -76,7 +83,6 @@ const addItem = () => {
   )
 }
 
-export default addItem
 
 const styles = StyleSheet.create({
   container: {
