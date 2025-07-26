@@ -45,6 +45,19 @@ export default function ShoppingList() {
 
   }, [] );
 
+  // Sectionlist Data
+
+  const sectionedItems = () => {
+    const items = state$.items.get();
+    const stores = state$.stores.get();
+
+    return stores.map(store => ({
+      title: store.storeName,
+      storeId: store.storeId,
+      data: items.filter(item => item.storeId === store.storeId)
+    }));
+  }
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.safeAreaView}> 

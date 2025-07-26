@@ -8,6 +8,7 @@ import { useItemDatabase } from "../../lib/items";
 import { useSQLiteContext } from "expo-sqlite";
 
 
+// Format the data for the StoreSelectList component
 const formattedData =  state$.stores.get().map((store) => ({
   key: store.storeId.toString(),
   value: store.storeName,
@@ -43,7 +44,7 @@ export default function  addItem() {
     setItemQuantity("");
     const updatedItems = await fetchAllItems();
     state$.items.set(updatedItems); // Update the global state with the new items
-
+    console.log(state$.items.get());
   };
 
   return (
