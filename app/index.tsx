@@ -145,13 +145,11 @@ const styles = StyleSheet.create({
   },
   flatListContainer: {
     width: "100%",
-    borderWidth: 1,
-    borderColor: 'red',
+
   },
   flatListContent: {
     justifyContent: "center",
     width: "100%",
-    borderWidth: 1,
-    borderColor: "green", 
+
   },
 });
