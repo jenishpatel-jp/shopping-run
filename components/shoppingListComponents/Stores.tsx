@@ -4,7 +4,7 @@ import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeabl
 import Reanimated, { SharedValue, useAnimatedStyle, } from 'react-native-reanimated';
 
 import { useStoreDatabase } from "../../lib/store";
-import { useSQLiteContext, SQLiteDatabase } from "expo-sqlite";
+import { SQLiteDatabase } from "expo-sqlite";
 import { state$ } from "../../lib/state";
 
 
