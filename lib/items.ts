@@ -3,10 +3,10 @@ import { type SQLiteDatabase } from "expo-sqlite";
 export const useItemDatabase = (db: SQLiteDatabase) => {
 
     // Add a new item to the database 
-    const addItem = async (storeId: number, itemName: string, quantity: number, completed: boolean) => {
+    const addItem = async (storeId: number, itemName: string, quantity: number, completed: number) => {
         try {
             const result = await db.runAsync(
-                `INSERT INTO items (storeId, itemName, quanntity, completed) VALUES (?, ?, ?, ?);`,
+                `INSERT INTO items (storeId, itemName, quantity, completed) VALUES (?, ?, ?, ?);`,
                 [storeId, itemName, quantity, completed ? 1 : 0]
             );
             console.log("Item added successfully:", result);
@@ -39,7 +39,7 @@ export const useItemDatabase = (db: SQLiteDatabase) => {
         storeId: number;
         itemName: string;
         quantity: number;
-        completed: boolean;
+        completed: number;
     };
 
 

@@ -17,8 +17,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Stores } from "../components/shoppingListComponents/Stores";
 import { useItemDatabase } from "../lib/items";
 import { use$ } from "@legendapp/state/react";
-import { Gesture } from "react-native-gesture-handler";
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
 
 
 export default function ShoppingList() {

@@ -11,7 +11,7 @@ type Item = {
     itemId: number;
     storeId: number;
     itemName: string;
-    completed: boolean;
+    completed: number;
     quantity: number;
 }
 

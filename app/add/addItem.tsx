@@ -38,13 +38,13 @@ export default function  addItem() {
     // This would typically involve updating the state or database
     console.log(`Item added: ${itemName}, Quantity: ${itemQuantity}, Store: ${selectedStore}`);
 
-    await addItem(parseInt(selectedStore), itemName, parseInt(itemQuantity), false);
+    await addItem(parseInt(selectedStore), itemName, parseInt(itemQuantity), 0);
     setItemName("");
     setItemQuantity("");
     const updatedItems = await fetchAllItems();
     state$.items.set(updatedItems); // Update the global state with the new items
 
-  }
+  };
 
   return (
     <ThemedView style={styles.container}>
