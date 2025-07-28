@@ -19,14 +19,12 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: "bold",
-        color: "black",
+        color: "white",
         textAlign: "center",
     },
     container: {
         padding: 10,
-        backgroundColor: "white",
-        borderBottomWidth: 1,
-        borderBottomColor: "white",
+        backgroundColor: "black",
     }
 
 });

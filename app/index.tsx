@@ -99,7 +99,10 @@ export default function ShoppingList() {
               renderSectionHeader={({section: { title }}) => (
                 <SectionListHeader title={title} />
               )}
-            
+              style={styles.sectionListContainer}
+              contentContainerStyle={styles.sectionListContent}
+              
+              
             />
           </ThemedView>
         
@@ -149,13 +152,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
   },
-  flatListContainer: {
+  sectionListContainer: {
     width: "100%",
+    backgroundColor: "black",
 
   },
-  flatListContent: {
+  sectionListContent: {
     justifyContent: "center",
-    width: "100%",
-
   },
 });

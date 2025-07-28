@@ -18,15 +18,18 @@ export default SectionListItem
 
 const styles = StyleSheet.create({
   item: {
-    fontSize: 18,
+    fontSize: 20,
     padding: 10,
-    backgroundColor: "white",
+    backgroundColor: "black",
     marginVertical: 8,
     marginHorizontal: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    color: "white",
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'black',
     paddingTop: 20,
   },
 
