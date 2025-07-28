@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { FlatList, Pressable, StyleSheet, Text, useColorScheme, View } from "react-native";
+import { FlatList, Pressable, SectionList, StyleSheet, Text, useColorScheme, View } from "react-native";
 import { ThemedView } from "../components/themedComponents/ThemedView";
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
@@ -17,6 +17,8 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Stores } from "../components/shoppingListComponents/Stores";
 import { useItemDatabase } from "../lib/items";
 import { use$ } from "@legendapp/state/react";
+import SectionListItem from "../components/shoppingListComponents/SectionListItem";
+import SectionListHeader from "../components/shoppingListComponents/SectionListHeader";
 
 
 
@@ -56,7 +58,9 @@ export default function ShoppingList() {
       storeId: store.storeId,
       data: items.filter(item => item.storeId === store.storeId)
     }));
-  }
+  };
+
+  const sectionedData = sectionedItems();
 
   return (
     <SafeAreaProvider>
@@ -88,12 +92,14 @@ export default function ShoppingList() {
           <ThemedView style={styles.container}> 
             <StatusBar style="auto" />            
 
-            <FlatList 
-              data={stores}
-              renderItem={({ item }) => <Stores storeName={item.storeName} db={db}/>} 
-              keyExtractor={item => item.storeId.toString()}
-              style={styles.flatListContainer}
-              contentContainerStyle={styles.flatListContent}
+            <SectionList 
+              sections={sectionedData}
+              keyExtractor={(item:any, index:number) => item.itemId + index}
+              renderItem={({item}) => <SectionListItem item={item.itemName} db={db}/>}
+              renderSectionHeader={({section: { title }}) => (
+                <SectionListHeader title={title} />
+              )}
+            
             />
           </ThemedView>
         

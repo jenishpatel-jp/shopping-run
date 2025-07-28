@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: "bold",
-        color: "white",
+        color: "black",
         textAlign: "center",
     },
     container: {
