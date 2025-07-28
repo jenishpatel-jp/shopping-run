@@ -1,8 +1,10 @@
-
+import { Text, View } from "react-native";
 
 const SectionListItem = () => {
   return (
-    <div>SectionListItem</div>
+    <View>
+        <Text>Section List Item</Text>
+    </View>
   )
 }
 
