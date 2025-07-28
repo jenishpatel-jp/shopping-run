@@ -8,8 +8,8 @@ type SectionListItemProps = {
 
 const SectionListItem = ( { item, db } : SectionListItemProps ) => {
   return (
-    <View>
-        <Text>{item}</Text>
+    <View style={styles.container}> 
+        <Text style={styles.item} >{item}</Text>
     </View>
   )
 }

@@ -7,15 +7,15 @@ type SectionListHeaderProps = {
 const SectionListHeader = ( { title } : SectionListHeaderProps ) => {
 
   return (
-    <View>
-        <Text>{title}</Text>
+    <View  style={styles.container}>
+        <Text style={styles.title} >{title}</Text>
     </View>
   )
 }
 
 export default SectionListHeader
 
-const stlyes = StyleSheet.create({
+const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: "bold",
