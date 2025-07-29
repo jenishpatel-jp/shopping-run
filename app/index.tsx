@@ -61,6 +61,7 @@ export default function ShoppingList() {
   };
 
   const sectionedData = sectionedItems();
+  const filteredSectionedData = sectionedData.filter(section => section.data && section.data.length > 0);
 
   return (
     <SafeAreaProvider>
@@ -93,7 +94,7 @@ export default function ShoppingList() {
             <StatusBar style="auto" />            
 
             <SectionList 
-              sections={sectionedData}
+              sections={filteredSectionedData}
               keyExtractor={(item:any, index:number) => item.itemId + index}
               renderItem={({item}) => <SectionListItem item={item.itemName} db={db}/>}
               renderSectionHeader={({section: { title }}) => (
