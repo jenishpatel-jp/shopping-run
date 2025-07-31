@@ -1,5 +1,6 @@
 import { SQLiteDatabase } from "expo-sqlite";
 import { Text, View, StyleSheet } from "react-native";
+import { state$ } from "../../lib/state";
 
 //React Native Gesture Handler and Animated
 import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
@@ -11,7 +12,7 @@ import Reanimated, {
 import Feather from '@expo/vector-icons/Feather';
 
 type SectionListItemProps = {
-  item: string;
+  itemName: string;
   db: SQLiteDatabase;
 };
 
@@ -33,7 +34,12 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
 };
 
 
-const SectionListItem = ( { item, db } : SectionListItemProps ) => {
+const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
+
+  const arrayObjectOfItems = state$.items.get();
+  const itemToDelete = arrayObjectOfItems.find((item) => item.itemName === itemName);
+  const itemId = itemToDelete ? itemToDelete.itemName : null;
+
   return (
     <ReanimatedSwipeable 
       containerStyle={styles.container}
@@ -41,7 +47,7 @@ const SectionListItem = ( { item, db } : SectionListItemProps ) => {
       rightThreshold={10}
       renderRightActions={RightAction}
     > 
-        <Text style={styles.item}>{item}</Text>
+        <Text style={styles.item}>{itemName}</Text>
     </ReanimatedSwipeable>
   )
 };
