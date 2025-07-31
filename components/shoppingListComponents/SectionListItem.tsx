@@ -63,6 +63,11 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
       friction={1.5}
       rightThreshold={10}
       renderRightActions={RightAction}
+      onSwipeableOpen={(direction) => {
+        if (direction === 'left'){
+          handleDeleteItem();
+        }
+      }}
     > 
         <Text style={styles.item}>{itemName}</Text>
     </ReanimatedSwipeable>

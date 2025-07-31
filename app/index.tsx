@@ -50,8 +50,8 @@ export default function ShoppingList() {
   // Sectionlist Data
 
   const sectionedItems = () => {
-    const items = state$.items.get();
-    const stores = state$.stores.get();
+    const items = use$(state$.items)
+    const stores = use$(state$.stores)
 
     return stores.map(store => ({
       title: store.storeName,
