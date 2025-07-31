@@ -19,7 +19,7 @@ const arrayObjectOfStores = state$.stores.get();
 
 
 
-function RightAction(prog: SharedValue<number>, drag: SharedValue<number>) {
+function leftAction(prog: SharedValue<number>, drag: SharedValue<number>) {
   const styleAnimation = useAnimatedStyle(() => {
     // console.log('showRightProgress:', prog.value);
     // console.log('appliedTranslation:', drag.value);
@@ -64,7 +64,7 @@ export const Stores = ({ storeName, db }: StoreProps) => {
         friction={2}
         enableTrackpadTwoFingerGesture
         rightThreshold={100}
-        renderRightActions={RightAction}
+        renderRightActions={leftAction}
         shouldCancelWhenOutside={false}
         onSwipeableOpen={ (direction) => {
           console.log("Swipeable opened in direction:", direction);

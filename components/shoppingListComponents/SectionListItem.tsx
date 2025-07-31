@@ -1,10 +1,20 @@
 import { SQLiteDatabase } from "expo-sqlite";
 import { Text, View, StyleSheet } from "react-native";
 
+//React Native Gesture Handler and Animated
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
+import Reanimated, {
+  SharedValue,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
+
 type SectionListItemProps = {
   item: string;
   db: SQLiteDatabase;
 };
+
+
 
 const SectionListItem = ( { item, db } : SectionListItemProps ) => {
   return (
@@ -12,7 +22,7 @@ const SectionListItem = ( { item, db } : SectionListItemProps ) => {
         <Text style={styles.item} >{item}</Text>
     </View>
   )
-}
+};
 
 export default SectionListItem
 
