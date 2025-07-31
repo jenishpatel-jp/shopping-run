@@ -42,6 +42,7 @@ const SectionListHeader = ( { title, db, storeId } : SectionListHeaderProps ) =>
     const handleDeleteStore = async () => {
         if (storeId !== null ){
             try {
+                console.log(storeId)
                 await deleteStore(storeId);
                 const updatedStores = await fetchStores();
                 state$.stores.set(updatedStores);
@@ -59,6 +60,11 @@ const SectionListHeader = ( { title, db, storeId } : SectionListHeaderProps ) =>
             friction={1.5}
             rightThreshold={10}
             renderRightActions={RightAction}
+            onSwipeableOpen={(direction) => {
+                if(direction === 'left'){
+                    handleDeleteStore()
+                }
+            }}
         >
             <Text style={styles.title} >{title}</Text>
         </ReanimatedSwipeable>
