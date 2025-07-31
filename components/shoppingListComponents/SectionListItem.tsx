@@ -10,6 +10,7 @@ import Reanimated, {
 } from 'react-native-reanimated';
 
 import Feather from '@expo/vector-icons/Feather';
+import { useItemDatabase } from "../../lib/items";
 
 type SectionListItemProps = {
   itemName: string;
@@ -36,9 +37,25 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
 
 const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
 
+  const { deleteItem, fetchAllItems } = useItemDatabase(db)
+
   const arrayObjectOfItems = state$.items.get();
   const itemToDelete = arrayObjectOfItems.find((item) => item.itemName === itemName);
-  const itemId = itemToDelete ? itemToDelete.itemName : null;
+  const itemId = itemToDelete ? itemToDelete.itemId : null;
+
+  const handleDeleteItem = async () => {
+    if (itemId !== null){
+      try {
+        await deleteItem(itemId);
+        const updatedItems = await fetchAllItems();
+        state$.items.set(updatedItems);
+      } catch(error){
+        console.error("Error deleting items", error)
+      }
+    } else {
+      console.warn("Item ID is null, cannot delete item");
+    }
+  };
 
   return (
     <ReanimatedSwipeable 
