@@ -73,14 +73,12 @@ export default function ShoppingList() {
               <View style={styles.headerRightView}>
                 <Pressable 
                   style={styles.headerRightButton}
-                  onPress={() => router.push("/add")}
                   onPressIn={() => router.push("/add")}
                   > 
                   <MaterialCommunityIcons name="store-plus" size={30} color="white" />
                 </Pressable>
                 <Pressable 
                   style={styles.headerRightButton}
-                  onPress={() =>  router.push("/add/addItem")}
                   onPressIn={() => router.push("/add/addItem")}
                   > 
                   <Ionicons name="add-circle-outline" size={30} color="white" />
@@ -96,17 +94,16 @@ export default function ShoppingList() {
             <SectionList 
               sections={filteredSectionedData}
               keyExtractor={(item:any, index:number) => item.itemId + index}
-              renderItem={({item}) => <SectionListItem item={item.itemName} db={db}/>}
+              renderItem={({item}) => (
+                <SectionListItem item={item.itemName} db={db}/>)}
               renderSectionHeader={({section: { title }}) => (
-                <SectionListHeader title={title} />
-              )}
+                <SectionListHeader title={title} />)}
               style={styles.sectionListContainer}
               contentContainerStyle={styles.sectionListContent}
-              
-              
+            
             />
           </ThemedView>
-        
+    
         </SafeAreaView>
 
     </SafeAreaProvider>
