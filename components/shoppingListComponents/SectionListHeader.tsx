@@ -18,13 +18,51 @@ type SectionListHeaderProps = {
     storeId: number;
 };
 
-const SectionListHeader = ( { title, db, storeId } : SectionListHeaderProps ) => {
+const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
+  const styleAnimation = useAnimatedStyle(() => {
+
+    return {
+      transform: [{ translateX: drag.value + 50 }]
+    };
+  });
 
   return (
-    <View  style={styles.container}>
-        <Text style={styles.title} >{title}</Text>
-    </View>
+    <Reanimated.View style={styleAnimation}>
+      <View style={styles.rightAction}>
+        <Feather name="trash-2" size={24} color="white" />
+      </View>
+    </Reanimated.View>
   )
+};
+
+const SectionListHeader = ( { title, db, storeId } : SectionListHeaderProps ) => {
+
+    const { deleteStore, fetchStores } = useStoreDatabase(db);
+
+    const handleDeleteStore = async () => {
+        if (storeId !== null ){
+            try {
+                await deleteStore(storeId);
+                const updatedStores = await fetchStores();
+                state$.stores.set(updatedStores);
+            } catch (error){
+                console.error("Error delete stores", error)
+            }
+        } else {
+            console.warn("Store ID is null, cannot delete store");
+        }
+    };
+
+    return (
+        <ReanimatedSwipeable
+            containerStyle={styles.container}
+            friction={1.5}
+            rightThreshold={10}
+            renderRightActions={RightAction}
+        >
+            <Text style={styles.title} >{title}</Text>
+        </ReanimatedSwipeable>
+    )
 }
 
 export default SectionListHeader
@@ -39,6 +77,15 @@ const styles = StyleSheet.create({
     container: {
         padding: 10,
         backgroundColor: "black",
+    },
+    rightAction: {
+        width: 50,
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'white',
+        fontSize: 14,
+        textAlign: 'center',
     }
 
 });
