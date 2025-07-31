@@ -14,6 +14,21 @@ type SectionListItemProps = {
   db: SQLiteDatabase;
 };
 
+const LeftAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
+  const styleAnimation = useAnimatedStyle(() => {
+
+    return {
+      transform: [{ translateX: drag.value + 50 }]
+    };
+  });
+
+  return (
+    <Reanimated.View style={styleAnimation}>
+      <Text style={styles.leftAction}></Text>
+    </Reanimated.View>
+  )
+
+};
 
 
 const SectionListItem = ( { item, db } : SectionListItemProps ) => {
@@ -46,5 +61,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  leftAction: {
+    width: 50,
+    height: 50,
+    backgroundColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
+    fontSize: 14,
+    textAlign: 'center',
+  }
 
 });
