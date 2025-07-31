@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { FlatList, Pressable, SectionList, StyleSheet, Text, useColorScheme, View } from "react-native";
+import { Pressable, SectionList, StyleSheet, Text, useColorScheme, View } from "react-native";
 import { ThemedView } from "../components/themedComponents/ThemedView";
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';

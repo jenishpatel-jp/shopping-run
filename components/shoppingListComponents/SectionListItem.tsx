@@ -2,19 +2,20 @@ import { SQLiteDatabase } from "expo-sqlite";
 import { Text, View, StyleSheet } from "react-native";
 
 //React Native Gesture Handler and Animated
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 import Reanimated, {
   SharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated';
 
+import Feather from '@expo/vector-icons/Feather';
+
 type SectionListItemProps = {
   item: string;
   db: SQLiteDatabase;
 };
 
-const LeftAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
+const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
   const styleAnimation = useAnimatedStyle(() => {
 
     return {
@@ -24,18 +25,24 @@ const LeftAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
 
   return (
     <Reanimated.View style={styleAnimation}>
-      <Text style={styles.leftAction}></Text>
+      <View style={styles.rightAction}>
+        <Feather name="trash-2" size={24} color="white" />
+      </View>
     </Reanimated.View>
   )
-
 };
 
 
 const SectionListItem = ( { item, db } : SectionListItemProps ) => {
   return (
-    <View style={styles.container}> 
-        <Text style={styles.item} >{item}</Text>
-    </View>
+    <ReanimatedSwipeable 
+      containerStyle={styles.container}
+      friction={1.5}
+      rightThreshold={10}
+      renderRightActions={RightAction}
+    > 
+        <Text style={styles.item}>{item}</Text>
+    </ReanimatedSwipeable>
   )
 };
 
@@ -61,10 +68,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  leftAction: {
+  rightAction: {
     width: 50,
-    height: 50,
-    backgroundColor: 'red',
+    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     color: 'white',
