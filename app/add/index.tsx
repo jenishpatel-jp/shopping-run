@@ -11,10 +11,12 @@ import { useRouter } from "expo-router";
 
 export default function AddStore (){
 
+    const [storeName, setStoreName] = useState("");
+
     const db = useSQLiteContext();
     const { addStore, fetchStores } = useStoreDatabase(db);
 
-    const [storeName, setStoreName] = useState("");
+    
 
     const router = useRouter();
 

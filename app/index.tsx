@@ -21,13 +21,11 @@ import SectionListItem from "../components/shoppingListComponents/SectionListIte
 import SectionListHeader from "../components/shoppingListComponents/SectionListHeader";
 
 
-
 export default function ShoppingList() {
 
   const db = useSQLiteContext();
   const { fetchStores } = useStoreDatabase(db);
   const { fetchAllItems } = useItemDatabase(db);
-  const stores = use$(state$.stores);
 
   const router = useRouter();
 

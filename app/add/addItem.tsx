@@ -3,18 +3,33 @@ import { ThemedText } from "../../components/themedComponents/ThemedText"
 import { Pressable, StyleSheet, TextInput } from "react-native"
 import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
 import { state$ } from "../../lib/state";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useItemDatabase } from "../../lib/items";
 import { useSQLiteContext } from "expo-sqlite";
+import { use$ } from "@legendapp/state/react";
 
 
 // Format the data for the StoreSelectList component
-const formattedData =  state$.stores.get().map((store) => ({
-  key: store.storeId.toString(),
-  value: store.storeName,
-}));
+
 
 export default function  addItem() {
+
+  const formattedStores = () => {
+    const stores = use$(state$.stores);
+    const formattedData = stores.map((store) => ({
+      key: store.storeId.toString(),
+      value: store.storeName
+    }));
+    return formattedData;
+  };
+
+  const data = formattedStores();
+
+
+//   const formattedData = stores.map((store) => ({
+//   key: store.storeId.toString(),
+//   value: store.storeName,
+// }));
 
   const db = useSQLiteContext();
 
@@ -75,7 +90,7 @@ export default function  addItem() {
        
       />
       
-      <StoreSelectList data={formattedData} setSelectedStore={setSelectedStore} />
+      <StoreSelectList data={data} setSelectedStore={setSelectedStore} />
       
       <Pressable 
         style={styles.addButton} 
