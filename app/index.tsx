@@ -155,5 +155,6 @@ const styles = StyleSheet.create({
   },
   sectionListContent: {
     justifyContent: "center",
+
   },
 });

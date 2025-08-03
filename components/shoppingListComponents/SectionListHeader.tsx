@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     container: {
         padding: 10,
         backgroundColor: "black",
+        
     },
     rightAction: {
         width: 50,

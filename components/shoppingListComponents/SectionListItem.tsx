@@ -45,8 +45,19 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
   const { deleteItem, fetchAllItems } = useItemDatabase(db)
 
   const arrayObjectOfItems = state$.items.get();
-  const itemToDelete = arrayObjectOfItems.find((item) => item.itemName === itemName);
-  const itemId = itemToDelete ? itemToDelete.itemId : null;
+  const itemSelected = arrayObjectOfItems.find((item) => item.itemName === itemName);
+  const itemId = itemSelected ? itemSelected.itemId : null;
+
+  const handlePress = () => {
+    setIsPurchased(!isPurchased);
+    if (isPurchased){
+      console.log("Item marked as purchased:", itemName);
+
+    } else {
+      console.log("Item marked as not purchased:", itemName);
+
+    }
+  }
 
   const handleDeleteItem = async () => {
     if (itemId !== null){
@@ -75,7 +86,7 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
       }}
     > 
       <View style={styles.itemContainer}>
-        <Pressable onPress={() => console.log("Item button pressed")} >
+        <Pressable onPress={handlePress} >
           <Feather name={isPurchased ? "check-circle" : "circle"} size={24} color="white" />
         </Pressable>
 
