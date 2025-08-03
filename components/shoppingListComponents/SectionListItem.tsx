@@ -101,7 +101,7 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
           <Feather name={isPurchased ? "check-circle" : "circle"} size={24} color="white" />
         </Pressable>
 
-        <Text style={styles.item}>{itemName}</Text>
+        <Text style={[styles.text, isPurchased && styles.textPurchased] }>{itemName}</Text>
       </View>
     </ReanimatedSwipeable>
   )
@@ -110,7 +110,7 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
 export default SectionListItem
 
 const styles = StyleSheet.create({
-  item: {
+  text: {
     fontSize: 20,
     backgroundColor: "black",
     marginVertical: 8,
@@ -118,6 +118,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     color: "white",
+  },
+  textPurchased: {
+    fontSize: 20,
+    color: "white",
+    textDecorationLine: "line-through",
+
   },
   container: {
     flex: 1,
