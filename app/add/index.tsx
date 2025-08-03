@@ -40,7 +40,7 @@ export default function AddStore (){
             state$.stores.set(updatedStores); // Update the global state with the new store list
             setStoreName(""); // Clear input after adding
             console.log("Store added successfully");
-            router.push("/"); // Navigate to add item screen after adding store
+            router.back(); // Navigate to add item screen after adding store
         } catch (error) {
             console.error("Error adding store:", error);
         }
