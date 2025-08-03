@@ -1,5 +1,5 @@
 import { SQLiteDatabase } from "expo-sqlite";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
 import { state$ } from "../../lib/state";
 
 //React Native Gesture Handler and Animated
@@ -9,8 +9,11 @@ import Reanimated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 
+// Icons
 import Feather from '@expo/vector-icons/Feather';
+
 import { useItemDatabase } from "../../lib/items";
+import { useState } from "react";
 
 type SectionListItemProps = {
   itemName: string;
@@ -36,6 +39,8 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
 
 
 const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
+
+  const [isPurchased, setIsPurchased] = useState(false);
 
   const { deleteItem, fetchAllItems } = useItemDatabase(db)
 
@@ -69,7 +74,13 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
         }
       }}
     > 
+      <View style={styles.itemContainer}>
+        <Pressable onPress={() => console.log("Item button pressed")} >
+          <Feather name={isPurchased ? "check-circle" : "circle"} size={24} color="white" />
+        </Pressable>
+
         <Text style={styles.item}>{itemName}</Text>
+      </View>
     </ReanimatedSwipeable>
   )
 };
@@ -79,7 +90,6 @@ export default SectionListItem
 const styles = StyleSheet.create({
   item: {
     fontSize: 20,
-    padding: 10,
     backgroundColor: "black",
     marginVertical: 8,
     marginHorizontal: 16,
@@ -90,11 +100,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'black',
-    borderWidth: 1,
-    borderColor: "white",
     margin: 10,
     alignItems: "center",
-    justifyContent: "center",
+    flexDirection: "row",
   },
   rightAction: {
     width: 50,
@@ -104,6 +112,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 14,
     textAlign: 'center',
+  },
+  itemContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    width: '100%',
+    paddingHorizontal: 20,
   }
+
 
 });
