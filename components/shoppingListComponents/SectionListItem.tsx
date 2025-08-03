@@ -13,7 +13,7 @@ import Reanimated, {
 import Feather from '@expo/vector-icons/Feather';
 
 import { useItemDatabase } from "../../lib/items";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type SectionListItemProps = {
   itemName: string;
@@ -47,15 +47,26 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
   const arrayObjectOfItems = state$.items.get();
   const itemSelected = arrayObjectOfItems.find((item) => item.itemName === itemName);
   const itemId = itemSelected ? itemSelected.itemId : null;
+  const itemSelectedIndex = arrayObjectOfItems.findIndex((item) => item.itemName === itemName);
+
+  useEffect(() => {
+    console.log(`The current state if isPurchase is: ${isPurchased}`)
+  }, []);
+
 
   const handlePress = () => {
-    setIsPurchased(!isPurchased);
-    if (isPurchased){
-      console.log("Item marked as purchased:", itemName);
 
+    const newValue = !isPurchased;
+    setIsPurchased(newValue);
+
+    if (newValue){
+      console.log("Item marked as purchased:", itemName);
+      state$.items[itemSelectedIndex]['completed'].set(1); 
+      console.log(state$.items.get()[itemSelectedIndex]);
     } else {
       console.log("Item marked as not purchased:", itemName);
-
+      state$.items[itemSelectedIndex]['completed'].set(0); 
+      console.log(state$.items.get()[itemSelectedIndex]);
     }
   }
 
