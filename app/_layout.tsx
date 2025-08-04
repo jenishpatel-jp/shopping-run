@@ -48,8 +48,6 @@ export default function RootLayout(){
                                     presentation: 'formSheet',
                                     sheetGrabberVisible: true,
                                     headerLargeTitle: false,
-
-                                    
                                 }}
                                 
                                 />
