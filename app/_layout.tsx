@@ -50,7 +50,18 @@ export default function RootLayout(){
                                     headerLargeTitle: false,
                                 }}
                                 
-                                />
+                            />
+                            <Stack.Screen 
+                                name="add"
+                                options={{
+                                    headerShown: false,
+                                    presentation: 'formSheet',
+                                    sheetGrabberVisible: true,         
+                                    headerLargeTitle: false,
+                                    sheetAllowedDetents: [0.8, 1]
+                                }}
+                            
+                            />
                         </Stack>
         
                 </SafeAreaProvider>

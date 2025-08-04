@@ -1,7 +1,7 @@
 import { Stack } from "expo-router";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function AddLayour(){
+export default function AddLayout(){
     return (
         <SafeAreaProvider>
             <Stack screenOptions={{ 
