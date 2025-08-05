@@ -47,9 +47,11 @@ export default function RootLayout(){
                                 name='index' 
                                 options={{
                                     headerTitle: 'Shopping List',
+                                    headerLargeTitle: true,
+                                    headerTitleAlign: 'center',
                                     presentation: 'formSheet',
                                     sheetGrabberVisible: true,
-                                    headerLargeTitle: false,
+                                    headerShown: true,
                                 }}
                                 
                             />

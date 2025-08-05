@@ -38,10 +38,13 @@ export default function AddLayout(){
                                 onPress={() => router.back()}
                                 style={{ marginLeft: 10 }}
                             >
-                                <Text style={styles.cancelText} >Cancel</Text>
-                                
-                            </Pressable>
-                }}
+                                <Text style={styles.text} >Cancel</Text>
+                            </Pressable>,
+                        headerRight: () => 
+                            <Pressable>
+                                <Text style={styles.text} >Save</Text>
+                            </Pressable>    
+                    }}
                 
                 />
             </Stack>
@@ -50,7 +53,7 @@ export default function AddLayout(){
 }
 
 const styles = StyleSheet.create({
-    cancelText: {
+    text: {
         color: 'white',
         fontSize: 18,
         marginLeft: 10,
