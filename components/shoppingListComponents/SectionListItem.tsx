@@ -49,10 +49,6 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
   const itemId = itemSelected ? itemSelected.itemId : null;
   const itemSelectedIndex = arrayObjectOfItems.findIndex((item) => item.itemName === itemName);
 
-  useEffect(() => {
-    console.log(`The current state if isPurchase is: ${isPurchased}`)
-  }, []);
-
 
   const handlePress = () => {
 
@@ -62,11 +58,11 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
     if (newValue){
       console.log("Item marked as purchased:", itemName);
       state$.items[itemSelectedIndex]['completed'].set(1); 
-      console.log(state$.items.get()[itemSelectedIndex]);
+      // console.log(state$.items.get()[itemSelectedIndex]);
     } else {
       console.log("Item marked as not purchased:", itemName);
       state$.items[itemSelectedIndex]['completed'].set(0); 
-      console.log(state$.items.get()[itemSelectedIndex]);
+      // console.log(state$.items.get()[itemSelectedIndex]);
     }
   }
 
