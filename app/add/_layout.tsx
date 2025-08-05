@@ -10,7 +10,7 @@ export default function AddLayout(){
         <SafeAreaProvider>
             <Stack screenOptions={{ 
                 headerShown: false, 
-                title: 'Add Store', 
+                title: 'Add', 
                 headerTintColor: 'white',
                 headerStyle: { backgroundColor: 'black' }
             }}>
@@ -22,6 +22,16 @@ export default function AddLayout(){
                         sheetGrabberVisible: true,
                         headerLargeTitle: false,
                         headerShown: true,
+                        headerTitleAlign: 'center',
+                        headerLeft: () => 
+                            <Pressable>
+                                <Text style={styles.text} onPress={() => router.back()} >Cancel</Text>
+                            </Pressable>,
+                        headerRight: () => 
+                            <Pressable>
+                                <Text style={styles.text} >Save</Text>
+                            </Pressable>
+
                 }}
                 />
                 <Stack.Screen 
@@ -44,8 +54,7 @@ export default function AddLayout(){
                             <Pressable>
                                 <Text style={styles.text} >Save</Text>
                             </Pressable>    
-                    }}
-                
+                    }}    
                 />
             </Stack>
         </SafeAreaProvider>
