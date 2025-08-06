@@ -7,7 +7,7 @@ import { useMemo, useState } from "react";
 import { useItemDatabase } from "../../lib/items";
 import { useSQLiteContext } from "expo-sqlite";
 import { use$ } from "@legendapp/state/react";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 
 
 // Format the data for the StoreSelectList component
@@ -75,7 +75,7 @@ export default function  addItem() {
           headerShown: true,
           headerTitleAlign: 'center',
           headerLeft: () => 
-            <Pressable onPressIn={() => console.log("Cancel pressed")} style={{ marginLeft: 10 }}>
+            <Pressable onPressIn={() => router.back()} style={{ marginLeft: 10 }}>
               <Text style={styles.text} >Cancel</Text>
             </Pressable>,
           headerRight: () => 
