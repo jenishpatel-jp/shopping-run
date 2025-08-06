@@ -74,6 +74,7 @@ export default function  addItem() {
           headerLargeTitle: false,
           headerShown: true,
           headerTitleAlign: 'center',
+          headerTitleStyle: { color: 'darkturquoise', fontSize: 20, fontWeight: 'bold' },
           headerLeft: () => 
             <Pressable onPressIn={() => router.back()} style={{ marginLeft: 10 }}>
               <Text style={styles.headerText} >Cancel</Text>
@@ -181,7 +182,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   headerText: {
-        color: 'white',
+        color: 'magenta',
         fontSize: 18,
         marginLeft: 10,
         fontWeight: 'bold',

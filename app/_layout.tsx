@@ -40,7 +40,8 @@ export default function RootLayout(){
                             headerShown: true, 
                             title: 'Shopping List', 
                             headerTintColor: 'white',
-                            headerStyle: { backgroundColor: 'black' }
+                            headerStyle: { backgroundColor: 'black',  },
+                            headerTitleStyle: { color: 'darkturquoise', fontSize: 20, fontWeight: 'bold' },
                         
                             }}>
                             <Stack.Screen 

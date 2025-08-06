@@ -5,7 +5,6 @@ import { useSQLiteContext } from "expo-sqlite";
 import { useStoreDatabase } from "../../lib/store";
 import { useState } from "react";
 import { state$ } from "../../lib/state"; 
-import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 import { Stack, useRouter } from "expo-router";
 
 
@@ -59,7 +58,7 @@ export default function AddStore (){
                         headerLargeTitle: false,
                         headerShown: true,
                         headerTitleAlign: 'center',
-                        
+                        headerTitleStyle: { color: 'darkturquoise', fontSize: 20, fontWeight: 'bold' },
                         headerLeft: () => 
                             <Pressable onPressIn={() => router.back()} >
                                 <Text style={styles.text} >Cancel</Text>
@@ -156,7 +155,7 @@ const styles = StyleSheet.create({
             
         },
         text: {
-            color: 'aqua',
+            color: 'magenta',
             fontSize: 18,
             marginLeft: 10,
             fontWeight: 'bold',
