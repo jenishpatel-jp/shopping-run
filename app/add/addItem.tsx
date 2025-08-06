@@ -75,6 +75,7 @@ export default function  addItem() {
           headerShown: true,
           headerTitleAlign: 'center',
           headerTitleStyle: { color: '#FFE4A1', fontSize: 20, fontWeight: 'bold' },
+          headerStyle: { backgroundColor: '#003B66' },
           headerLeft: () => 
             <Pressable onPressIn={() => router.back()} style={{ marginLeft: 10 }}>
               <Text style={styles.headerText} >Cancel</Text>
@@ -93,8 +94,8 @@ export default function  addItem() {
         <TextInput 
           style={styles.textInput}
           placeholder="Enter item name"
-          placeholderTextColor="white"
-          selectionColor="white"
+          placeholderTextColor="#FFE4A1"
+          selectionColor="#FFE4A1"
           textAlign="center"
           autoFocus={false}
           returnKeyType="done"
@@ -110,8 +111,8 @@ export default function  addItem() {
           value={itemQuantity}
           onChangeText={setItemQuantity}
           placeholder="Enter item quantity"
-          placeholderTextColor="white"
-          selectionColor="white"
+          placeholderTextColor="#FFE4A1"
+          selectionColor="#FFE4A1"
           textAlign="center"
           keyboardType="numeric"
           returnKeyType="done"
@@ -135,11 +136,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingTop: 60,
+    backgroundColor: '#003B66',
   }, 
   inputContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
+    backgroundColor: '#003B66',
 
   },
 
@@ -151,10 +154,11 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginLeft: '10%',
     paddingTop: 30,
+    backgroundColor: '#003B66',
   },
 
   textInput: {
-    borderColor: 'white',
+    borderColor: '#FFE4A1',
     borderWidth: 2,
     width: '80%',
     marginBottom: 10,
@@ -164,9 +168,10 @@ const styles = StyleSheet.create({
     color: '#FFE4A1',
     borderRadius: 8,
     padding: 10,
+    backgroundColor: '#003B66',
   },
   addButton: {
-    backgroundColor: 'black',
+    backgroundColor: '#003B66',
     color: '#FFE4A1',
     width: '80%',
     padding: 10,

@@ -21,24 +21,24 @@ const StoreSelectList  = ( { data, setSelectedStore } : StoreSlectListProp ) => 
         save="key"
         data={data}
         boxStyles={{
-          borderColor: 'white',
+          borderColor: '#FFE4A1',
           borderWidth: 2,
           padding: 10,
           width: '80%',
           marginBottom: 10,
         }}
         inputStyles={{
-          color: 'white',
+          color: '#FFE4A1',
           fontSize: 24,
           textAlign: 'center',
         }}
         dropdownStyles={{
-          backgroundColor: 'black',
-          borderColor: 'white',
+          backgroundColor: '#003B66',
+          borderColor: '#FFE4A1',
           borderWidth: 2,
         }}
         dropdownTextStyles={{
-          color: 'white',
+          color: '#FFE4A1',
           fontSize: 24,
         }}
       />
