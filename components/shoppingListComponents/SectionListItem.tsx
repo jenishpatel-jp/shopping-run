@@ -31,7 +31,7 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
   return (
     <Reanimated.View style={styleAnimation}>
       <View style={styles.rightAction}>
-        <Feather name="trash-2" size={24} color="#FF6539" />
+        <Feather name="trash-2" size={24} color="#FFE4A1" />
       </View>
     </Reanimated.View>
   )
@@ -94,7 +94,7 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
     > 
       <View style={styles.itemContainer}>
         <Pressable onPress={handlePress} >
-          <Feather name={isPurchased ? "check-circle" : "circle"} size={24} color="#FF6237" />
+          <Feather name={isPurchased ? "check-circle" : "circle"} size={24} color="#FFE4A1" />
         </Pressable>
 
         <Text style={[styles.text, isPurchased && styles.textPurchased] }>{itemName}</Text>
@@ -108,12 +108,12 @@ export default SectionListItem
 const styles = StyleSheet.create({
   text: {
     fontSize: 20,
-    backgroundColor: "black",
+    backgroundColor: "#003B66",
     marginVertical: 8,
     marginHorizontal: 16,
     alignItems: "center",
     justifyContent: "center",
-    color: "#FF6539",
+    color: "#FFE4A1",
   },
   textPurchased: {
     fontSize: 20,
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#003B66',
     margin: 10,
     alignItems: "center",
     flexDirection: "row",
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'white',
+    color: '#FFE4A1',
     fontSize: 14,
     textAlign: 'center',
   },

@@ -11,7 +11,6 @@ import { configureSynced, syncObservable } from '@legendapp/state/sync';
 import { observablePersistSqlite } from '@legendapp/state/persist-plugins/expo-sqlite';
 import Storage from 'expo-sqlite/kv-store';
 import { state$ } from '../lib/state';  
-import { Text, View, StyleSheet } from 'react-native';
 
 // Global configuration
 const persistOptions = configureSynced({
@@ -40,8 +39,8 @@ export default function RootLayout(){
                             headerShown: true, 
                             title: 'Shopping List', 
                             headerTintColor: 'white',
-                            headerStyle: { backgroundColor: 'black',  },
-                            headerTitleStyle: { color: '#FF6539', fontSize: 20, fontWeight: 'bold' },
+                            headerStyle: { backgroundColor: '#003B66',  },
+                            headerTitleStyle: { color: '#FFE4A1', fontSize: 20, fontWeight: 'bold' },
                         
                             }}>
                             <Stack.Screen 

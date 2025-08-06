@@ -74,7 +74,7 @@ export default function  addItem() {
           headerLargeTitle: false,
           headerShown: true,
           headerTitleAlign: 'center',
-          headerTitleStyle: { color: '#FF6539', fontSize: 20, fontWeight: 'bold' },
+          headerTitleStyle: { color: '#FFE4A1', fontSize: 20, fontWeight: 'bold' },
           headerLeft: () => 
             <Pressable onPressIn={() => router.back()} style={{ marginLeft: 10 }}>
               <Text style={styles.headerText} >Cancel</Text>
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
 
    inputHeaderText: {
-    color: 'white',
+    color: '#FFE4A1',
     fontSize: 20,
     marginBottom: 10,
     textAlign: 'left',
@@ -161,28 +161,28 @@ const styles = StyleSheet.create({
     height: 50,
     textAlign: 'center',
     fontSize: 24,
-    color: 'white',
+    color: '#FFE4A1',
     borderRadius: 8,
     padding: 10,
   },
   addButton: {
     backgroundColor: 'black',
-    color: 'white',
+    color: '#FFE4A1',
     width: '80%',
     padding: 10,
     alignItems: 'center',
     borderRadius: 8,
     borderWidth: 2,
-    borderColor: 'white',
+    borderColor: '#FFE4A1',
   }, 
   addButtonText: {
-    color: 'white',
+    color: '#FFE4A1',
     fontSize: 24,
     width: '100%',
     textAlign: 'center',
   },
   headerText: {
-        color: '#FF6539',
+        color: '#FFE4A1',
         fontSize: 18,
         marginLeft: 10,
         fontWeight: 'bold',

@@ -73,13 +73,13 @@ export default function ShoppingList() {
                   style={styles.headerRightButton}
                   onPressIn={() => router.push("/add")}
                   > 
-                  <MaterialCommunityIcons name="store-plus" size={30} color="#FF6539" />
+                  <MaterialCommunityIcons name="store-plus" size={30} color="#FFE4A1" />
                 </Pressable>
                 <Pressable 
                   style={styles.headerRightButton}
                   onPressIn={() => router.push("/add/addItem")}
                   > 
-                  <Ionicons name="add-circle-outline" size={30} color="#FF6539" />
+                  <Ionicons name="add-circle-outline" size={30} color="#FFE4A1" />
                 </Pressable>
 
               </View>,
@@ -112,17 +112,15 @@ const styles = StyleSheet.create({
   safeAreaView: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#121212",
+    backgroundColor: "#003B66",
     flex: 1,
   },
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#121212",
+    backgroundColor: "#003B66",
     width: "100%",
-    borderWidth: 1,
-    borderColor: "white"
   },
   text: {
     fontSize: 20,
@@ -138,7 +136,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   item: {
-    backgroundColor: "#1E1E1E",
+    backgroundColor: "#003B66",
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
@@ -146,11 +144,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: "bold",
-    color: "white",
+    color: "#FFE4A1",
   },
   sectionListContainer: {
     width: "100%",
-    backgroundColor: "black",
+    backgroundColor: "#003B66",
 
   },
   sectionListContent: {

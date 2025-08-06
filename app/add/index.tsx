@@ -58,7 +58,7 @@ export default function AddStore (){
                         headerLargeTitle: false,
                         headerShown: true,
                         headerTitleAlign: 'center',
-                        headerTitleStyle: { color: '#FF6539', fontSize: 20, fontWeight: 'bold' },
+                        headerTitleStyle: { color: '#FFE4A1', fontSize: 20, fontWeight: 'bold' },
                         headerLeft: () => 
                             <Pressable onPressIn={() => router.back()} >
                                 <Text style={styles.text} >Cancel</Text>
@@ -76,8 +76,8 @@ export default function AddStore (){
                         <TextInput 
                             style={styles.textInput}
                             placeholder="Enter store name"
-                            placeholderTextColor="white"
-                            selectionColor="white"
+                            placeholderTextColor="#FFE4A1"
+                            selectionColor="#FFE4A1"
                             textAlign="center"
                             value={storeName}
                             onChangeText={setStoreName}
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
             paddingTop: 100,
             width: '100%',
             flex: 1,
-            backgroundColor: 'black',
+            backgroundColor: '#97322D',
         },
         addStoreContainer: {
             alignItems: "center",
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
             textAlign: 'left'
         },
         labelTextInput: {
-            color: 'white',
+            color: '#FFE4A1',
             fontSize: 20,
             marginBottom: 10,
             fontWeight: 'bold',
@@ -122,31 +122,31 @@ const styles = StyleSheet.create({
             alignSelf: 'flex-start',
         },
         textInput: {
-            borderColor: 'white',
+            borderColor: '#FFE4A1',
             borderWidth: 2,
             width: '100%',
             marginBottom: 10,
             height: 70,
             textAlign: 'center',
             fontSize: 24,
-            color: 'white',
+            color: '#FFE4A1',
             borderRadius: 8,
             padding: 10,
 
         },
         addButton: {
-            backgroundColor: 'black',
-            color: 'white',
+            backgroundColor: '#97322D',
+            color: '#FFE4A1',
             width: '100%',
             padding: 4,
             alignItems: 'flex-end',
         },
 
         addButtonText: {
-            color: 'white',
+            color: '#FFE4A1',
             fontSize: 20,
             width: '40%',
-            borderColor: 'white',
+            borderColor: '#FFE4A1',
             borderRadius: 8,
             borderWidth: 2,
             textAlign: 'center',
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
             
         },
         text: {
-            color: '#FF6539',
+            color: '#FFE4A1',
             fontSize: 18,
             marginLeft: 10,
             fontWeight: 'bold',
