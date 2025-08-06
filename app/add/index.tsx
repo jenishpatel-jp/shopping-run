@@ -72,8 +72,9 @@ export default function AddStore (){
                 />
              
                     <View style={styles.addStoreContainer}> 
+                        <Text style={styles.labelTextInput}>Store Name</Text>
                         <TextInput 
-                            style={styles.TextInput}
+                            style={styles.textInput}
                             placeholder="Enter store name"
                             placeholderTextColor="white"
                             selectionColor="white"
@@ -97,12 +98,10 @@ export default function AddStore (){
 const styles = StyleSheet.create({
         container: {
             alignItems: "center",
-            justifyContent: "center",
+            paddingTop: 100,
             width: '100%',
             flex: 1,
             backgroundColor: 'black',
-    
-
         },
         addStoreContainer: {
             alignItems: "center",
@@ -112,8 +111,17 @@ const styles = StyleSheet.create({
             borderWidth: 4,
             padding: 10,
             marginBottom: 100,
+            textAlign: 'left'
         },
-        TextInput: {
+        labelTextInput: {
+            color: 'white',
+            fontSize: 20,
+            marginBottom: 10,
+            fontWeight: 'bold',
+            paddingLeft: 10,
+            alignSelf: 'flex-start',
+        },
+        textInput: {
             borderColor: 'white',
             borderWidth: 2,
             width: '100%',
@@ -151,6 +159,6 @@ const styles = StyleSheet.create({
             fontSize: 18,
             marginLeft: 10,
             fontWeight: 'bold',
-    }
+        }
     })
 
