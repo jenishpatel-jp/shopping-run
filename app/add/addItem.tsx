@@ -86,6 +86,7 @@ export default function  addItem() {
       />
 
       <View style={styles.inputContainer}> 
+
         <Text style={styles.inputHeaderText}>Name</Text>
 
         <TextInput 
@@ -140,6 +141,17 @@ const styles = StyleSheet.create({
     width: '100%',
 
   },
+
+   inputHeaderText: {
+    color: 'white',
+    fontSize: 20,
+    marginBottom: 10,
+    textAlign: 'left',
+    alignSelf: 'flex-start',
+    marginLeft: '10%',
+    paddingTop: 30,
+  },
+
   textInput: {
     borderColor: 'white',
     borderWidth: 2,
@@ -174,11 +186,6 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         fontWeight: 'bold',
     },
-  inputHeaderText: {
-    color: 'white',
-    fontSize: 20,
-    marginBottom: 10,
-    textAlign: 'left',
-  },
+ 
 
 })
