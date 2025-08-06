@@ -31,7 +31,7 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
   return (
     <Reanimated.View style={styleAnimation}>
       <View style={styles.rightAction}>
-        <Feather name="trash-2" size={24} color="white" />
+        <Feather name="trash-2" size={24} color="#FF6539" />
       </View>
     </Reanimated.View>
   )
@@ -94,7 +94,7 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
     > 
       <View style={styles.itemContainer}>
         <Pressable onPress={handlePress} >
-          <Feather name={isPurchased ? "check-circle" : "circle"} size={24} color="white" />
+          <Feather name={isPurchased ? "check-circle" : "circle"} size={24} color="#FF6237" />
         </Pressable>
 
         <Text style={[styles.text, isPurchased && styles.textPurchased] }>{itemName}</Text>
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     alignItems: "center",
     justifyContent: "center",
-    color: "white",
+    color: "#FF6539",
   },
   textPurchased: {
     fontSize: 20,

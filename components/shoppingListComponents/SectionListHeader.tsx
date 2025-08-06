@@ -29,7 +29,7 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
   return (
     <Reanimated.View style={styleAnimation}>
       <View style={styles.rightAction}>
-        <Feather name="trash-2" size={24} color="white" />
+        <Feather name="trash-2" size={24} color="#FF6539" />
       </View>
     </Reanimated.View>
   )
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: "bold",
-        color: "white",
+        color: "#FF6539",
         textAlign: "center",
     },
     container: {

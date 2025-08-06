@@ -41,7 +41,7 @@ export default function RootLayout(){
                             title: 'Shopping List', 
                             headerTintColor: 'white',
                             headerStyle: { backgroundColor: 'black',  },
-                            headerTitleStyle: { color: 'darkturquoise', fontSize: 20, fontWeight: 'bold' },
+                            headerTitleStyle: { color: '#FF6539', fontSize: 20, fontWeight: 'bold' },
                         
                             }}>
                             <Stack.Screen 

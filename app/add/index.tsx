@@ -58,7 +58,7 @@ export default function AddStore (){
                         headerLargeTitle: false,
                         headerShown: true,
                         headerTitleAlign: 'center',
-                        headerTitleStyle: { color: 'darkturquoise', fontSize: 20, fontWeight: 'bold' },
+                        headerTitleStyle: { color: '#FF6539', fontSize: 20, fontWeight: 'bold' },
                         headerLeft: () => 
                             <Pressable onPressIn={() => router.back()} >
                                 <Text style={styles.text} >Cancel</Text>
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
             
         },
         text: {
-            color: 'magenta',
+            color: '#FF6539',
             fontSize: 18,
             marginLeft: 10,
             fontWeight: 'bold',
