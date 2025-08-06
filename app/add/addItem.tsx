@@ -1,12 +1,13 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView"
 import { ThemedText } from "../../components/themedComponents/ThemedText"
-import { Pressable, StyleSheet, TextInput } from "react-native"
+import { Pressable, StyleSheet, Text, TextInput } from "react-native"
 import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
 import { state$ } from "../../lib/state";
 import { useMemo, useState } from "react";
 import { useItemDatabase } from "../../lib/items";
 import { useSQLiteContext } from "expo-sqlite";
 import { use$ } from "@legendapp/state/react";
+import { Stack } from "expo-router";
 
 
 // Format the data for the StoreSelectList component
@@ -64,6 +65,28 @@ export default function  addItem() {
 
   return (
     <ThemedView style={styles.container}>
+
+      <Stack.Screen 
+        options={{
+          headerTitle: 'Add Item',
+          presentation: 'formSheet',
+          sheetGrabberVisible: true,
+          headerLargeTitle: false,
+          headerShown: true,
+          headerTitleAlign: 'center',
+          headerLeft: () => 
+            <Pressable onPressIn={() => console.log("Cancel pressed")} style={{ marginLeft: 10 }}>
+              <Text style={styles.text} >Cancel</Text>
+            </Pressable>,
+          headerRight: () => 
+            <Pressable onPressIn={handleAddItem}>
+              <Text style={styles.text} >Save</Text>
+            </Pressable>
+        }}
+      
+      />
+
+
       <TextInput 
         style={styles.textInput}
         placeholder="Enter item name"
@@ -138,6 +161,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     width: '100%',
     textAlign: 'center',
-  },  
+  },
+  text: {
+        color: 'white',
+        fontSize: 18,
+        marginLeft: 10,
+        fontWeight: 'bold',
+    }
 
 })

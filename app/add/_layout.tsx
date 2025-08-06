@@ -14,7 +14,7 @@ export default function AddLayout(){
                 headerTintColor: 'white',
                 headerStyle: { backgroundColor: 'black' }
             }}>
-                <Stack.Screen 
+                {/* <Stack.Screen 
                     name='addItem' 
                     options={{
                         headerTitle: 'Add Item',
@@ -35,7 +35,7 @@ export default function AddLayout(){
                                 <Text style={styles.text} >Save</Text>
                             </Pressable>    
                     }}    
-                />
+                /> */}
             </Stack>
         </SafeAreaProvider>
     );
