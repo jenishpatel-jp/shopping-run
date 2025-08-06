@@ -1,12 +1,12 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView";
 import { ThemedText } from "../../components/themedComponents/ThemedText";
-import { StyleSheet, Pressable, View, TextInput } from "react-native";
+import { StyleSheet, Pressable, View, TextInput, Text } from "react-native";
 import { useSQLiteContext } from "expo-sqlite";
 import { useStoreDatabase } from "../../lib/store";
 import { useState } from "react";
 import { state$ } from "../../lib/state"; 
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
-import { useRouter } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 
 
 export default function AddStore (){
@@ -48,25 +48,49 @@ export default function AddStore (){
 
 
         return (
+            
             <ThemedView style={styles.container}> 
-                <View style={styles.addStoreContainer}> 
-                    <TextInput 
-                        style={styles.TextInput}
-                        placeholder="Enter store name"
-                        placeholderTextColor="white"
-                        selectionColor="white"
-                        textAlign="center"
-                        value={storeName}
-                        onChangeText={setStoreName}
-                    />
-                    <Pressable 
-                        style={styles.addButton} 
-                        onPress= { () => handleAddStore() }
-                        >
-                        <ThemedText style={styles.addButtonText}>Add</ThemedText>
-                    </Pressable>
-                </View>
+            
+                <Stack.Screen
+                    options={{
+                        headerTitle: 'Add Store',
+                        presentation: 'formSheet',
+                        sheetGrabberVisible: true,
+                        headerLargeTitle: false,
+                        headerShown: true,
+                        headerTitleAlign: 'center',
+                        headerLeft: () => 
+                            <Pressable onPressIn={() => router.back()} >
+                                <Text style={styles.text} >Cancel</Text>
+                            </Pressable>,
+                        headerRight: () =>
+                            <Pressable onPressIn={handleAddStore}>
+                                <Text style={styles.text} >Save</Text>
+                            </Pressable>
+                    }}
+                
+                />
+             
+                    <View style={styles.addStoreContainer}> 
+                        <TextInput 
+                            style={styles.TextInput}
+                            placeholder="Enter store name"
+                            placeholderTextColor="white"
+                            selectionColor="white"
+                            textAlign="center"
+                            value={storeName}
+                            onChangeText={setStoreName}
+                        />
+                        <Pressable 
+                            style={styles.addButton} 
+                            onPress= { () => handleAddStore() }
+                            >
+                            <ThemedText style={styles.addButtonText}>Add</ThemedText>
+                        </Pressable>
+                    </View>
+               
             </ThemedView>
+          
         )
     };
     
@@ -76,6 +100,9 @@ const styles = StyleSheet.create({
             justifyContent: "center",
             width: '100%',
             flex: 1,
+            backgroundColor: 'black',
+    
+
         },
         addStoreContainer: {
             alignItems: "center",
@@ -119,5 +146,11 @@ const styles = StyleSheet.create({
             paddingLeft: 10,
             
         },
+        text: {
+            color: 'white',
+            fontSize: 18,
+            marginLeft: 10,
+            fontWeight: 'bold',
+    }
     })
 

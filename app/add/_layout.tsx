@@ -1,5 +1,5 @@
 import { Stack, useRouter } from "expo-router";
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function AddLayout(){
@@ -14,26 +14,6 @@ export default function AddLayout(){
                 headerTintColor: 'white',
                 headerStyle: { backgroundColor: 'black' }
             }}>
-                <Stack.Screen 
-                    name='index' 
-                    options={{
-                        headerTitle: 'Add Store',
-                        presentation: 'formSheet',
-                        sheetGrabberVisible: true,
-                        headerLargeTitle: false,
-                        headerShown: true,
-                        headerTitleAlign: 'center',
-                        headerLeft: () => 
-                            <Pressable>
-                                <Text style={styles.text} onPress={() => router.back()} >Cancel</Text>
-                            </Pressable>,
-                        headerRight: () => 
-                            <Pressable>
-                                <Text style={styles.text} >Save</Text>
-                            </Pressable>
-
-                }}
-                />
                 <Stack.Screen 
                     name='addItem' 
                     options={{
@@ -67,7 +47,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginLeft: 10,
         fontWeight: 'bold',
-
     }
 
 });
