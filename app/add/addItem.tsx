@@ -1,6 +1,6 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView"
 import { ThemedText } from "../../components/themedComponents/ThemedText"
-import { Pressable, StyleSheet, Text, TextInput } from "react-native"
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native"
 import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
 import { state$ } from "../../lib/state";
 import { useMemo, useState } from "react";
@@ -76,51 +76,51 @@ export default function  addItem() {
           headerTitleAlign: 'center',
           headerLeft: () => 
             <Pressable onPressIn={() => router.back()} style={{ marginLeft: 10 }}>
-              <Text style={styles.text} >Cancel</Text>
+              <Text style={styles.headerText} >Cancel</Text>
             </Pressable>,
           headerRight: () => 
             <Pressable onPressIn={handleAddItem}>
-              <Text style={styles.text} >Save</Text>
+              <Text style={styles.headerText} >Save</Text>
             </Pressable>
         }}
-      
       />
 
+      <View style={styles.inputContainer}> 
+        <Text style={styles.inputHeaderText}>Name</Text>
 
-      <TextInput 
-        style={styles.textInput}
-        placeholder="Enter item name"
-        placeholderTextColor="white"
-        selectionColor="white"
-        textAlign="center"
-        autoFocus={false}
-        returnKeyType="done"
-        value={itemName}
-        onChangeText={setItemName}
-    
+        <TextInput 
+          style={styles.textInput}
+          placeholder="Enter item name"
+          placeholderTextColor="white"
+          selectionColor="white"
+          textAlign="center"
+          autoFocus={false}
+          returnKeyType="done"
+          value={itemName}
+          onChangeText={setItemName}
+        />
+      </View>
+
+      <View style={styles.inputContainer}> 
+        <Text style={styles.inputHeaderText}>Quantity</Text>
+        <TextInput 
+          style={styles.textInput}
+          value={itemQuantity}
+          onChangeText={setItemQuantity}
+          placeholder="Enter item quantity"
+          placeholderTextColor="white"
+          selectionColor="white"
+          textAlign="center"
+          keyboardType="numeric"
+          returnKeyType="done"
+        />
+      </View>
+
+      <View style={styles.inputContainer}> 
+        <Text style={styles.inputHeaderText}>Store</Text>
+        <StoreSelectList data={data} setSelectedStore={setSelectedStore} />
+      </View>
       
-      />
-      <TextInput 
-        style={styles.textInput}
-        value={itemQuantity}
-        onChangeText={setItemQuantity}
-        placeholder="Enter item quantity"
-        placeholderTextColor="white"
-        selectionColor="white"
-        textAlign="center"
-        keyboardType="numeric"
-        returnKeyType="done"
-       
-      />
-      
-      <StoreSelectList data={data} setSelectedStore={setSelectedStore} />
-      
-      <Pressable 
-        style={styles.addButton} 
-        onPress={handleAddItem} // Placeholder for item addition logic
-        >
-        <ThemedText style={styles.addButtonText}>Add Item</ThemedText>
-      </Pressable>
 
     </ThemedView>
 
@@ -132,8 +132,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    paddingTop: 60,
   }, 
+  inputContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+
+  },
   textInput: {
     borderColor: 'white',
     borderWidth: 2,
@@ -162,11 +168,17 @@ const styles = StyleSheet.create({
     width: '100%',
     textAlign: 'center',
   },
-  text: {
+  headerText: {
         color: 'white',
         fontSize: 18,
         marginLeft: 10,
         fontWeight: 'bold',
-    }
+    },
+  inputHeaderText: {
+    color: 'white',
+    fontSize: 20,
+    marginBottom: 10,
+    textAlign: 'left',
+  },
 
 })
