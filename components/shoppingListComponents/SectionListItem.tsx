@@ -108,7 +108,7 @@ export default SectionListItem
 const styles = StyleSheet.create({
   text: {
     fontSize: 20,
-    backgroundColor: "#003B66",
+    backgroundColor: "#0A1931",
     marginVertical: 8,
     marginHorizontal: 16,
     alignItems: "center",
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#003B66',
+    backgroundColor: '#0A1931',
     margin: 10,
     alignItems: "center",
     flexDirection: "row",

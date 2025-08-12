@@ -33,7 +33,7 @@ const StoreSelectList  = ( { data, setSelectedStore } : StoreSlectListProp ) => 
           textAlign: 'center',
         }}
         dropdownStyles={{
-          backgroundColor: '#003B66',
+          backgroundColor: '#0A1931',
           borderColor: '#FFE4A1',
           borderWidth: 2,
         }}

@@ -39,7 +39,7 @@ export default function RootLayout(){
                             headerShown: true, 
                             title: 'Shopping List', 
                             headerTintColor: 'white',
-                            headerStyle: { backgroundColor: '#003B66',  },
+                            headerStyle: { backgroundColor: '#0A1931',  },
                             headerTitleStyle: { color: '#FFE4A1', fontSize: 20, fontWeight: 'bold' },
                         
                             }}>

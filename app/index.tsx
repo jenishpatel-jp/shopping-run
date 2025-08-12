@@ -112,14 +112,14 @@ const styles = StyleSheet.create({
   safeAreaView: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#003B66",
+    backgroundColor: "#0A1931",
     flex: 1,
   },
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#003B66",
+    backgroundColor: "#0A1931",
     width: "100%",
   },
   text: {
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   item: {
-    backgroundColor: "#003B66",
+    backgroundColor: "#0A1931",
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   sectionListContainer: {
     width: "100%",
-    backgroundColor: "#003B66",
+    backgroundColor: "#0A1931",
 
   },
   sectionListContent: {

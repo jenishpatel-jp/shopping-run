@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     },
     container: {
         padding: 10,
-        backgroundColor: "#003B66",
+        backgroundColor: "#0A1931",
         
     },
     rightAction: {

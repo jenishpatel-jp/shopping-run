@@ -75,7 +75,7 @@ export default function  addItem() {
           headerShown: true,
           headerTitleAlign: 'center',
           headerTitleStyle: { color: '#FFE4A1', fontSize: 20, fontWeight: 'bold' },
-          headerStyle: { backgroundColor: '#003B66' },
+          headerStyle: { backgroundColor: '#0A1931' },
           headerLeft: () => 
             <Pressable onPressIn={() => router.back()} style={{ marginLeft: 10 }}>
               <Text style={styles.headerText} >Cancel</Text>
@@ -136,13 +136,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingTop: 60,
-    backgroundColor: '#003B66',
+    backgroundColor: '#0A1931',
   }, 
   inputContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    backgroundColor: '#003B66',
+    backgroundColor: '#0A1931',
 
   },
 
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginLeft: '10%',
     paddingTop: 30,
-    backgroundColor: '#003B66',
+    backgroundColor: '#0A1931',
   },
 
   textInput: {
@@ -168,10 +168,10 @@ const styles = StyleSheet.create({
     color: '#FFE4A1',
     borderRadius: 8,
     padding: 10,
-    backgroundColor: '#003B66',
+    backgroundColor: '#0A1931',
   },
   addButton: {
-    backgroundColor: '#003B66',
+    backgroundColor: '#0A1931',
     color: '#FFE4A1',
     width: '80%',
     padding: 10,

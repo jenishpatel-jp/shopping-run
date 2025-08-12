@@ -59,7 +59,7 @@ export default function AddStore (){
                         headerShown: true,
                         headerTitleAlign: 'center',
                         headerTitleStyle: { color: '#FFE4A1', fontSize: 20, fontWeight: 'bold' },
-                        headerStyle: { backgroundColor: '#003B66' },
+                        headerStyle: { backgroundColor: '#0A1931' },
                         headerLeft: () => 
                             <Pressable onPressIn={() => router.back()} >
                                 <Text style={styles.text} >Cancel</Text>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
             paddingTop: 100,
             width: '100%',
             flex: 1,
-            backgroundColor: '#003B66',
+            backgroundColor: '#0A1931',
         },
         addStoreContainer: {
             alignItems: "center",
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
 
         },
         addButton: {
-            backgroundColor: '#003B66',
+            backgroundColor: '#0A1931',
             color: '#FFE4A1',
             width: '100%',
             padding: 4,
