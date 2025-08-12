@@ -15,17 +15,26 @@ import { router, Stack } from "expo-router";
 
 export default function  addItem() {
 
-  const formattedStores = () => {
-    const stores = use$(state$.stores);
-    const formattedData = stores.map((store) => ({
+  // const formattedStores = () => {
+
+
+  //   const stores = use$(state$.stores);
+  //   const formattedData = stores.map((store) => ({
+  //     key: store.storeId.toString(),
+  //     value: store.storeName
+  //   }));
+  //   return formattedData;
+  // };
+
+  // const data = formattedStores();
+
+  const stores = use$(state$.stores);
+  const data = useMemo(() => {
+    return stores.map((store) => ({
       key: store.storeId.toString(),
-      value: store.storeName
+      value: store.storeName,
     }));
-    return formattedData;
-  };
-
-  const data = formattedStores();
-
+  }, [stores]);
 
 //   const formattedData = stores.map((store) => ({
 //   key: store.storeId.toString(),

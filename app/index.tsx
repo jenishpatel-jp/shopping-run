@@ -94,7 +94,7 @@ export default function ShoppingList() {
           
           />
           <ThemedView style={styles.container}> 
-            <StatusBar style="auto" backgroundColor="#FFE4A1"/>            
+            <StatusBar style="auto" />            
 
             <SectionList 
               sections={filteredSectionedData}
