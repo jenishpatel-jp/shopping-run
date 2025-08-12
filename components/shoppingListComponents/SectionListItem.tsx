@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   },
   textPurchased: {
     fontSize: 20,
-    color: "white",
+    color: "#FFE4A1",
     textDecorationLine: "line-through",
 
   },

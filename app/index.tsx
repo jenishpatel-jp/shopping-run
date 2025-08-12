@@ -4,6 +4,7 @@ import { ThemedView } from "../components/themedComponents/ThemedView";
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import Feather from '@expo/vector-icons/Feather';
 
 import { Stack, useRouter } from "expo-router";
 import { useEffect } from "react";
@@ -66,7 +67,7 @@ export default function ShoppingList() {
       <SafeAreaView style={styles.safeAreaView}> 
           <Stack.Screen 
             options={{
-              headerTitle: "Shopping List",
+              headerTitle: "",
               headerRight: () => 
               <View style={styles.headerRightView}>
                 <Pressable 
@@ -81,13 +82,19 @@ export default function ShoppingList() {
                   > 
                   <Ionicons name="add-circle-outline" size={30} color="#FFE4A1" />
                 </Pressable>
-
               </View>,
+              headerLeft: () => {
+                return (
+                  <Pressable onPressIn={() => console.log("Settings button pressed!")} style={{ paddingLeft: 10 }}>
+                    <Feather name="settings" size={30} color="#FFE4A1" />
+                  </Pressable>
+                );
+              }
             }}
           
           />
           <ThemedView style={styles.container}> 
-            <StatusBar style="auto" />            
+            <StatusBar style="auto" backgroundColor="#FFE4A1"/>            
 
             <SectionList 
               sections={filteredSectionedData}
