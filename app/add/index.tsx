@@ -46,11 +46,15 @@ export default function AddStore (){
     };
 
     const colorScheme = useColorScheme();
-    const themeContainerStyle = colorScheme === 'dark' ? styles.darkContainer : styles.lightContainer;
-    const themeBorderStyle = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
+    const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColor : styles.lightBackgroundcolour;
+    const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
+    const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
+    
+
+
         return (
             
-            <ThemedView style={[styles.container, themeContainerStyle]}> 
+            <ThemedView style={[styles.container, themeBackgroundColour]}> 
             
                 <Stack.Screen
                     options={{
@@ -60,36 +64,36 @@ export default function AddStore (){
                         headerLargeTitle: false,
                         headerShown: true,
                         headerTitleAlign: 'center',
-                        headerTitleStyle: { color: '#FFE4A1', fontSize: 20, fontWeight: 'bold' },
-                        headerStyle: { backgroundColor: '#0A1931' },
+                        headerTitleStyle: [styles.headerTitleIcons, themeColour],
+                        headerStyle: { backgroundColor: colorScheme === 'dark' ? '#0A1931' : '#FFE4A1' },
                         headerLeft: () => 
                             <Pressable onPressIn={() => router.back()} >
-                                <Text style={styles.text} >Cancel</Text>
+                                <Text style={[styles.text, themeColour]} >Cancel</Text>
                             </Pressable>,
                         headerRight: () =>
                             <Pressable onPressIn={handleAddStore}>
-                                <Text style={styles.text} >Save</Text>
+                                <Text style={[styles.text, themeColour]} >Save</Text>
                             </Pressable>
                     }}
                 
                 />
              
-                    <View style={[styles.addStoreContainer, themeBorderStyle]}> 
-                        <Text style={styles.labelTextInput}>Store Name</Text>
+                    <View style={[styles.addStoreContainer, themeBorderColour]}> 
+                        <Text style={[styles.labelTextInput, themeColour]}>Store Name</Text>
                         <TextInput 
-                            style={styles.textInput}
+                            style={[styles.textInput, themeBorderColour, themeColour]}
                             placeholder="Enter store name"
-                            placeholderTextColor="#FFE4A1"
-                            selectionColor="#FFE4A1"
+                            placeholderTextColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
+                            selectionColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
                             textAlign="center"
                             value={storeName}
                             onChangeText={setStoreName}
                         />
                         <Pressable 
-                            style={styles.addButton} 
+                            style={[styles.addButton, themeBackgroundColour]} 
                             onPress= { () => handleAddStore() }
                             >
-                            <ThemedText style={styles.addButtonText}>Add</ThemedText>
+                            <ThemedText style={[styles.addButtonText, themeColour, themeBorderColour]}>Add</ThemedText>
                         </Pressable>
                     </View>
                
@@ -105,12 +109,18 @@ const styles = StyleSheet.create({
             width: '100%',
             flex: 1,
         },
-        lightContainer: {
+        lightBackgroundcolour: {
             backgroundColor: "#FFE4A1",
         },
-        darkContainer: {
+        darkBackgroundColor: {
             backgroundColor: "#0A1931",
         }, 
+        lightColour: {
+            color: "#0A1931",
+        },
+        darkColour: {
+            color: "#FFE4A1",
+        },
         addStoreContainer: {
             alignItems: "center",
             justifyContent: "center",
@@ -130,7 +140,6 @@ const styles = StyleSheet.create({
         },
 
         labelTextInput: {
-            color: '#FFE4A1',
             fontSize: 20,
             marginBottom: 10,
             fontWeight: 'bold',
@@ -138,31 +147,25 @@ const styles = StyleSheet.create({
             alignSelf: 'flex-start',
         },
         textInput: {
-            borderColor: '#FFE4A1',
             borderWidth: 2,
             width: '100%',
             marginBottom: 10,
             height: 70,
             textAlign: 'center',
             fontSize: 24,
-            color: '#FFE4A1',
             borderRadius: 8,
             padding: 10,
 
         },
         addButton: {
-            backgroundColor: '#0A1931',
-            color: '#FFE4A1',
             width: '100%',
             padding: 4,
             alignItems: 'flex-end',
         },
 
         addButtonText: {
-            color: '#FFE4A1',
             fontSize: 20,
             width: '40%',
-            borderColor: '#FFE4A1',
             borderRadius: 8,
             borderWidth: 2,
             textAlign: 'center',
@@ -171,10 +174,14 @@ const styles = StyleSheet.create({
             
         },
         text: {
-            color: '#FFE4A1',
             fontSize: 18,
             marginLeft: 10,
             fontWeight: 'bold',
-        }
+        },
+        headerTitleIcons: {
+            fontSize: 20, 
+            fontWeight: 'bold'
+
+        },
     })
 
