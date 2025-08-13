@@ -63,40 +63,41 @@ export default function ShoppingList() {
 
   const colorScheme = useColorScheme();
 
-  const themeContainerStyle = colorScheme === "dark" ? styles.darkContainer : styles.lightContainer;
+  const themeBackgroundColour = colorScheme === "dark" ? styles.darkBackgroundColour : styles.lightBackgroundColour;
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={[styles.container, themeContainerStyle]}> 
+      <SafeAreaView style={[styles.container, themeBackgroundColour]}> 
           <Stack.Screen 
             options={{
               headerTitle: "",
               headerRight: () => 
-              <View style={styles.headerRightView}>
+              <View style={[styles.headerRightView]}>
                 <Pressable 
                   style={styles.headerRightButton}
                   onPressIn={() => router.push("/add")}
                   > 
-                  <MaterialCommunityIcons name="store-plus" size={30} color="#FFE4A1" />
+                  <MaterialCommunityIcons name="store-plus" size={30} color={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"} />
                 </Pressable>
                 <Pressable 
                   style={styles.headerRightButton}
                   onPressIn={() => router.push("/add/addItem")}
                   > 
-                  <Ionicons name="add-circle-outline" size={30} color="#FFE4A1" />
+                  <Ionicons name="add-circle-outline" size={30} color={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"} />
                 </Pressable>
               </View>,
               headerLeft: () => {
                 return (
                   <Pressable onPressIn={() => console.log("Settings button pressed!")} style={{ paddingLeft: 10 }}>
-                    <Feather name="settings" size={30} color="#FFE4A1" />
+                    <Feather name="settings" size={30} color={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"} />
                   </Pressable>
                 );
-              }
+              },
+              headerStyle: { backgroundColor: colorScheme === 'dark' ? '#0A1931' : '#FFE4A1' },
             }}
           
           />
-          <ThemedView style={[styles.container, themeContainerStyle]}> 
+          <ThemedView style={[styles.container, themeBackgroundColour]}> 
             <StatusBar style="auto" />            
 
             <SectionList 
@@ -126,12 +127,24 @@ const styles = StyleSheet.create({
     backgroundColor: "#0A1931",
     width: "100%",
   },
-  lightContainer: {
+  lightBackgroundColour: {
     backgroundColor: "#FFE4A1",
   },
-  darkContainer: {
+  darkBackgroundColour: {
     backgroundColor: "#0A1931",
   }, 
+  lightColour: {
+    color: "#0A1931",
+  },
+  darkColour: {
+    color: "#FFE4A1",
+  },
+  lightBorderColour: {
+    borderColor: '#0A1931',
+  },
+  darkBorderColour: {
+    borderColor: '#FFE4A1',
+  },  
   text: {
     fontSize: 20,
   },
@@ -145,16 +158,10 @@ const styles = StyleSheet.create({
   headerRightButton: {
     padding: 5,
   },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#FFE4A1",
-  },
   sectionListContainer: {
     width: "100%",
   },
   sectionListContent: {
     justifyContent: "center",
-
   },
 });
