@@ -12,21 +12,7 @@ import { router, Stack } from "expo-router";
 
 // Format the data for the StoreSelectList component
 
-
 export default function  addItem() {
-
-  // const formattedStores = () => {
-
-
-  //   const stores = use$(state$.stores);
-  //   const formattedData = stores.map((store) => ({
-  //     key: store.storeId.toString(),
-  //     value: store.storeName
-  //   }));
-  //   return formattedData;
-  // };
-
-  // const data = formattedStores();
 
   const stores = use$(state$.stores);
   const data = useMemo(() => {
@@ -36,10 +22,7 @@ export default function  addItem() {
     }));
   }, [stores]);
 
-//   const formattedData = stores.map((store) => ({
-//   key: store.storeId.toString(),
-//   value: store.storeName,
-// }));
+
 
   const db = useSQLiteContext();
 

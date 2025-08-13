@@ -15,7 +15,6 @@ import { useStoreDatabase } from "../lib/store";
 import { state$ } from "../lib/state"; // Import the global state
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
-import { Stores } from "../components/shoppingListComponents/Stores";
 import { useItemDatabase } from "../lib/items";
 import { use$ } from "@legendapp/state/react";
 import SectionListItem from "../components/shoppingListComponents/SectionListItem";
