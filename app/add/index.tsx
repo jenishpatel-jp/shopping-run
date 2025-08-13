@@ -1,6 +1,6 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView";
 import { ThemedText } from "../../components/themedComponents/ThemedText";
-import { StyleSheet, Pressable, View, TextInput, Text } from "react-native";
+import { StyleSheet, Pressable, View, TextInput, Text, useColorScheme } from "react-native";
 import { useSQLiteContext } from "expo-sqlite";
 import { useStoreDatabase } from "../../lib/store";
 import { useState } from "react";
@@ -45,10 +45,12 @@ export default function AddStore (){
         }
     };
 
-
+    const colorScheme = useColorScheme();
+    const themeContainerStyle = colorScheme === 'dark' ? styles.darkContainer : styles.lightContainer;
+    const themeBorderStyle = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
         return (
             
-            <ThemedView style={styles.container}> 
+            <ThemedView style={[styles.container, themeContainerStyle]}> 
             
                 <Stack.Screen
                     options={{
@@ -72,7 +74,7 @@ export default function AddStore (){
                 
                 />
              
-                    <View style={styles.addStoreContainer}> 
+                    <View style={[styles.addStoreContainer, themeBorderStyle]}> 
                         <Text style={styles.labelTextInput}>Store Name</Text>
                         <TextInput 
                             style={styles.textInput}
@@ -102,8 +104,13 @@ const styles = StyleSheet.create({
             paddingTop: 100,
             width: '100%',
             flex: 1,
-            backgroundColor: '#0A1931',
         },
+        lightContainer: {
+            backgroundColor: "#FFE4A1",
+        },
+        darkContainer: {
+            backgroundColor: "#0A1931",
+        }, 
         addStoreContainer: {
             alignItems: "center",
             justifyContent: "center",
@@ -114,8 +121,14 @@ const styles = StyleSheet.create({
             marginBottom: 100,
             textAlign: 'left',
             borderColor: '#FFE4A1',
-            
         },
+        lightBorderColour: {
+            borderColor: '#0A1931',
+        },
+        darkBorderColour: {
+            borderColor: '#FFE4A1',
+        },
+
         labelTextInput: {
             color: '#FFE4A1',
             fontSize: 20,

@@ -61,9 +61,13 @@ export default function ShoppingList() {
   const sectionedData = sectionedItems();
   const filteredSectionedData = sectionedData.filter(section => section.data && section.data.length > 0);
 
+  const colorScheme = useColorScheme();
+
+  const themeContainerStyle = colorScheme === "dark" ? styles.darkContainer : styles.lightContainer;
+
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.safeAreaView}> 
+      <SafeAreaView style={[styles.container, themeContainerStyle]}> 
           <Stack.Screen 
             options={{
               headerTitle: "",
@@ -92,7 +96,7 @@ export default function ShoppingList() {
             }}
           
           />
-          <ThemedView style={styles.container}> 
+          <ThemedView style={[styles.container, themeContainerStyle]}> 
             <StatusBar style="auto" />            
 
             <SectionList 
@@ -115,12 +119,6 @@ export default function ShoppingList() {
 }
 
 const styles = StyleSheet.create({
-  safeAreaView: {
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#0A1931",
-    flex: 1,
-  },
   container: {
     flex: 1,
     alignItems: "center",
@@ -128,6 +126,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#0A1931",
     width: "100%",
   },
+  lightContainer: {
+    backgroundColor: "#FFE4A1",
+  },
+  darkContainer: {
+    backgroundColor: "#0A1931",
+  }, 
   text: {
     fontSize: 20,
   },
@@ -141,12 +145,6 @@ const styles = StyleSheet.create({
   headerRightButton: {
     padding: 5,
   },
-  item: {
-    backgroundColor: "#0A1931",
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
   title: {
     fontSize: 32,
     fontWeight: "bold",
@@ -154,8 +152,6 @@ const styles = StyleSheet.create({
   },
   sectionListContainer: {
     width: "100%",
-    backgroundColor: "#0A1931",
-
   },
   sectionListContent: {
     justifyContent: "center",
