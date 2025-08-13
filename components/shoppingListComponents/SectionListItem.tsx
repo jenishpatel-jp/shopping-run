@@ -1,5 +1,5 @@
 import { SQLiteDatabase } from "expo-sqlite";
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import { Text, View, StyleSheet, Pressable, useColorScheme } from "react-native";
 import { state$ } from "../../lib/state";
 
 //React Native Gesture Handler and Animated
@@ -80,9 +80,14 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
     }
   };
 
+  const colorScheme = useColorScheme();
+  const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
+  const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour
+
+
   return (
     <ReanimatedSwipeable 
-      containerStyle={styles.container}
+      containerStyle={[ styles.container, themeBackgroundColour ]}
       friction={1.5}
       rightThreshold={10}
       renderRightActions={RightAction}
@@ -92,12 +97,12 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
         }
       }}
     > 
-      <View style={styles.itemContainer}>
+      <View style={[  styles.itemContainer, themeBackgroundColour]}>
         <Pressable onPress={handlePress} >
-          <Feather name={isPurchased ? "check-circle" : "circle"} size={24} color="#FFE4A1" />
+          <Feather name={isPurchased ? "check-circle" : "circle"} size={24} color={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}/>
         </Pressable>
 
-        <Text style={[styles.text, isPurchased && styles.textPurchased] }>{itemName}</Text>
+        <Text style={[styles.text, themeColour, isPurchased && [styles.textPurchased, themeColour]] }>{itemName}</Text>
       </View>
     </ReanimatedSwipeable>
   )
@@ -108,22 +113,18 @@ export default SectionListItem
 const styles = StyleSheet.create({
   text: {
     fontSize: 20,
-    backgroundColor: "#0A1931",
     marginVertical: 8,
     marginHorizontal: 16,
     alignItems: "center",
     justifyContent: "center",
-    color: "#FFE4A1",
   },
   textPurchased: {
     fontSize: 20,
-    color: "#FFE4A1",
     textDecorationLine: "line-through",
 
   },
   container: {
     flex: 1,
-    backgroundColor: '#0A1931',
     margin: 10,
     alignItems: "center",
     flexDirection: "row",
@@ -143,7 +144,19 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     width: '100%',
     paddingHorizontal: 20,
-  }
+  },
+  lightBackgroundColour: {
+    backgroundColor: "#FFE4A1",
+  },
+  darkBackgroundColour: {
+    backgroundColor: "#0A1931",
+  }, 
+  lightColour: {
+    color: "#0A1931",
+  },
+  darkColour: {
+    color: "#FFE4A1",
+  },
 
 
 });

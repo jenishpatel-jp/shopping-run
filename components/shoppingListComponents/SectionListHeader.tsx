@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, useColorScheme } from "react-native";
 import { state$ } from "../../lib/state";
 import { SQLiteDatabase } from "expo-sqlite";
 
@@ -19,17 +19,19 @@ type SectionListHeaderProps = {
 };
 
 const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
-  const styleAnimation = useAnimatedStyle(() => {
-
+  
+    const styleAnimation = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: drag.value + 50 }]
     };
   });
 
+    const colorScheme = useColorScheme();
+
   return (
     <Reanimated.View style={styleAnimation}>
       <View style={styles.rightAction}>
-        <Feather name="trash-2" size={24} color="#FFE4A1" />
+        <Feather name="trash-2" size={24} color={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}/>
       </View>
     </Reanimated.View>
   )
@@ -54,9 +56,13 @@ const SectionListHeader = ( { title, db, storeId } : SectionListHeaderProps ) =>
         }
     };
 
+    const colorScheme = useColorScheme();
+    const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
+    const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
+
     return (
         <ReanimatedSwipeable
-            containerStyle={styles.container}
+            containerStyle={[styles.container, themeBackgroundColour]}
             friction={1.5}
             rightThreshold={10}
             renderRightActions={RightAction}
@@ -66,7 +72,7 @@ const SectionListHeader = ( { title, db, storeId } : SectionListHeaderProps ) =>
                 }
             }}
         >
-            <Text style={styles.title} >{title}</Text>
+            <Text style={[styles.title, themeColour]} >{title}</Text>
         </ReanimatedSwipeable>
     )
 }
@@ -77,12 +83,10 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: "bold",
-        color: "#FFE4A1",
         textAlign: "center",
     },
     container: {
         padding: 10,
-        backgroundColor: "#0A1931",
         
     },
     rightAction: {
@@ -93,6 +97,18 @@ const styles = StyleSheet.create({
         color: '#FFE4A1',
         fontSize: 14,
         textAlign: 'center',
-    }
+    },
+    lightBackgroundColour: {
+    backgroundColor: "#FFE4A1",
+  } ,
+    darkBackgroundColour: {
+        backgroundColor: "#0A1931",
+    }, 
+    lightColour: {
+        color: "#0A1931",
+    },
+    darkColour: {
+        color: "#FFE4A1",
+    },
 
 });
