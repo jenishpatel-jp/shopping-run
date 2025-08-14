@@ -180,7 +180,6 @@ const styles = StyleSheet.create({
         headerTitleIcons: {
             fontSize: 20, 
             fontWeight: 'bold'
-
         },
     })
 

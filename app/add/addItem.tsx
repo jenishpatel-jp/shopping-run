@@ -1,6 +1,6 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView"
 import { ThemedText } from "../../components/themedComponents/ThemedText"
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native"
+import { Pressable, StyleSheet, Text, TextInput, useColorScheme, View } from "react-native"
 import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
 import { state$ } from "../../lib/state";
 import { useMemo, useState } from "react";
@@ -55,6 +55,11 @@ export default function  addItem() {
     console.log(state$.items.get());
   };
 
+  const colorScheme = useColorScheme();
+  const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
+  const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
+  const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
+
   return (
     <ThemedView style={styles.container}>
 
@@ -66,28 +71,28 @@ export default function  addItem() {
           headerLargeTitle: false,
           headerShown: true,
           headerTitleAlign: 'center',
-          headerTitleStyle: { color: '#FFE4A1', fontSize: 20, fontWeight: 'bold' },
-          headerStyle: { backgroundColor: '#0A1931' },
+          headerTitleStyle: [styles.headerTitleIcons, themeColour ] ,
+          headerStyle: { backgroundColor: colorScheme === 'dark' ? '#0A1931' : '#FFE4A1'},
           headerLeft: () => 
-            <Pressable onPressIn={() => router.back()} style={{ marginLeft: 10 }}>
-              <Text style={styles.headerText} >Cancel</Text>
+            <Pressable onPressIn={() => router.back()} style={[styles.headerPressable]} >
+              <Text style={[styles.headerText, themeColour]} >Cancel</Text>
             </Pressable>,
           headerRight: () => 
-            <Pressable onPressIn={handleAddItem}>
-              <Text style={styles.headerText} >Save</Text>
+            <Pressable onPressIn={handleAddItem} style={[styles.headerPressable]} >
+              <Text style={[styles.headerText, themeColour]} >Save</Text>
             </Pressable>
         }}
       />
 
-      <View style={styles.inputContainer}> 
+      <View style={[styles.inputContainer, themeBackgroundColour]}> 
 
-        <Text style={styles.inputHeaderText}>Name</Text>
+        <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Name</Text>
 
         <TextInput 
-          style={styles.textInput}
+          style={[styles.textInput, themeBackgroundColour, themeColour, themeBorderColour]}
           placeholder="Enter item name"
-          placeholderTextColor="#FFE4A1"
-          selectionColor="#FFE4A1"
+          placeholderTextColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
+          selectionColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
           textAlign="center"
           autoFocus={false}
           returnKeyType="done"
@@ -96,23 +101,23 @@ export default function  addItem() {
         />
       </View>
 
-      <View style={styles.inputContainer}> 
-        <Text style={styles.inputHeaderText}>Quantity</Text>
+      <View style={[styles.inputContainer, themeBackgroundColour]}> 
+        <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Quantity</Text>
         <TextInput 
-          style={styles.textInput}
+          style={[styles.textInput, themeBackgroundColour, themeColour, themeBorderColour]}
           value={itemQuantity}
           onChangeText={setItemQuantity}
           placeholder="Enter item quantity"
-          placeholderTextColor="#FFE4A1"
-          selectionColor="#FFE4A1"
+          placeholderTextColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
+          selectionColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
           textAlign="center"
           keyboardType="numeric"
           returnKeyType="done"
         />
       </View>
 
-      <View style={styles.inputContainer}> 
-        <Text style={styles.inputHeaderText}>Store</Text>
+      <View style={[styles.inputContainer, themeBackgroundColour]}> 
+        <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Store</Text>
         <StoreSelectList data={data} setSelectedStore={setSelectedStore} />
       </View>
       
@@ -128,62 +133,63 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingTop: 60,
-    backgroundColor: '#0A1931',
   }, 
   inputContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    backgroundColor: '#0A1931',
-
   },
 
    inputHeaderText: {
-    color: '#FFE4A1',
     fontSize: 20,
     marginBottom: 10,
     textAlign: 'left',
     alignSelf: 'flex-start',
     marginLeft: '10%',
     paddingTop: 30,
-    backgroundColor: '#0A1931',
   },
 
   textInput: {
-    borderColor: '#FFE4A1',
     borderWidth: 2,
     width: '80%',
     marginBottom: 10,
     height: 50,
     textAlign: 'center',
     fontSize: 24,
-    color: '#FFE4A1',
     borderRadius: 8,
     padding: 10,
-    backgroundColor: '#0A1931',
-  },
-  addButton: {
-    backgroundColor: '#0A1931',
-    color: '#FFE4A1',
-    width: '80%',
-    padding: 10,
-    alignItems: 'center',
-    borderRadius: 8,
-    borderWidth: 2,
-    borderColor: '#FFE4A1',
-  }, 
-  addButtonText: {
-    color: '#FFE4A1',
-    fontSize: 24,
-    width: '100%',
-    textAlign: 'center',
   },
   headerText: {
-        color: '#FFE4A1',
         fontSize: 18,
         marginLeft: 10,
         fontWeight: 'bold',
     },
+  lightBackgroundColour: {
+    backgroundColor: "#FFE4A1",
+  },
+  darkBackgroundColour: {
+    backgroundColor: "#0A1931",
+  }, 
+  lightColour: {
+    color: "#0A1931",
+  },
+  darkColour: {
+    color: "#FFE4A1",
+  },
+  lightBorderColour: {
+    borderColor: '#0A1931',
+  },
+  darkBorderColour: {
+    borderColor: '#FFE4A1',
+  },
+  headerTitleIcons: {
+    fontSize: 20, 
+    fontWeight: 'bold'
+  },
+  headerPressable: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
  
 
 })

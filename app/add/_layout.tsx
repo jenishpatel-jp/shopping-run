@@ -14,28 +14,6 @@ export default function AddLayout(){
                 headerTintColor: 'white',
                 headerStyle: { backgroundColor: 'black' }
             }}>
-                {/* <Stack.Screen 
-                    name='addItem' 
-                    options={{
-                        headerTitle: 'Add Item',
-                        presentation: 'formSheet',
-                        sheetGrabberVisible: true,
-                        headerLargeTitle: false,
-                        headerTitleAlign: 'center',
-                        headerShown: true,
-                        headerLeft: () => 
-                            <Pressable 
-                                onPress={() => router.back()}
-                                style={{ marginLeft: 10 }}
-                            >
-                                <Text style={styles.text} >Cancel</Text>
-                            </Pressable>,
-                        headerRight: () => 
-                            <Pressable>
-                                <Text style={styles.text} >Save</Text>
-                            </Pressable>    
-                    }}    
-                /> */}
             </Stack>
         </SafeAreaProvider>
     );
