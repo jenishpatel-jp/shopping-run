@@ -61,7 +61,7 @@ export default function  addItem() {
   const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
 
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={[styles.container, themeBackgroundColour]}>
 
       <Stack.Screen 
         options={{
