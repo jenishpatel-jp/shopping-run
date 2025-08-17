@@ -5,29 +5,49 @@
     "scheme": "shopping-run",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icons/adaptive-icon.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/icons/splash-icon-dark.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FFE4A1"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "icon": {
+        "dark": "./assets/icons/ios-dark.png",
+        "light":" ./assets/icons/ios-light.png",
+        "tinted": "./assets/icons/ios-tinted.png"
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/icons/adaptive-icon.png",
+        "monoChromeImage":"./assets/icons/adaptive-icon.png",
+        "backgroundColor": "#FFE4A1"
       },
       "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icons/ios-dark.png"
     },
     "plugins": [
       "expo-router",
+        [
+          "expo-splash-screen",
+          {
+            "image": "./assets/icons/splash-icon-dark.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#FFE4A1",
+            "dark": {
+              "image": "./assets/icons/splash-icon-light.png",
+              "resizeMode": "contain",
+              "backgroundColor": "#0A1931"
+            }
+          }
+        ],
+      
       "expo-sqlite"
     ]
   }
