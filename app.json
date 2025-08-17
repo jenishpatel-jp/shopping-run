@@ -33,21 +33,7 @@
       "favicon": "./assets/icons/ios-dark.png"
     },
     "plugins": [
-      "expo-router",
-        [
-          "expo-splash-screen",
-          {
-            "image": "./assets/icons/splash-icon-dark.png",
-            "resizeMode": "contain",
-            "backgroundColor": "#FFE4A1",
-            "dark": {
-              "image": "./assets/icons/splash-icon-light.png",
-              "resizeMode": "contain",
-              "backgroundColor": "#0A1931"
-            }
-          }
-        ],
-      
+      "expo-router",      
       "expo-sqlite"
     ]
   }
