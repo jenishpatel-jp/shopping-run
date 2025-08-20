@@ -33,6 +33,18 @@ export const useItemDatabase = (db: SQLiteDatabase) => {
         }
     };
 
+    // Delete all items from the database
+    const deleteAllItems = async () => {
+        try {
+            const result = await db.runAsync('DELETE FROM items;');
+            console.log("All items deleted successfully:", result);
+
+        } catch (error) {
+            console.error("Error deleting all items:", error);
+            throw error;
+        }
+    };
+
     // Fetch all items from the database
     type Items = {
         itemId: number;
