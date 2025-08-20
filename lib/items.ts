@@ -68,6 +68,6 @@ export const useItemDatabase = (db: SQLiteDatabase) => {
         }
     };
 
-    return { addItem, deleteItem, fetchAllItems };
+    return { addItem, deleteItem, deleteAllItems, fetchAllItems };
 
 }
