@@ -32,6 +32,17 @@ export const useStoreDatabase = (db: SQLiteDatabase) => {
         }
     };
 
+    // Deleete all stores from the database
+    const deleteAllStores = async () => {
+        try {
+            const result = await db.runAsync('DELETE FROM stores;');
+            console.log("All stores deleted successfully:", result);
+        } catch (error) {
+            console.error("Error deleting all stores:", error);
+            throw error;
+        }
+    };
+
     // fetch all stores from the database
     type Stores = {
         storeId: number;
@@ -53,6 +64,6 @@ export const useStoreDatabase = (db: SQLiteDatabase) => {
     }
 
 
-    return { addStore, deleteStore, fetchStores }
+    return { addStore, deleteStore, deleteAllStores, fetchStores }
 
 };
