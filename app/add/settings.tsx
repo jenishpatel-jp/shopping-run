@@ -48,8 +48,7 @@ export default function settings() {
       />
 
       <View 
-      
-        style={[styles.inputContainer, themeBackgroundColour]}> 
+        style={[styles.viewContainer, themeBackgroundColour]}> 
   
         <Pressable 
           style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}
@@ -59,7 +58,7 @@ export default function settings() {
         </Pressable>
       </View>
 
-      <View style={[styles.inputContainer, themeBackgroundColour]}> 
+      <View style={[styles.viewContainer, themeBackgroundColour]}> 
         <Pressable 
           style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}
           onPress={() => console.log("Delete All Stores button pressed!")}
@@ -80,20 +79,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 60,
   }, 
-  inputContainer: {
+  viewContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
   },
 
-   inputHeaderText: {
-    fontSize: 20,
-    marginBottom: 10,
-    textAlign: 'left',
-    alignSelf: 'flex-start',
-    marginLeft: '10%',
-    paddingTop: 30,
-  },
   headerText: {
         fontSize: 18,
         marginLeft: 10,
