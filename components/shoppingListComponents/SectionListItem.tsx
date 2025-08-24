@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 type SectionListItemProps = {
   itemName: string;
   db: SQLiteDatabase;
+  itemQuantity?: number;
 };
 
 const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
@@ -38,7 +39,7 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
 };
 
 
-const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
+const SectionListItem = ( { itemName, db, itemQuantity } : SectionListItemProps ) => {
 
   const [isPurchased, setIsPurchased] = useState(false);
 
@@ -102,7 +103,7 @@ const SectionListItem = ( { itemName, db } : SectionListItemProps ) => {
           <Feather name={isPurchased ? "check-circle" : "circle"} size={24} color={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}/>
         </Pressable>
 
-        <Text style={[styles.text, themeColour, isPurchased && [styles.textPurchased, themeColour]] }>{itemName}</Text>
+        <Text style={[styles.text, themeColour, isPurchased && [styles.textPurchased, themeColour]] }>{itemName}{`  x${itemQuantity}`}</Text>
       </View>
     </ReanimatedSwipeable>
   )

@@ -103,7 +103,7 @@ export default function ShoppingList() {
               sections={filteredSectionedData}
               keyExtractor={(item:any, index:number) => item.itemId + index}
               renderItem={({item}) => (
-                <SectionListItem itemName={item.itemName} db={db}/>)}
+                <SectionListItem itemName={item.itemName} db={db} itemQuantity={item.quantity} />)}
               renderSectionHeader={({section: { title, storeId }}) => (
                 <SectionListHeader title={title} db={db} storeId={storeId}/>)}
               style={styles.sectionListContainer}
