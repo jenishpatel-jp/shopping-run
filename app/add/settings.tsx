@@ -40,6 +40,10 @@ export default function settings() {
           headerTitleAlign: 'center',
           headerTitleStyle: [styles.headerTitleIcons, themeColour ] ,
           headerStyle: { backgroundColor: colorScheme === 'dark' ? '#0A1931' : '#FFE4A1'},
+          headerLeft: () => 
+              <Pressable onPressIn={() => router.back()} >
+                  <Text style={[styles.text, themeColour]} >Cancel</Text>
+              </Pressable>,
         }}
       />
 
@@ -132,5 +136,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 20,
     width: '60%',
+  },
+  text: {
+    fontSize: 18,
+    marginLeft: 10,
+    fontWeight: 'bold',
   },
 })
