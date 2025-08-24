@@ -87,7 +87,7 @@ export default function ShoppingList() {
               </View>,
               headerLeft: () => {
                 return (
-                  <Pressable onPressIn={() => console.log("Settings button pressed!")} style={{ paddingLeft: 10 }}>
+                  <Pressable onPressIn={() => router.push("/add/settings")} style={{ paddingLeft: 10 }}>
                     <Feather name="settings" size={30} color={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"} />
                   </Pressable>
                 );

@@ -43,39 +43,15 @@ export default function settings() {
       />
 
       <View style={[styles.inputContainer, themeBackgroundColour]}> 
-
-        <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Name</Text>
-
-        <TextInput 
-          style={[styles.textInput, themeBackgroundColour, themeColour, themeBorderColour]}
-          placeholder="Enter item name"
-          placeholderTextColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
-          selectionColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
-          textAlign="center"
-          autoFocus={false}
-          returnKeyType="done"
-    
-        />
+        <Pressable style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}>
+          <Text style={[styles.pressableButtonText, themeColour]}>Delete All Items</Text>
+        </Pressable>
       </View>
 
       <View style={[styles.inputContainer, themeBackgroundColour]}> 
         <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Quantity</Text>
-        <TextInput 
-          style={[styles.textInput, themeBackgroundColour, themeColour, themeBorderColour]}
 
-          placeholder="Enter item quantity"
-          placeholderTextColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
-          selectionColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
-          textAlign="center"
-          keyboardType="numeric"
-          returnKeyType="done"
-        />
       </View>
-
-      <View style={[styles.inputContainer, themeBackgroundColour]}> 
-        <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Store</Text>
-      </View>
-      
 
     </ThemedView>
 
@@ -102,17 +78,6 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginLeft: '10%',
     paddingTop: 30,
-  },
-
-  textInput: {
-    borderWidth: 2,
-    width: '80%',
-    marginBottom: 10,
-    height: 50,
-    textAlign: 'center',
-    fontSize: 24,
-    borderRadius: 8,
-    padding: 10,
   },
   headerText: {
         fontSize: 18,
@@ -145,6 +110,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
- 
-
+  pressableButtonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    padding: 10,
+    textAlign: 'center',
+  },
+  pressableButton: {
+    borderWidth: 2,
+    borderRadius: 10,
+    marginTop: 20,
+    width: '60%',
+  },
 })

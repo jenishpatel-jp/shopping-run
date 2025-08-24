@@ -28,9 +28,6 @@ syncObservable(
     }),
 );
 
-// Drawer Navigation Imports
-import { Drawer } from 'expo-router/drawer';
-
 export default function RootLayout(){
 
     return (
@@ -41,7 +38,7 @@ export default function RootLayout(){
                         <Stack screenOptions={{ 
                             headerShown: true, 
                             title: 'Shopping List', 
-                            headerTintColor: 'white',
+                            headerTintColor: '#FFE4A1',
                             headerStyle: { backgroundColor: '#0A1931',  },
                             headerTitleStyle: { color: '#FFE4A1', fontSize: 20, fontWeight: 'bold' },
                         
@@ -71,9 +68,7 @@ export default function RootLayout(){
                             
                             />
                         </Stack>
-        
                 </SafeAreaProvider>
-           
         </SQLiteProvider>
     </GestureHandlerRootView>
     )
