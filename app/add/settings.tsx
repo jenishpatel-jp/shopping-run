@@ -8,18 +8,18 @@ import { useItemDatabase } from "../../lib/items";
 import { useSQLiteContext } from "expo-sqlite";
 import { use$ } from "@legendapp/state/react";
 import { router, Stack } from "expo-router";
+import { useStore } from "expo-router/build/global-state/router-store";
+import { useStoreDatabase } from "../../lib/store";
 
 
 // Format the data for the StoreSelectList component
 
 export default function settings() {
 
-
   const db = useSQLiteContext();
 
-
-  const { fetchAllItems, addItem } = useItemDatabase(db);
-
+  const { deleteAllItems } = useItemDatabase(db);
+  const { deleteAllStores } = useStoreDatabase(db);
 
   const colorScheme = useColorScheme();
   const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
@@ -30,6 +30,7 @@ export default function settings() {
     <ThemedView style={[styles.container, themeBackgroundColour]}>
 
       <Stack.Screen 
+
         options={{
           headerTitle: 'Settings',
           presentation: 'formSheet',
@@ -42,15 +43,25 @@ export default function settings() {
         }}
       />
 
-      <View style={[styles.inputContainer, themeBackgroundColour]}> 
-        <Pressable style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}>
+      <View 
+      
+        style={[styles.inputContainer, themeBackgroundColour]}> 
+  
+        <Pressable 
+          style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}
+          onPress={() => console.log("Delete All Items button pressed!")}
+          >
           <Text style={[styles.pressableButtonText, themeColour]}>Delete All Items</Text>
         </Pressable>
       </View>
 
       <View style={[styles.inputContainer, themeBackgroundColour]}> 
-        <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Quantity</Text>
-
+        <Pressable 
+          style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}
+          onPress={() => console.log("Delete All Stores button pressed!")}
+          >
+          <Text style={[styles.pressableButtonText, themeColour]}>Delete All</Text>
+        </Pressable>
       </View>
 
     </ThemedView>
