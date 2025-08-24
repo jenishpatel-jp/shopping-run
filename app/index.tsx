@@ -20,7 +20,6 @@ import { use$ } from "@legendapp/state/react";
 import SectionListItem from "../components/shoppingListComponents/SectionListItem";
 import SectionListHeader from "../components/shoppingListComponents/SectionListHeader";
 
-
 export default function ShoppingList() {
 
   const db = useSQLiteContext();

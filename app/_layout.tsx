@@ -12,7 +12,7 @@ import { observablePersistSqlite } from '@legendapp/state/persist-plugins/expo-s
 import Storage from 'expo-sqlite/kv-store';
 import { state$ } from '../lib/state';  
 
-// Global configuration
+// Global configuration for Legend State with SQLite persistence
 const persistOptions = configureSynced({
     persist: {
         plugin: observablePersistSqlite(Storage)
@@ -27,6 +27,9 @@ syncObservable(
         },
     }),
 );
+
+// Drawer Navigation Imports
+import { Drawer } from 'expo-router/drawer';
 
 export default function RootLayout(){
 
