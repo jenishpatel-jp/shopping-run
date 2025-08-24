@@ -38,6 +38,17 @@ export default function settings() {
     }
   }
 
+  const handleDeleteAll = async () => {
+    try {
+      await deleteAllStores();
+      state$.stores.set([]); // Clear stores in global state
+      state$.items.set([]); // Clear items in global state
+      console.log("All stores deleted successfully");
+    } catch (error) {
+      console.error("Error deleting all stores:", error);
+    }
+  }
+
   return (
     <ThemedView style={[styles.container, themeBackgroundColour]}>
 
@@ -64,7 +75,7 @@ export default function settings() {
   
         <Pressable 
           style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}
-          onPress={handleDeleteAllItems}
+          onPressIn={handleDeleteAllItems}
           >
           <Text style={[styles.pressableButtonText, themeColour]}>Delete All Items</Text>
         </Pressable>
@@ -73,7 +84,7 @@ export default function settings() {
       <View style={[styles.viewContainer, themeBackgroundColour]}> 
         <Pressable 
           style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}
-          onPress={() => console.log("Delete All Stores button pressed!")}
+          onPress={handleDeleteAll}
           >
           <Text style={[styles.pressableButtonText, themeColour]}>Delete All</Text>
         </Pressable>
