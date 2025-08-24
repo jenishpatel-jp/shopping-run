@@ -84,7 +84,7 @@ export default function settings() {
       <View style={[styles.viewContainer, themeBackgroundColour]}> 
         <Pressable 
           style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}
-          onPress={handleDeleteAll}
+          onPressIn={handleDeleteAll}
           >
           <Text style={[styles.pressableButtonText, themeColour]}>Delete All</Text>
         </Pressable>
