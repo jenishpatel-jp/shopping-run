@@ -7,7 +7,7 @@ import { useMemo, useState } from "react";
 import { useItemDatabase } from "../../lib/items";
 import { useSQLiteContext } from "expo-sqlite";
 import { use$ } from "@legendapp/state/react";
-import { router, Stack } from "expo-router";
+import { router, Stack, useRouter } from "expo-router";
 import { useStore } from "expo-router/build/global-state/router-store";
 import { useStoreDatabase } from "../../lib/store";
 
@@ -25,6 +25,18 @@ export default function settings() {
   const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
   const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
   const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
+
+  const router = useRouter();
+
+  const handleDeleteAllItems = async () => {
+    try {
+      await deleteAllItems();
+      state$.items.set([]); // Clear items in global state
+      console.log("All items deleted successfully");
+    } catch (error){
+      console.error("Error deleting all items:", error);
+    }
+  }
 
   return (
     <ThemedView style={[styles.container, themeBackgroundColour]}>
@@ -52,7 +64,7 @@ export default function settings() {
   
         <Pressable 
           style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}
-          onPress={() => console.log("Delete All Items button pressed!")}
+          onPress={handleDeleteAllItems}
           >
           <Text style={[styles.pressableButtonText, themeColour]}>Delete All Items</Text>
         </Pressable>
