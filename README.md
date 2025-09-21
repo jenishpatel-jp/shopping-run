@@ -20,11 +20,11 @@ It’s lightweight, works offline, and keeps your data stored locally on your ph
 
 ## 📸 Screenshots (optional)
 
-### Store List Screen
-![Store List](assets/screenshots/store-list.png)
+### Add Store Screen
+![Store List](assets/screenshots/shopping-addStore-dark.png)
 
-### Shopping Items Screen
-![Shopping Items](assets/screenshots/items-list.png)
+### Shopping List Screen
+![Shopping Items](assets/screenshots/shoppingRun-shoppinglist-dark.png)
 
 ## 🚀 Getting Started
 
@@ -39,9 +39,8 @@ It’s lightweight, works offline, and keeps your data stored locally on your ph
    cd shopping-run
 
 2. Install dependencies:
-
 npm install
-# or
+or
 yarn install
 
 3. Start the development server:
