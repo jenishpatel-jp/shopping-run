@@ -1,15 +1,51 @@
-import { Link, Router } from "expo-router"
-import { View, Text, StyleSheet } from "react-native"
+import { Link, Router } from "expo-router";
+import { View, Text, StyleSheet, useColorScheme } from "react-native";
+
+const colorScheme = useColorScheme();
 
 
 const ListEmptyComponent = () => {
-  return (
-    <View>
-        <Link href="/stores/addStore">
-            <Text>Add a store to get started!</Text>
-        </Link>
-    </View>
-  )
-}
 
-export default ListEmptyComponent
+    const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
+    const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
+    const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
+
+    return (
+        <View style={[styles.container, themeBackgroundColour, themeBorderColour]}>
+            <Link href="/stores/addStore">
+                <Text style={[styles.text, themeColour]} >Add items to get started!</Text>
+            </Link>
+        </View>
+    )
+    }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    text: {
+        fontSize: 18,
+    },
+    lightBackgroundColour: {
+        backgroundColor: "#FFE4A1",
+    },
+    darkBackgroundColour: {
+        backgroundColor: "#0A1931",
+    }, 
+    lightColour: {
+        color: "#0A1931",
+    },
+    darkColour: {
+        color: "#FFE4A1",
+    },
+    lightBorderColour: {
+        borderColor: '#0A1931',
+    },
+    darkBorderColour: {
+        borderColor: '#FFE4A1',
+    },
+
+});
+
