@@ -17,8 +17,11 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { useItemDatabase } from "../lib/items";
 import { use$ } from "@legendapp/state/react";
+
+
 import SectionListItem from "../components/shoppingListComponents/SectionListItem";
 import SectionListHeader from "../components/shoppingListComponents/SectionListHeader";
+import ListEmptyComponent from "../components/shoppingListComponents/ListEmptyComponent";
 
 export default function ShoppingList() {
 
@@ -106,6 +109,9 @@ export default function ShoppingList() {
                 <SectionListItem itemName={item.itemName} db={db} itemQuantity={item.quantity} />)}
               renderSectionHeader={({section: { title, storeId }}) => (
                 <SectionListHeader title={title} db={db} storeId={storeId}/>)}
+
+              ListEmptyComponent={ListEmptyComponent}
+              
               style={styles.sectionListContainer}
               contentContainerStyle={styles.sectionListContent}
             

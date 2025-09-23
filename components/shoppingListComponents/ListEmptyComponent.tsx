@@ -12,7 +12,7 @@ const ListEmptyComponent = () => {
 
     return (
         <View style={[styles.container, themeBackgroundColour, themeBorderColour]}>
-            <Link href="/stores/addStore">
+            <Link href="/add/addItem">
                 <Text style={[styles.text, themeColour]} >Add items to get started!</Text>
             </Link>
         </View>
@@ -48,4 +48,6 @@ const styles = StyleSheet.create({
     },
 
 });
+
+export default ListEmptyComponent;
 
