@@ -70,6 +70,7 @@ export default function settings() {
         }}
       />
 
+      {/* Delete All Items Button */}
       <View 
         style={[styles.viewContainer, themeBackgroundColour]}> 
   
@@ -81,12 +82,23 @@ export default function settings() {
         </Pressable>
       </View>
 
+      {/* Delete All Stores Button */}
       <View style={[styles.viewContainer, themeBackgroundColour]}> 
         <Pressable 
           style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}
           onPressIn={handleDeleteAll}
           >
-          <Text style={[styles.pressableButtonText, themeColour]}>Delete All</Text>
+          <Text style={[styles.pressableButtonText, themeColour]}>Delete All Stores</Text>
+        </Pressable>
+      </View>
+
+      
+      {/* View Store List Button */}
+      <View style={[styles.viewContainer, themeBackgroundColour]}> 
+        <Pressable 
+          style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}
+          >
+          <Text style={[styles.pressableButtonText, themeColour]}>View Store List</Text>
         </Pressable>
       </View>
 
