@@ -24,6 +24,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/adaptive-icon.png",
+        "monoChromeImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#FFE4A1"
       },
       "edgeToEdgeEnabled": true,
