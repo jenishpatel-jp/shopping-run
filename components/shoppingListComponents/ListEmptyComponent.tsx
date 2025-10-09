@@ -1,5 +1,6 @@
 import { Link, Router } from "expo-router";
 import { View, Text, StyleSheet, useColorScheme } from "react-native";
+import { state$ } from "../../lib/state"; 
 
 const ListEmptyComponent = () => {
 
@@ -9,11 +10,25 @@ const ListEmptyComponent = () => {
     const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
     const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
 
+    const listOfStores = state$.stores.get();
+
+    console.log(listOfStores)
+    console.log(listOfStores.length)
+
     return (
+        
+
         <View style={[styles.container, themeBackgroundColour, themeBorderColour]}>
+
+            {listOfStores.length === 0 ? 
+            <Link href="/add">
+                <Text style={[styles.text, themeColour]} >Add a store to get started</Text>
+            </Link> : 
             <Link href="/add/addItem">
-                <Text style={[styles.text, themeColour]} >Add items to get started!</Text>
+                <Text style={[styles.text, themeColour]} >Add items to your store</Text>
             </Link>
+            }
+
         </View>
     )
     }
