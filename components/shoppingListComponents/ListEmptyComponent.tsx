@@ -12,9 +12,6 @@ const ListEmptyComponent = () => {
 
     const listOfStores = state$.stores.get();
 
-    console.log(listOfStores)
-    console.log(listOfStores.length)
-
     return (
         
 
