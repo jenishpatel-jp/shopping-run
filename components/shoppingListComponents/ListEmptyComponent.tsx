@@ -1,10 +1,9 @@
 import { Link, Router } from "expo-router";
 import { View, Text, StyleSheet, useColorScheme } from "react-native";
 
-const colorScheme = useColorScheme();
-
-
 const ListEmptyComponent = () => {
+
+    const colorScheme = useColorScheme();
 
     const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
     const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
@@ -24,6 +23,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        borderColor: '#0A1931',
+        borderWidth: 2,
+        margin: 10,
+        padding: 20,
+        borderRadius: 10,
     },
     text: {
         fontSize: 18,
