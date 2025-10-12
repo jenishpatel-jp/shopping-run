@@ -67,6 +67,12 @@ export default function ShoppingList() {
 
   const themeBackgroundColour = colorScheme === "dark" ? styles.darkBackgroundColour : styles.lightBackgroundColour;
 
+  //conditional styling for whete there are no stores or items in the list
+  const stores = state$.stores.get();
+  const items = state$.items.get();
+
+  const sectionListContentStyle = stores.length === 0 || items.length === 0 ? styles.sectionListContentWithItems : styles.sectionListContent;
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={[styles.container, themeBackgroundColour]}> 
@@ -113,7 +119,7 @@ export default function ShoppingList() {
               ListEmptyComponent={ListEmptyComponent}
               
               style={styles.sectionListContainer}
-              contentContainerStyle={styles.sectionListContent}
+              contentContainerStyle={sectionListContentStyle}
             
             />
           </ThemedView>
@@ -165,8 +171,18 @@ const styles = StyleSheet.create({
   },
   sectionListContainer: {
     width: "100%",
+    flex: 1,
+    height: "100%",
   },
   sectionListContent: {
-    justifyContent: "center",
+
   },
+  sectionListContentWithItems: {
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+  }
+
+
+
 });

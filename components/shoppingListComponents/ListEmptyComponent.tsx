@@ -32,7 +32,6 @@ const ListEmptyComponent = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         borderColor: '#0A1931',
@@ -40,6 +39,7 @@ const styles = StyleSheet.create({
         margin: 10,
         padding: 20,
         borderRadius: 10,
+        width: '80%',
     },
     text: {
         fontSize: 18,
