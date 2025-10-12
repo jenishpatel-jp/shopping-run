@@ -1,6 +1,7 @@
-import { Link, Router } from "expo-router";
-import { View, Text, StyleSheet, useColorScheme } from "react-native";
+import { Link, useRouter } from "expo-router";
+import { View, Text, StyleSheet, useColorScheme, Pressable } from "react-native";
 import { state$ } from "../../lib/state"; 
+import { use } from "react";
 
 const ListEmptyComponent = () => {
 
@@ -12,18 +13,24 @@ const ListEmptyComponent = () => {
 
     const listOfStores = state$.stores.get();
 
+    const router = useRouter();
+
     return (
         
 
         <View style={[styles.container, themeBackgroundColour, themeBorderColour]}>
 
             {listOfStores.length === 0 ? 
-            <Link href="/add">
+            <Pressable 
+                onPressIn={() => router.push("/add")}
+            >
                 <Text style={[styles.text, themeColour]} >Add a store to get started</Text>
-            </Link> : 
-            <Link href="/add/addItem">
+            </Pressable> : 
+            <Pressable 
+                onPressIn={() => router.push("/add/addItem")}
+            >
                 <Text style={[styles.text, themeColour]} >Add items to your store</Text>
-            </Link>
+            </Pressable>
             }
 
         </View>
