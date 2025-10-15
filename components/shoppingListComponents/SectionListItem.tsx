@@ -19,6 +19,7 @@ type SectionListItemProps = {
   itemName: string;
   db: SQLiteDatabase;
   itemQuantity?: number;
+  itemCompleted?: number;
 };
 
 const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
@@ -39,7 +40,7 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
 };
 
 
-const SectionListItem = ( { itemName, db, itemQuantity } : SectionListItemProps ) => {
+const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : SectionListItemProps ) => {
 
   const [isPurchased, setIsPurchased] = useState(false);
 
