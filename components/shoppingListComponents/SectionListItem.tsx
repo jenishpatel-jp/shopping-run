@@ -13,7 +13,7 @@ import Reanimated, {
 import Feather from '@expo/vector-icons/Feather';
 
 import { useItemDatabase } from "../../lib/items";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 type SectionListItemProps = {
   itemName: string;
@@ -42,7 +42,10 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
 
 const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : SectionListItemProps ) => {
 
-  const [isPurchased, setIsPurchased] = useState(false);
+  useEffect(() => {
+    console.log(itemCompleted)
+
+  }, [])
 
   const { deleteItem, fetchAllItems } = useItemDatabase(db)
 
@@ -54,19 +57,10 @@ const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : Sectio
 
   const handlePress = () => {
 
-    const newValue = !isPurchased;
-    setIsPurchased(newValue);
-
-    if (newValue){
-      console.log("Item marked as purchased:", itemName);
-      state$.items[itemSelectedIndex]['completed'].set(1); 
-      // console.log(state$.items.get()[itemSelectedIndex]);
-    } else {
-      console.log("Item marked as not purchased:", itemName);
-      state$.items[itemSelectedIndex]['completed'].set(0); 
-      // console.log(state$.items.get()[itemSelectedIndex]);
-    }
-  }
+    const newValue = itemCompleted ? 0 : 1;
+    state$.items[itemSelectedIndex]['completed'].set(newValue);
+    console.log(state$.items[itemSelectedIndex]['completed'].get());
+  };
 
   const handleDeleteItem = async () => {
     if (itemId !== null){
@@ -101,10 +95,16 @@ const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : Sectio
     > 
       <View style={[  styles.itemContainer, themeBackgroundColour]}>
         <Pressable onPress={handlePress} >
-          <Feather name={isPurchased ? "check-circle" : "circle"} size={24} color={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}/>
+          <Feather name={itemCompleted ? "check-circle" : "circle"} size={24} color={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}/>
         </Pressable>
 
-        <Text style={[styles.text, themeColour, isPurchased && [styles.textPurchased, themeColour]] }>{itemName}{`  x${itemQuantity}`}</Text>
+        <Text style={[
+          styles.text, 
+          themeColour, 
+          itemCompleted ? [styles.textPurchased, themeColour] : null
+          ]}>
+            {itemName}{`  x${itemQuantity}`}
+        </Text>
       </View>
     </ReanimatedSwipeable>
   )
