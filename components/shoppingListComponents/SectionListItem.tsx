@@ -13,7 +13,6 @@ import Reanimated, {
 import Feather from '@expo/vector-icons/Feather';
 
 import { useItemDatabase } from "../../lib/items";
-import { use, useEffect, useState } from "react";
 
 type SectionListItemProps = {
   itemName: string;

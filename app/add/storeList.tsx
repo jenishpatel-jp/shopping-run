@@ -18,8 +18,6 @@ export default function StoreList() {
 
   const db = useSQLiteContext();
 
-  const { deleteAllItems } = useItemDatabase(db);
-  const { deleteAllStores } = useStoreDatabase(db);
 
   const colorScheme = useColorScheme();
   const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
