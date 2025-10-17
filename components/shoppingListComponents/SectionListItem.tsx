@@ -42,12 +42,8 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
 
 const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : SectionListItemProps ) => {
 
-  useEffect(() => {
-    console.log(itemCompleted)
 
-  }, [])
-
-  const { deleteItem, fetchAllItems } = useItemDatabase(db)
+  const { deleteItem, fetchAllItems, updateItem } = useItemDatabase(db)
 
   const arrayObjectOfItems = state$.items.get();
   const itemSelected = arrayObjectOfItems.find((item) => item.itemName === itemName);
@@ -55,12 +51,18 @@ const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : Sectio
   const itemSelectedIndex = arrayObjectOfItems.findIndex((item) => item.itemName === itemName);
 
 
-  const handlePress = () => {
-
+  const handlePress = async () => {
     const newValue = itemCompleted ? 0 : 1;
-    state$.items[itemSelectedIndex]['completed'].set(newValue);
-    console.log(state$.items[itemSelectedIndex]['completed'].get());
+    if (itemId !== null){
+      try {
+        await updateItem(itemId, newValue);
+        const updatedItems = await fetchAllItems();
+        state$.items.set(updatedItems);
 
+      } catch(error){
+        console.error("Error updating item", error)
+      }
+    }
   };
 
   const handleDeleteItem = async () => {
