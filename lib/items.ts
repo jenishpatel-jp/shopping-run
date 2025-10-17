@@ -74,7 +74,7 @@ export const useItemDatabase = (db: SQLiteDatabase) => {
                 `UPDATE items 
                 SET completed = ?
                 WHERE itemId = ?;`,
-                [itemId]
+                [completed, itemId]
             );
             console.log("Item updated successfully:", result);
 
