@@ -68,6 +68,21 @@ export const useItemDatabase = (db: SQLiteDatabase) => {
         }
     };
 
+    const updateItem = async (itemId: number, completed: number) => {
+        try {
+            const result = await db.runAsync(
+                `UPDATE items 
+                SET completed = ?
+                WHERE itemId = ?;`,
+                [itemId]
+            );
+            console.log("Item updated successfully:", result);
+
+        } catch (error) {
+           console.error("Error updating item:", error); 
+        }
+    };
+
     return { addItem, deleteItem, deleteAllItems, fetchAllItems };
 
 }

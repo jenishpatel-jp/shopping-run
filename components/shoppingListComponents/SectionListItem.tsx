@@ -60,6 +60,7 @@ const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : Sectio
     const newValue = itemCompleted ? 0 : 1;
     state$.items[itemSelectedIndex]['completed'].set(newValue);
     console.log(state$.items[itemSelectedIndex]['completed'].get());
+
   };
 
   const handleDeleteItem = async () => {
