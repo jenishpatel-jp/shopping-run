@@ -83,20 +83,20 @@ export default function ShoppingList() {
               <View style={[styles.headerRightView]}>
                 <Pressable 
                   style={styles.headerRightButton}
-                  onPressIn={() => router.push("/add")}
+                  onPressIn={() => router.push("/page")}
                   > 
                   <MaterialCommunityIcons name="store-plus" size={30} color={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"} />
                 </Pressable>
                 <Pressable 
                   style={styles.headerRightButton}
-                  onPressIn={() => router.push("/add/addItem")}
+                  onPressIn={() => router.push("/page/addItem")}
                   > 
                   <Ionicons name="add-circle-outline" size={30} color={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"} />
                 </Pressable>
               </View>,
               headerLeft: () => {
                 return (
-                  <Pressable onPressIn={() => router.push("/add/settings")} style={{ paddingLeft: 10 }}>
+                  <Pressable onPressIn={() => router.push("/page/settings")} style={{ paddingLeft: 10 }}>
                     <Feather name="settings" size={30} color={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"} />
                   </Pressable>
                 );
