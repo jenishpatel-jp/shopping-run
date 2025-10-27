@@ -22,12 +22,12 @@ const ListEmptyComponent = () => {
 
             {listOfStores.length === 0 ? 
             <Pressable 
-                onPressIn={() => router.push("/add")}
+                onPressIn={() => router.push("/page")}
             >
                 <Text style={[styles.text, themeColour]} >Add a store to get started</Text>
             </Pressable> : 
             <Pressable 
-                onPressIn={() => router.push("/add/addItem")}
+                onPressIn={() => router.push("/page/addItem")}
             >
                 <Text style={[styles.text, themeColour]} >Add items to your store</Text>
             </Pressable>
