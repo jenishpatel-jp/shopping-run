@@ -1,0 +1,1 @@
+import AddStore from "../app/page";

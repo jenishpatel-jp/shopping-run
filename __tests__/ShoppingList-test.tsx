@@ -1,6 +1,8 @@
 import ShoppingList from "../App";
 import { render } from "@testing-library/react-native";
 
+
+//Need to re-write the tests
 describe("shopping list component", ()=> {
     test("Headerleft icon is rendered", ()=> {
         //Need to check this code properly
