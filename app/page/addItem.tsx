@@ -11,7 +11,7 @@ import { router, Stack } from "expo-router";
 
 // Format the data for the StoreSelectList component
 
-export default function  addItem() {
+export default function  AddItem() {
 
   const stores = use$(state$.stores);
   const data = useMemo(() => {

@@ -1,31 +1,16 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView"
-import { ThemedText } from "../../components/themedComponents/ThemedText"
-import { Pressable, StyleSheet, Text, TextInput, useColorScheme, View } from "react-native"
-import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
-import { state$ } from "../../lib/state";
-import { useMemo, useState } from "react";
-import { useItemDatabase } from "../../lib/items";
-import { useSQLiteContext } from "expo-sqlite";
-import { use$ } from "@legendapp/state/react";
-import { router, Stack, useRouter } from "expo-router";
-import { useStore } from "expo-router/build/global-state/router-store";
-import { useStoreDatabase } from "../../lib/store";
-
+import { Pressable, StyleSheet, Text, useColorScheme } from "react-native"
+import { Stack, useRouter } from "expo-router";
 
 // Format the data for the StoreSelectList component
 
 export default function StoreList() {
 
-  const db = useSQLiteContext();
-
-
   const colorScheme = useColorScheme();
   const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
   const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
-  const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
 
   const router = useRouter();
-
 
   return (
     <ThemedView style={[styles.container, themeBackgroundColour]}>
@@ -47,7 +32,6 @@ export default function StoreList() {
               </Pressable>,
         }}
       />
-
 
     </ThemedView>
 
