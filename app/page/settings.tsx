@@ -1,20 +1,17 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView"
-import { ThemedText } from "../../components/themedComponents/ThemedText"
-import { Pressable, StyleSheet, Text, TextInput, useColorScheme, View } from "react-native"
-import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
+import { Pressable, StyleSheet, Text, useColorScheme, View } from "react-native"
 import { state$ } from "../../lib/state";
-import { useMemo, useState } from "react";
 import { useItemDatabase } from "../../lib/items";
 import { useSQLiteContext } from "expo-sqlite";
-import { use$ } from "@legendapp/state/react";
-import { router, Stack, useRouter } from "expo-router";
-import { useStore } from "expo-router/build/global-state/router-store";
+import { Stack, useRouter } from "expo-router";
 import { useStoreDatabase } from "../../lib/store";
 
 
 // Format the data for the StoreSelectList component
 
-export default function settings() {
+export default function Settings() {
+
+  const router = useRouter();
 
   const db = useSQLiteContext();
 
@@ -26,7 +23,6 @@ export default function settings() {
   const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
   const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
 
-  const router = useRouter();
 
   const handleDeleteAllItems = async () => {
     try {
