@@ -47,7 +47,7 @@ const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : Sectio
   const arrayObjectOfItems = state$.items.get();
   const itemSelected = arrayObjectOfItems.find((item) => item.itemName === itemName);
   const itemId = itemSelected ? itemSelected.itemId : null;
-  const itemSelectedIndex = arrayObjectOfItems.findIndex((item) => item.itemName === itemName);
+  //const itemSelectedIndex = arrayObjectOfItems.findIndex((item) => item.itemName === itemName);
 
 
   const handlePress = async () => {

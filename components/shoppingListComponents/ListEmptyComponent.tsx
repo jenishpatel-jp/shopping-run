@@ -1,7 +1,7 @@
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { View, Text, StyleSheet, useColorScheme, Pressable } from "react-native";
 import { state$ } from "../../lib/state"; 
-import { use } from "react";
+
 
 const ListEmptyComponent = () => {
 

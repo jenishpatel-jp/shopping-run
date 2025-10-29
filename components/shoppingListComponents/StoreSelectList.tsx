@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { useColorScheme } from "react-native";
+import { useColorScheme, StyleSheet } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
-import { StyleSheet } from "react-native";
+
 
 // This component is used to select a store from a dropdown list
 // Doc on the SelectList: https://www.npmjs.com/package/react-native-dropdown-select-list
@@ -21,7 +20,6 @@ const StoreSelectList  = ( { data, setSelectedStore } : StoreSlectListProp ) => 
   const themeBackground = colorScheme === "dark" ? styles.darkBackgroundColor : styles.lightBackgroundcolour;
   const themeBorder = colorScheme === "dark" ? styles.darkBorderColour : styles.lightBorderColour;
   const themeText = colorScheme === "dark" ? styles.darkColour : styles.lightColour;
-  const themePlaceholder = colorScheme === "dark" ? "#FFE4A1" : "#0A1931";
 
   return (
     <SelectList 
