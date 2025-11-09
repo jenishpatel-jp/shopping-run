@@ -56,7 +56,7 @@ export default function RootLayout(){
                                 
                             />
                             <Stack.Screen 
-                                name="add"
+                                name="page"
                                 options={{
                                     headerShown: true,
                                     presentation: 'formSheet',
