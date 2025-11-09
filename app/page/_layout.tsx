@@ -4,8 +4,6 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function AddLayout(){
 
-    const router = useRouter();
-
     return (
         <SafeAreaProvider>
             <Stack screenOptions={{ 
@@ -26,5 +24,4 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         fontWeight: 'bold',
     }
-
 });

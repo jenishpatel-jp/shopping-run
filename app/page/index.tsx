@@ -15,7 +15,6 @@ export default function AddStore (){
     const db = useSQLiteContext();
     const { addStore, fetchStores } = useStoreDatabase(db);
 
-    
 
     const router = useRouter();
 

@@ -1,1 +1,0 @@
-import settings from "../app/page/settings";

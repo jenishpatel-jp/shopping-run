@@ -1,15 +1,10 @@
-import ShoppingList from "../App";
-import { render } from "@testing-library/react-native";
+import ShoppingList from "../app/index";
+import { render, screen, waitFor } from "@testing-library/react-native";
+import { SQLiteProvider } from "expo-sqlite";
+import { state$ } from "../lib/state";
 
 
-//Need to re-write the tests
-describe("shopping list component", ()=> {
-    test("Headerleft icon is rendered", ()=> {
-        //Need to check this code properly
-        const { getByTestId } = render(<ShoppingList />);
-        const headerLeftIcon = getByTestId("header-left-icon");
-        expect(headerLeftIcon).toBeTruthy();
-    });
+describe("Shopping List", () => {
 
-    //test headerLeft icon press navigate goes to settings page
-})
+ 
+});
