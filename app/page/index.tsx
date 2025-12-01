@@ -80,6 +80,7 @@ export default function AddStore (){
                     <View style={[styles.addStoreContainer, themeBorderColour]}> 
                         <Text style={[styles.labelTextInput, themeColour]}>Store Name</Text>
                         <TextInput 
+                            testID="store-input"
                             style={[styles.textInput, themeBorderColour, themeColour]}
                             placeholder="Enter store name"
                             placeholderTextColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
