@@ -26,7 +26,7 @@ jest.mock('../lib/store', () => ({
 }));
 
 // Mock Legend State
-jest.mock('../lib/state', () => ({
+jest.mock('./lib/state', () => ({
     state$: {
         stores: {
             get: () => [],

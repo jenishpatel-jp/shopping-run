@@ -10,7 +10,11 @@ describe('Add Store page', () => {
         <SQLiteProvider databaseName='shoppingList' >
             <AddStore />
         </SQLiteProvider>);
+
         const entreStoreInput = screen.getByPlaceholderText('Enter store name');
         expect(entreStoreInput).toBeTruthy();
+
+        expect(screen.getByText('Add')).toBeTruthy();
+
     });
 })
