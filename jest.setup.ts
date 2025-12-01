@@ -13,3 +13,25 @@ jest.mock('expo-router', () => ({
 }));
 
 // Mock Colour Scheme
+jest.mock('react-native/Libraries/Utilities/useColorScheme', () => ({
+    default: () => 'light',
+}));
+
+// Mock store database hooks
+jest.mock('../lib/store', () => ({
+    useStoreDatabase: () => ({
+        addStore: jest.fn(),
+        fetchStores: jest.fn().mockResolvedValue([]),
+    }),
+}));
+
+// Mock Legend State
+jest.mock('../lib/state', () => ({
+    state$: {
+        stores: {
+            get: () => [],
+            set: jest.fn(),
+        },
+    },
+
+}));
