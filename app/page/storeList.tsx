@@ -1,6 +1,9 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView"
 import { FlatList, Pressable, SectionList, StyleSheet, Text, useColorScheme } from "react-native"
 import { Stack, useRouter } from "expo-router";
+import { state$ } from "../../lib/state";
+import { use$ } from "@legendapp/state/react";
+import { flat } from "../../eslint.config";
 
 // Format the data for the StoreSelectList component
 
@@ -12,10 +15,19 @@ export default function StoreList() {
 
   const router = useRouter();
 
-  const storeData = [
-    { storeId: 1, storeName: "Walmart" },
-    { storeId: 2, storeName: "Target" },
-  ]
+  const stores = state$.stores.get();
+
+  const FlatListItems = () => {
+    const stores = use$(state$.stores);
+    return stores.map(store => (
+      {
+        storeId: store.storeId,
+        storeName: store.storeName,
+      }
+    ))
+  };
+
+  const flatListData = FlatListItems();
 
 
   return (
@@ -44,7 +56,7 @@ export default function StoreList() {
       </Pressable>
 
       <FlatList 
-        data={storeData}
+        data={flatListData}
         keyExtractor={(item) => item.storeId.toString()}
         renderItem={({ item }) => (
           <Text style={[styles.text, themeColour]}>{item.storeName}</Text>
