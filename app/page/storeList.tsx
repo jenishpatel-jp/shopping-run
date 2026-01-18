@@ -1,5 +1,5 @@
 import { ThemedView } from "../../components/themedComponents/ThemedView"
-import { Pressable, StyleSheet, Text, useColorScheme } from "react-native"
+import { FlatList, Pressable, SectionList, StyleSheet, Text, useColorScheme } from "react-native"
 import { Stack, useRouter } from "expo-router";
 
 // Format the data for the StoreSelectList component
@@ -11,6 +11,12 @@ export default function StoreList() {
   const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
 
   const router = useRouter();
+
+  const storeData = [
+    { storeId: 1, storeName: "Walmart" },
+    { storeId: 2, storeName: "Target" },
+  ]
+
 
   return (
     <ThemedView style={[styles.container, themeBackgroundColour]}>
@@ -36,6 +42,14 @@ export default function StoreList() {
       <Pressable onPressIn={() => router.push('/storeList')}>
         <Text style={[styles.text, themeColour]} >View Store List</Text>
       </Pressable>
+
+      <FlatList 
+        data={storeData}
+        keyExtractor={(item) => item.storeId.toString()}
+        renderItem={({ item }) => (
+          <Text style={[styles.text, themeColour]}>{item.storeName}</Text>
+        )}
+      />
 
     </ThemedView>
 
