@@ -93,6 +93,7 @@ export default function Settings() {
       <View style={[styles.viewContainer, themeBackgroundColour]}> 
         <Pressable 
           style={[styles.pressableButton, themeBackgroundColour, themeBorderColour]}
+          onPressIn={() => router.push('/page/storeList')}
           >
           <Text style={[styles.pressableButtonText, themeColour]}>View Store List</Text>
         </Pressable>

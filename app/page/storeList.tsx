@@ -33,10 +33,14 @@ export default function StoreList() {
         }}
       />
 
+      <Pressable onPressIn={() => router.push('/storeList')}>
+        <Text style={[styles.text, themeColour]} >View Store List</Text>
+      </Pressable>
+
     </ThemedView>
 
-  )
-}
+  );
+};
 
 
 const styles = StyleSheet.create({
