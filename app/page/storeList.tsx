@@ -29,6 +29,8 @@ export default function StoreList() {
 
   const flatListData = FlatListItems();
 
+  const flatListContentStyle = stores.length === 0 ? styles.flatListContentWithItems : null;
+
 
   return (
     <ThemedView style={[styles.container, themeBackgroundColour]}>
@@ -51,16 +53,14 @@ export default function StoreList() {
         }}
       />
 
-      <Pressable onPressIn={() => router.push('/storeList')}>
-        <Text style={[styles.text, themeColour]} >View Store List</Text>
-      </Pressable>
-
       <FlatList 
         data={flatListData}
         keyExtractor={(item) => item.storeId.toString()}
         renderItem={({ item }) => (
           <Text style={[styles.text, themeColour]}>{item.storeName}</Text>
         )}
+        style={styles.flatListContainer}
+        contentContainerStyle={flatListContentStyle}
       />
 
     </ThemedView>
@@ -129,4 +129,14 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontWeight: 'bold',
   },
+  flatListContainer: {
+    width: "100%",
+    flex: 1,
+    height: "100%",
+  },
+  flatListContentWithItems : {
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+  }
 })
