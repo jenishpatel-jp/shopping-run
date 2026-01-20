@@ -1,16 +1,22 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, useColorScheme } from 'react-native';
 
 type FlatListItemProps = {
     storeName: string;
 };
 
 const FlatListItem = ({ storeName }: FlatListItemProps) => {
-  return (
-    <View style={styles.container}>
-        <Text style={styles.text}>{storeName}</Text>
-    </View>
-  )
+
+    const colorScheme = useColorScheme();
+    const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
+    const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
+    const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
+
+    return (
+        <View style={[styles.container, themeBorderColour]}>
+            <Text style={[styles.text, themeColour]}>{storeName}</Text>
+        </View>
+    )
 }
 
 export default FlatListItem
@@ -28,6 +34,11 @@ const styles = StyleSheet.create({
         margin: 10,
         alignItems: "center",
         flexDirection: "row",
+        justifyContent: "center",
+        borderWidth: 1,
+        borderRadius: 5,
+        padding: 10,
+        
   },
     itemContainer: {
         flexDirection: "row",
@@ -48,6 +59,12 @@ const styles = StyleSheet.create({
     darkColour: {
         color: "#FFE4A1",
     },
+    lightBorderColour: {
+        borderColor: '#0A1931',
+  },
+    darkBorderColour: {
+        borderColor: '#FFE4A1',
+  },  
     
 
 });
