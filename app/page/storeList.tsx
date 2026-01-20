@@ -3,7 +3,7 @@ import { FlatList, Pressable, SectionList, StyleSheet, Text, useColorScheme } fr
 import { Stack, useRouter } from "expo-router";
 import { state$ } from "../../lib/state";
 import { use$ } from "@legendapp/state/react";
-import { flat } from "../../eslint.config";
+import FlatListItem from "../../components/storeListComponents/FlatListItem";
 
 // Format the data for the StoreSelectList component
 
@@ -57,7 +57,7 @@ export default function StoreList() {
         data={flatListData}
         keyExtractor={(item) => item.storeId.toString()}
         renderItem={({ item }) => (
-          <Text style={[styles.text, themeColour]}>{item.storeName}</Text>
+          <FlatListItem storeName={item.storeName} />
         )}
         style={styles.flatListContainer}
         contentContainerStyle={flatListContentStyle}
