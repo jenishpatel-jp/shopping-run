@@ -138,5 +138,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
+    padding: 20,
+    borderWidth: 2,
+    borderColor: 'white',
   }
 })
