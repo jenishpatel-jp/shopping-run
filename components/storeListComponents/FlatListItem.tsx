@@ -38,13 +38,22 @@ const FlatListItem = ({ storeName }: FlatListItemProps) => {
     const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
     const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
     const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
-
     
 
     return (
-        <View style={[styles.container, themeBorderColour]}>
-            <Text style={[styles.text, themeColour]}>{storeName}</Text>
-        </View>
+        <ReanimatedSwipeable
+            containerStyle={[styles.container, themeBorderColour]}
+            friction={1.5}
+            renderRightActions={RightAction}
+            onSwipeableOpen={(direction) => {
+                if (direction === 'left'){
+                    // Handle delete store action here
+                }
+            }}
+        >    
+                <Text style={[styles.text, themeColour]}>{storeName}</Text>
+
+        </ReanimatedSwipeable>
     )
 }
 
