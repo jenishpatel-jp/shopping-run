@@ -26,7 +26,7 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
     return (
         <Reanimated.View style={styleAnimation}>
             <View style={styles.rightAction}>
-                <Feather name="trash-2" size={24} color="#0A1931" />
+                <Feather name="trash-2" size={24} color="#FFE4A1" />
             </View>
         </Reanimated.View>
     );
@@ -44,6 +44,7 @@ const FlatListItem = ({ storeName }: FlatListItemProps) => {
         <ReanimatedSwipeable
             containerStyle={[styles.container, themeBorderColour]}
             friction={1.5}
+            rightThreshold={10}
             renderRightActions={RightAction}
             onSwipeableOpen={(direction) => {
                 if (direction === 'left'){
