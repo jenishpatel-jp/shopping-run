@@ -71,7 +71,7 @@ export default function ShoppingList() {
   const stores = state$.stores.get();
   const items = state$.items.get();
 
-  const sectionListContentStyle = stores.length === 0 || items.length === 0 ? styles.sectionListContentWithItems : styles.sectionListContent;
+  const sectionListContentStyle = stores.length === 0 || items.length === 0 ? styles.sectionListContentWithItems : null;
 
   return (
     <SafeAreaProvider>
@@ -123,9 +123,8 @@ export default function ShoppingList() {
             
             />
           </ThemedView>
-    
+          
         </SafeAreaView>
-
     </SafeAreaProvider>
   );
 }
@@ -173,9 +172,6 @@ const styles = StyleSheet.create({
     width: "100%",
     flex: 1,
     height: "100%",
-  },
-  sectionListContent: {
-
   },
   sectionListContentWithItems: {
     alignItems: "center",

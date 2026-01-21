@@ -1,8 +1,35 @@
 import React from 'react'
-import { Text, View, StyleSheet, useColorScheme } from 'react-native';
+import { Text, View, StyleSheet, useColorScheme, Share } from 'react-native';
+
+//React Native Gesture Handler and Animated
+import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
+import Reanimated, {
+  SharedValue,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
+
+// Icons
+import Feather from '@expo/vector-icons/Feather';
 
 type FlatListItemProps = {
     storeName: string;
+};
+
+const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
+
+    const styleAnimation = useAnimatedStyle(() => {
+        return {
+        transform: [{ translateX: drag.value + 100 }]
+        }
+    });
+
+    return (
+        <Reanimated.View style={styleAnimation}>
+            <View style={styles.rightAction}>
+                <Feather name="trash-2" size={24} color="#0A1931" />
+            </View>
+        </Reanimated.View>
+    );
 };
 
 const FlatListItem = ({ storeName }: FlatListItemProps) => {
@@ -11,6 +38,8 @@ const FlatListItem = ({ storeName }: FlatListItemProps) => {
     const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
     const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
     const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
+
+    
 
     return (
         <View style={[styles.container, themeBorderColour]}>
@@ -47,6 +76,16 @@ const styles = StyleSheet.create({
         width: '100%',
         paddingHorizontal: 20,
   },
+
+    rightAction: {
+        width: 50,
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#FFE4A1',
+        fontSize: 14,
+        textAlign: 'center',
+    },
     lightBackgroundColour: {
         backgroundColor: "#FFE4A1",
     },
