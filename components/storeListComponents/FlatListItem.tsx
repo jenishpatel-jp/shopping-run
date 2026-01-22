@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use } from 'react'
 import { Text, View, StyleSheet, useColorScheme, Share } from 'react-native';
 
 //React Native Gesture Handler and Animated
@@ -19,17 +19,35 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
 
     const styleAnimation = useAnimatedStyle(() => {
         return {
-        transform: [{ translateX: drag.value + 100 }]
+        transform: [{ translateX: drag.value + 50 }]
         }
     });
 
     return (
         <Reanimated.View style={styleAnimation}>
-            <View style={styles.rightAction}>
+            <View style={styles.action}>
                 <Feather name="trash-2" size={24} color="#FFE4A1" />
             </View>
         </Reanimated.View>
     );
+};
+
+const LeftAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
+
+    const stlyeAnimation = useAnimatedStyle(() => {
+        return {
+            transform: [{ translateX: drag.value - 50 }]
+        }
+    });
+
+    return (
+        <Reanimated.View style={stlyeAnimation} >
+            <View style={styles.action}>
+                <Feather name="edit" size={24} color="#FFE4A1" />
+            </View>
+        </Reanimated.View>
+    );
+
 };
 
 const FlatListItem = ({ storeName }: FlatListItemProps) => {
@@ -46,9 +64,13 @@ const FlatListItem = ({ storeName }: FlatListItemProps) => {
             friction={1.5}
             rightThreshold={10}
             renderRightActions={RightAction}
+            renderLeftActions={LeftAction}
             onSwipeableOpen={(direction) => {
                 if (direction === 'left'){
                     // Handle delete store action here
+                }
+                if (direction === 'right'){
+                    // Handle edit store action here
                 }
             }}
         >    
@@ -87,7 +109,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
   },
 
-    rightAction: {
+    action: {
         width: 50,
         height: '100%',
         alignItems: 'center',
