@@ -1,6 +1,10 @@
 import React, { use } from 'react'
 import { Text, View, StyleSheet, useColorScheme, Share } from 'react-native';
 
+import { useSQLiteContext } from 'expo-sqlite';
+
+
+
 //React Native Gesture Handler and Animated
 import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 import Reanimated, {
@@ -10,11 +14,13 @@ import Reanimated, {
 
 // Icons
 import Feather from '@expo/vector-icons/Feather';
+import { useStoreDatabase } from '../../lib/store';
 
 type FlatListItemProps = {
     storeName: string;
 };
 
+// Right action for swipe to delete
 const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
 
     const styleAnimation = useAnimatedStyle(() => {
@@ -32,6 +38,7 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
     );
 };
 
+// Left action for swipe to edit
 const LeftAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
 
     const stlyeAnimation = useAnimatedStyle(() => {
@@ -52,11 +59,16 @@ const LeftAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
 
 const FlatListItem = ({ storeName }: FlatListItemProps) => {
 
+    // Theme styles
     const colorScheme = useColorScheme();
     const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
     const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
     const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
-    
+
+
+    // Import database 
+    const db = useSQLiteContext();
+    const { fetchStores } = useStoreDatabase(db);
 
     return (
         <ReanimatedSwipeable
