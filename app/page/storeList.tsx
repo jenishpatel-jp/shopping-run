@@ -57,7 +57,7 @@ export default function StoreList() {
         data={flatListData}
         keyExtractor={(item) => item.storeId.toString()}
         renderItem={({ item }) => (
-          <FlatListItem storeName={item.storeName} />
+          <FlatListItem storeName={item.storeName} storeId={item.storeId} />
         )}
         style={styles.flatListContainer}
         contentContainerStyle={flatListContentStyle}

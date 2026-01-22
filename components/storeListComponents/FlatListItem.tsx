@@ -15,9 +15,11 @@ import Reanimated, {
 // Icons
 import Feather from '@expo/vector-icons/Feather';
 import { useStoreDatabase } from '../../lib/store';
+import { state$ } from '../../lib/state';
 
 type FlatListItemProps = {
     storeName: string;
+    storeId: number;   
 };
 
 // Right action for swipe to delete
@@ -57,7 +59,7 @@ const LeftAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
 
 };
 
-const FlatListItem = ({ storeName }: FlatListItemProps) => {
+const FlatListItem = ({ storeName, storeId }: FlatListItemProps) => {
 
     // Theme styles
     const colorScheme = useColorScheme();
@@ -68,7 +70,23 @@ const FlatListItem = ({ storeName }: FlatListItemProps) => {
 
     // Import database 
     const db = useSQLiteContext();
-    const { fetchStores } = useStoreDatabase(db);
+    const { fetchStores, deleteStore } = useStoreDatabase(db);
+
+    // Handle delete store function 
+    const handleDeleteStore = async () => {
+        if (storeId !== null ){
+            try {
+                console.log(storeId);
+                await deleteStore(storeId);
+                const updateStores = await fetchStores();
+                state$.stores.set(updateStores);
+            } catch (error){
+                console.error("Error delete stores", error)
+        } 
+    } else {
+        console.warn("Store ID is null, cannot delete store");
+    }
+};
 
     return (
         <ReanimatedSwipeable
@@ -79,7 +97,7 @@ const FlatListItem = ({ storeName }: FlatListItemProps) => {
             renderLeftActions={LeftAction}
             onSwipeableOpen={(direction) => {
                 if (direction === 'left'){
-                    // Handle delete store action here
+                    handleDeleteStore();
                 }
                 if (direction === 'right'){
                     // Handle edit store action here
