@@ -18,7 +18,21 @@ const EditStore = () => {
 
     return (
         <View style={[styles.container, themeBackgroundColour]}>
-            <Text style={[styles.labelTextInput, themeColour]}>Edit Store Page</Text>
+            <Text style={[styles.labelTextInput, themeColour]}>Edit Store</Text>
+            <TextInput
+                style={[styles.textInput, themeBorderColour, themeColour]}
+                placeholder="Enter store name"
+                placeholderTextColor={colourScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
+                selectionColor={colourScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
+            />
+            <Pressable
+                style={[styles.addButton, themeBackgroundColour]}
+                onPress={() => {
+                    // Handle update store action here
+                }}
+            >
+                <Text style={[styles.labelTextInput, themeColour, themeBorderColour]}>Update</Text>
+            </Pressable>
         </View>
     )
 }
@@ -38,6 +52,33 @@ const styles = StyleSheet.create({
             fontWeight: 'bold',
             paddingLeft: 10,
             alignSelf: 'flex-start',
+        },
+    textInput: {
+            borderWidth: 2,
+            width: '100%',
+            marginBottom: 10,
+            height: 70,
+            textAlign: 'center',
+            fontSize: 24,
+            borderRadius: 8,
+            padding: 10,
+
+        },
+    addButton: {
+            width: '100%',
+            padding: 4,
+            alignItems: 'flex-end',
+        },
+
+    addButtonText: {
+            fontSize: 20,
+            width: '40%',
+            borderRadius: 8,
+            borderWidth: 2,
+            textAlign: 'center',
+            padding: 10,
+            paddingLeft: 10,
+            
         },
     lightBackgroundcolour: {
             backgroundColor: "#FFE4A1",
