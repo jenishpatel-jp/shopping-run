@@ -16,6 +16,7 @@ import Reanimated, {
 import Feather from '@expo/vector-icons/Feather';
 import { useStoreDatabase } from '../../lib/store';
 import { state$ } from '../../lib/state';
+import { router } from 'expo-router';
 
 type FlatListItemProps = {
     storeName: string;
@@ -101,6 +102,10 @@ const FlatListItem = ({ storeName, storeId }: FlatListItemProps) => {
                 }
                 if (direction === 'right'){
                     // Handle edit store action here
+                    router.push({
+                        pathname: '/page/editStore',
+                        params: { storeId: storeId.toString() },
+                    });
                 }
             }}
         >    
