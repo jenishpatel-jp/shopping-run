@@ -2,6 +2,7 @@
 import { StyleSheet, Pressable, View, TextInput, Text, useColorScheme } from "react-native";
 import { useSQLiteContext } from "expo-sqlite";
 import { useStoreDatabase } from "../../lib/store";
+import { useRouter, useLocalSearchParams } from "expo-router";
 
 
 const EditStore = () => {
@@ -14,14 +15,14 @@ const EditStore = () => {
     const db = useSQLiteContext();
     const { addStore, fetchStores } = useStoreDatabase(db);
 
-
+    const { storeId } = useLocalSearchParams<{ storeId: string }>();
 
     return (
         <View style={[styles.container, themeBackgroundColour]}>
             <Text style={[styles.labelTextInput, themeColour]}>Edit Store</Text>
             <TextInput
                 style={[styles.textInput, themeBorderColour, themeColour]}
-                placeholder="Enter store name"
+                placeholder={storeId}
                 placeholderTextColor={colourScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
                 selectionColor={colourScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
             />
