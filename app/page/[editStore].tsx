@@ -3,6 +3,8 @@ import { StyleSheet, Pressable, View, TextInput, Text, useColorScheme } from "re
 import { useSQLiteContext } from "expo-sqlite";
 import { useStoreDatabase } from "../../lib/store";
 import { useRouter, useLocalSearchParams } from "expo-router";
+import { use$ } from "@legendapp/state/react";
+import { state$ } from "../../lib/state";
 
 
 const EditStore = () => {
@@ -15,14 +17,18 @@ const EditStore = () => {
     const db = useSQLiteContext();
     const { addStore, fetchStores } = useStoreDatabase(db);
 
+    // Get storeId from route params and find the store to edit
     const { storeId } = useLocalSearchParams<{ storeId: string }>();
+    const stores = use$(state$.stores);
+    const storeToEdit = stores.find(store => store.storeId.toString() === storeId);
+    const storeName = storeToEdit ? storeToEdit.storeName : "";
 
     return (
         <View style={[styles.container, themeBackgroundColour]}>
             <Text style={[styles.labelTextInput, themeColour]}>Edit Store</Text>
             <TextInput
                 style={[styles.textInput, themeBorderColour, themeColour]}
-                placeholder={storeId}
+                placeholder={storeName}
                 placeholderTextColor={colourScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
                 selectionColor={colourScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
             />
