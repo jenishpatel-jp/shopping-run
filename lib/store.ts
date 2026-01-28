@@ -15,6 +15,25 @@ export const useStoreDatabase = (db: SQLiteDatabase) => {
         }
     };
 
+    // Edit a store from the database 
+
+    const editStore = async (storeId: number, storeName: string) => {
+        try {
+            const result = await db.runAsync(
+                'Update stores SET storeName = ? WHERE storeId =? ;', [storeName, storeId]
+            );
+            if (result.changes > 0){
+                console.log("Store updated successfully:", storeId);
+            } else {
+                console.log("No store found with ID:", storeId);
+            }
+            
+        } catch (error){
+            console.error("Error editing store:", error);
+            throw error;
+        }
+    };
+
     // Delete a store from the database
     const deleteStore = async (storeId: number) => {
         try {
