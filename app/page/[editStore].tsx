@@ -5,6 +5,7 @@ import { useStoreDatabase } from "../../lib/store";
 import { useRouter, useLocalSearchParams, Stack, router } from "expo-router";
 import { use$ } from "@legendapp/state/react";
 import { state$ } from "../../lib/state";
+import { useState } from "react";
 
 
 const EditStore = () => {
@@ -15,13 +16,41 @@ const EditStore = () => {
     const themeColour = colourScheme === 'dark' ? styles.darkColour : styles.lightColour;
 
     const db = useSQLiteContext();
-    const { addStore, fetchStores } = useStoreDatabase(db);
+    const { editStore, fetchStores } = useStoreDatabase(db);
 
     // Get storeId from route params and find the store to edit
     const { storeId } = useLocalSearchParams<{ storeId: string }>();
     const stores = use$(state$.stores);
     const storeToEdit = stores.find(store => store.storeId.toString() === storeId);
     const storeName = storeToEdit ? storeToEdit.storeName : "";
+
+
+    const [newStoreName, setNewStoreName] = useState("");
+    const checkStoreExists = stores.some(store => store.storeName === newStoreName);
+
+    //Edit store function
+    const handleEditStore = async (newStoreName: string) => {
+
+        if (newStoreName.trim() === ""){
+            console.warn("Store name cannot be empty");
+            return;
+        };
+
+        if (checkStoreExists) {
+            console.warn("Store already exists");
+            return;
+        };
+
+        try {
+            await editStore(parseInt(storeId), newStoreName);
+            const updatedStores = await fetchStores();
+            state$.stores.set(updatedStores); // Update the global state with the new store list
+            console.log("Store edited successfully");
+            router.back(); // Navigate back after editing store
+        }catch (error){
+            console.error("Error editing store:", error);
+        }
+    };
 
     return (
         <View style={[styles.container, themeBackgroundColour]}>

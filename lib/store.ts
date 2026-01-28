@@ -83,6 +83,6 @@ export const useStoreDatabase = (db: SQLiteDatabase) => {
     }
 
 
-    return { addStore, deleteStore, deleteAllStores, fetchStores }
+    return { addStore, editStore, deleteStore, deleteAllStores, fetchStores }
 
 };
