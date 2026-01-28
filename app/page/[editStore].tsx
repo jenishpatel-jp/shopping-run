@@ -92,7 +92,7 @@ const EditStore = () => {
                     style={[styles.addButton, themeBackgroundColour]}
                     onPress={() => { handleEditStore(newStoreName)}}
                 >
-                    <Text style={[styles.labelTextInput, themeColour, themeBorderColour]}>Update</Text>
+                    <Text style={[styles.addButtonText, themeColour, themeBorderColour]}>Update</Text>
                 </Pressable>
             </View>
         </View>
