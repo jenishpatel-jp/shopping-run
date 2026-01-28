@@ -84,12 +84,13 @@ const EditStore = () => {
                     placeholder={storeName}
                     placeholderTextColor={colourScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
                     selectionColor={colourScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
+                    onChangeText={setNewStoreName}
+                    value={newStoreName}
+                    textAlign="center"
                 />
                 <Pressable
                     style={[styles.addButton, themeBackgroundColour]}
-                    onPress={() => {
-                        // Handle update store action here
-                    }}
+                    onPress={() => { handleEditStore(newStoreName)}}
                 >
                     <Text style={[styles.labelTextInput, themeColour, themeBorderColour]}>Update</Text>
                 </Pressable>
