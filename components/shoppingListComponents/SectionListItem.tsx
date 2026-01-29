@@ -21,6 +21,7 @@ type SectionListItemProps = {
   itemCompleted?: number;
 };
 
+// Right action for swipe to delete
 const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
   const styleAnimation = useAnimatedStyle(() => {
 
@@ -31,12 +32,31 @@ const RightAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => 
 
   return (
     <Reanimated.View style={styleAnimation}>
-      <View style={styles.rightAction}>
+      <View style={styles.action}>
         <Feather name="trash-2" size={24} color="#FFE4A1" />
       </View>
     </Reanimated.View>
   )
 };
+
+// Left action for swipe to edit
+const LeftAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
+
+    const stlyeAnimation = useAnimatedStyle(() => {
+        return {
+            transform: [{ translateX: drag.value - 50 }]
+        }
+    });
+
+    return (
+        <Reanimated.View style={stlyeAnimation} >
+            <View style={styles.action}>
+                <Feather name="edit" size={24} color="#FFE4A1" />
+            </View>
+        </Reanimated.View>
+    );
+};
+
 
 
 const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : SectionListItemProps ) => {
@@ -133,7 +153,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
   },
-  rightAction: {
+  action: {
     width: 50,
     height: '100%',
     alignItems: 'center',
