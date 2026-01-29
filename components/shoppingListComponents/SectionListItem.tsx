@@ -113,6 +113,9 @@ const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : Sectio
         if (direction === 'left'){
           handleDeleteItem();
         }
+        if (direction === 'right'){
+          // Handle edit item action here
+        }
       }}
     > 
       <View style={[  styles.itemContainer, themeBackgroundColour]}>
