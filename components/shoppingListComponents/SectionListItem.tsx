@@ -109,6 +109,7 @@ const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : Sectio
       friction={1.5}
       rightThreshold={10}
       renderRightActions={RightAction}
+      renderLeftActions={LeftAction}
       onSwipeableOpen={(direction) => {
         if (direction === 'left'){
           handleDeleteItem();
