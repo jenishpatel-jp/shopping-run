@@ -33,6 +33,42 @@ const EditItem = () => {
 
     return (
         <View style={[styles.container, themeBackgroundColour]}>
+            <View style={[styles.inputContainer, themeBackgroundColour]}> 
+
+                <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Name</Text>
+
+                <TextInput 
+                style={[styles.textInput, themeBackgroundColour, themeColour, themeBorderColour]}
+                placeholder="Enter item name"
+                placeholderTextColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
+                selectionColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
+                textAlign="center"
+                autoFocus={false}
+                returnKeyType="done"
+                value={itemName}
+                onChangeText={setItemName}
+                />
+            </View>
+
+            <View style={[styles.inputContainer, themeBackgroundColour]}> 
+                <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Quantity</Text>
+                <TextInput 
+                style={[styles.textInput, themeBackgroundColour, themeColour, themeBorderColour]}
+                value={itemQuantity}
+                onChangeText={setItemQuantity}
+                placeholder="Enter item quantity"
+                placeholderTextColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
+                selectionColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
+                textAlign="center"
+                keyboardType="numeric"
+                returnKeyType="done"
+                />
+            </View>
+
+            <View style={[styles.inputContainer, themeBackgroundColour]}> 
+                <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Store</Text>
+                <StoreSelectList data={data} setSelectedStore={setSelectedStore} />
+            </View>
 
         </View>
     )
