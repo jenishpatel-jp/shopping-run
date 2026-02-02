@@ -1,6 +1,7 @@
 import { SQLiteDatabase } from "expo-sqlite";
 import { Text, View, StyleSheet, Pressable, useColorScheme } from "react-native";
 import { state$ } from "../../lib/state";
+import { useRouter } from "expo-router";
 
 //React Native Gesture Handler and Animated
 import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
@@ -61,6 +62,7 @@ const LeftAction = ( prog: SharedValue<number>, drag: SharedValue<number> ) => {
 
 const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : SectionListItemProps ) => {
 
+  const router = useRouter();
 
   const { deleteItem, fetchAllItems, updateItem } = useItemDatabase(db)
 
@@ -115,7 +117,10 @@ const SectionListItem = ( { itemName, db, itemQuantity, itemCompleted } : Sectio
           handleDeleteItem();
         }
         if (direction === 'right'){
-          // Handle edit item action here
+          router.push({
+            pathname: '/page/editItem',
+            params: { itemId: itemId ? itemId.toString() : "" },
+          })
         }
       }}
     > 
