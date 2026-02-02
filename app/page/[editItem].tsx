@@ -1,23 +1,31 @@
 import { Pressable, StyleSheet, Text, TextInput, useColorScheme, View } from "react-native"
 import StoreSelectList from "../../components/shoppingListComponents/StoreSelectList";
 import { state$ } from "../../lib/state";
-import { useMemo, useState } from "react";
+import { use, useMemo, useState } from "react";
 import { useItemDatabase } from "../../lib/items";
 import { useSQLiteContext } from "expo-sqlite";
 import { use$ } from "@legendapp/state/react";
-import { router, Stack } from "expo-router";
+import { router, Stack, useLocalSearchParams } from "expo-router";
 
 
 const EditItem = () => {
 
     // Format the data for the Store SelectList component
     const stores = use$(state$.stores);
+
+    // data for StoreSelectList
     const data = useMemo(() => {
         return stores.map((store) => ({
         key: store.storeId.toString(),
         value: store.storeName,
         }));
     }, [stores]);
+
+    const items = use$(state$.items);
+    const { itemId } = useLocalSearchParams<{ itemId: string }>();
+    const itemToEdit = items.find(item => item.itemId.toString() === itemId);
+    const itemNameToEdit = itemToEdit ? itemToEdit.itemName : "";
+    const itemQuantityToEdit = itemToEdit ? itemToEdit.quantity : "";
 
     const db = useSQLiteContext();
 
@@ -39,7 +47,7 @@ const EditItem = () => {
 
                 <TextInput 
                 style={[styles.textInput, themeBackgroundColour, themeColour, themeBorderColour]}
-                placeholder="Enter item name"
+                placeholder={itemNameToEdit}
                 placeholderTextColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
                 selectionColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
                 textAlign="center"
@@ -56,7 +64,7 @@ const EditItem = () => {
                 style={[styles.textInput, themeBackgroundColour, themeColour, themeBorderColour]}
                 value={itemQuantity}
                 onChangeText={setItemQuantity}
-                placeholder="Enter item quantity"
+                placeholder={itemQuantityToEdit.toString()}
                 placeholderTextColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
                 selectionColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
                 textAlign="center"
