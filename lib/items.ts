@@ -16,6 +16,20 @@ export const useItemDatabase = (db: SQLiteDatabase) => {
         }
     };
 
+    // Edit an item in the database
+    const editItem = async (itemId: number, storeId: number, itemName: string, quantity: number, completed: number) => {
+        try {
+            const result = await db.runAsync(
+                `UPDATE items SET storeId = ?, itemName = ?, quantity = ?, completed = ? WHERE itemId = ?;`,
+                [storeId, itemName, quantity, completed ? 1 : 0, itemId]
+            );
+            console.log("Item edited successfully:", result);
+        } catch (error) {
+            console.error("Error editing item:", error);
+            throw error;
+        }
+    };
+
     // Delete an item from the database
     const deleteItem = async (itemId: number) => {
         try {
@@ -83,6 +97,6 @@ export const useItemDatabase = (db: SQLiteDatabase) => {
         }
     };
 
-    return { addItem, deleteItem, deleteAllItems, fetchAllItems, updateItem };
+    return { addItem, editItem, deleteItem, deleteAllItems, fetchAllItems, updateItem };
 
 }
