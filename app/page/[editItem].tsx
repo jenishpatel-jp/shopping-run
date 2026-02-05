@@ -21,6 +21,7 @@ const EditItem = () => {
         }));
     }, [stores]);
 
+    // Get the item to edit from the global state using the itemId from the URL parameters
     const items = use$(state$.items);
     const { itemId } = useLocalSearchParams<{ itemId: string }>();
     const itemToEdit = items.find(item => item.itemId.toString() === itemId);
@@ -29,14 +30,19 @@ const EditItem = () => {
 
     const db = useSQLiteContext();
 
+    // useStates for the input fields and selected store
     const [selectedStore, setSelectedStore] = useState("");
     const [itemName, setItemName] = useState("");
     const [itemQuantity, setItemQuantity] = useState("");
 
+
+    // Colour scheme for dark mode and light mode
     const colorScheme = useColorScheme();
     const themeBackgroundColour = colorScheme === 'dark' ? styles.darkBackgroundColour : styles.lightBackgroundColour;
     const themeColour = colorScheme === 'dark' ? styles.darkColour : styles.lightColour;
     const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
+
+    // Handle Edit Item Function
     
 
     return (
@@ -77,6 +83,12 @@ const EditItem = () => {
                 <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Store</Text>
                 <StoreSelectList data={data} setSelectedStore={setSelectedStore} />
             </View>
+            <Pressable
+                style={[styles.addButton, themeBackgroundColour]}
+                // onPress={handleEditItem}
+            >
+                <Text style={[styles.addButtonText, themeColour, themeBorderColour]}>Update</Text>
+            </Pressable>
 
         </View>
     )
@@ -116,9 +128,9 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   headerText: {
-        fontSize: 18,
-        marginLeft: 10,
-        fontWeight: 'bold',
+    fontSize: 18,
+    marginLeft: 10,
+    fontWeight: 'bold',
     },
   lightBackgroundColour: {
     backgroundColor: "#FFE4A1",
@@ -146,6 +158,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  addButton: {
+    width: '100%',
+    padding: 4,
+    alignItems: 'flex-end',
+        },
+
+  addButtonText: {
+    fontSize: 20,
+    width: '40%',
+    borderRadius: 8,
+    borderWidth: 2,
+    textAlign: 'center',
+    padding: 10,
+    paddingLeft: 10,
+          
+      },
  
 
 });
