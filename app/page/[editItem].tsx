@@ -33,8 +33,8 @@ const EditItem = () => {
 
     // useStates for the input fields and selected store
     const [selectedStore, setSelectedStore] = useState("");
-    const [newItemName, setNewItemName] = useState("");
-    const [newItemQuantity, setNewItemQuantity] = useState("");
+    const [newItemName, setNewItemName] = useState(itemNameToEdit);
+    const [newItemQuantity, setNewItemQuantity] = useState(itemQuantityToEdit.toString());
 
 
     // Colour scheme for dark mode and light mode
