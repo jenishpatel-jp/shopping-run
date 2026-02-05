@@ -114,7 +114,7 @@ const EditItem = () => {
             </View>
             <Pressable
                 style={[styles.updateButton, themeBackgroundColour]}
-                // onPress={handleEditItem}
+                onPress={handleEditItem}
             >
                 <Text style={[styles.updateButtonText, themeColour, themeBorderColour]}>Update</Text>
             </Pressable>
