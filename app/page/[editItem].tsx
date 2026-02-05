@@ -6,6 +6,7 @@ import { useItemDatabase } from "../../lib/items";
 import { useSQLiteContext } from "expo-sqlite";
 import { use$ } from "@legendapp/state/react";
 import { router, Stack, useLocalSearchParams } from "expo-router";
+import { parse } from "@babel/core";
 
 
 const EditItem = () => {
@@ -31,7 +32,7 @@ const EditItem = () => {
     const db = useSQLiteContext();
 
     // useStates for the input fields and selected store
-    const [newSelectedStore, setNewSelectedStore] = useState("");
+    const [selectedStore, setSelectedStore] = useState("");
     const [newItemName, setNewItemName] = useState("");
     const [newItemQuantity, setNewItemQuantity] = useState("");
 
@@ -43,8 +44,33 @@ const EditItem = () => {
     const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
 
     // Handle Edit Item Function
-    const handleEditItem = async () => {
 
+    const { editItem, fetchAllItems } = useItemDatabase(db); 
+
+    const handleEditItem = async () => {
+        if (newItemName.trim() === "" || newItemQuantity.trim() === "" || selectedStore === "") {
+            console.warn("Please fill in all fields");
+            return;         
+        };
+
+        try {
+          await editItem(
+            parseInt(itemId),
+            parseInt(selectedStore),
+            newItemName,
+            parseInt(newItemQuantity),
+            0 // Assuming completed is set to 0 when editing an item, you can modify this as needed
+          );
+          setNewItemName("");
+          setNewItemQuantity("");
+          const updatedItems = await fetchAllItems();
+          state$.items.set(updatedItems); // Update the global state with the new items
+          console.log("Item edited successfully");
+          router.back(); // Navigate back after editing item
+        } catch (error) {
+        
+            console.error("Error editing item:", error);
+        }
 
     }
 
@@ -84,7 +110,7 @@ const EditItem = () => {
 
             <View style={[styles.inputContainer, themeBackgroundColour]}> 
                 <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Store</Text>
-                <StoreSelectList data={data} setNewSelectedStore={setNewSelectedStore} />
+                <StoreSelectList data={data} setSelectedStore={setSelectedStore} />
             </View>
             <Pressable
                 style={[styles.updateButton, themeBackgroundColour]}
