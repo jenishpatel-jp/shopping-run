@@ -84,10 +84,10 @@ const EditItem = () => {
                 <StoreSelectList data={data} setSelectedStore={setSelectedStore} />
             </View>
             <Pressable
-                style={[styles.addButton, themeBackgroundColour]}
+                style={[styles.updateButton, themeBackgroundColour]}
                 // onPress={handleEditItem}
             >
-                <Text style={[styles.addButtonText, themeColour, themeBorderColour]}>Update</Text>
+                <Text style={[styles.updateButtonText, themeColour, themeBorderColour]}>Update</Text>
             </Pressable>
 
         </View>
@@ -158,13 +158,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  addButton: {
+  updateButton: {
     width: '100%',
     padding: 4,
     alignItems: 'flex-end',
-        },
+    marginRight: '20%',
+    marginTop:'5%',
+  },
 
-  addButtonText: {
+  updateButtonText: {
     fontSize: 20,
     width: '40%',
     borderRadius: 8,
@@ -172,8 +174,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
     paddingLeft: 10,
-          
-      },
+  },
  
 
 });
