@@ -31,9 +31,9 @@ const EditItem = () => {
     const db = useSQLiteContext();
 
     // useStates for the input fields and selected store
-    const [selectedStore, setSelectedStore] = useState("");
-    const [itemName, setItemName] = useState("");
-    const [itemQuantity, setItemQuantity] = useState("");
+    const [newSelectedStore, setNewSelectedStore] = useState("");
+    const [newItemName, setNewItemName] = useState("");
+    const [newItemQuantity, setNewItemQuantity] = useState("");
 
 
     // Colour scheme for dark mode and light mode
@@ -43,7 +43,10 @@ const EditItem = () => {
     const themeBorderColour = colorScheme === 'dark' ? styles.darkBorderColour : styles.lightBorderColour;
 
     // Handle Edit Item Function
-    
+    const handleEditItem = async () => {
+
+
+    }
 
     return (
         <View style={[styles.container, themeBackgroundColour]}>
@@ -59,8 +62,8 @@ const EditItem = () => {
                 textAlign="center"
                 autoFocus={false}
                 returnKeyType="done"
-                value={itemName}
-                onChangeText={setItemName}
+                value={newItemName}
+                onChangeText={setNewItemName}
                 />
             </View>
 
@@ -68,8 +71,8 @@ const EditItem = () => {
                 <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Quantity</Text>
                 <TextInput 
                 style={[styles.textInput, themeBackgroundColour, themeColour, themeBorderColour]}
-                value={itemQuantity}
-                onChangeText={setItemQuantity}
+                value={newItemQuantity}
+                onChangeText={setNewItemQuantity}
                 placeholder={itemQuantityToEdit.toString()}
                 placeholderTextColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
                 selectionColor={colorScheme === 'dark' ? "#FFE4A1" : "#0A1931"}
@@ -81,7 +84,7 @@ const EditItem = () => {
 
             <View style={[styles.inputContainer, themeBackgroundColour]}> 
                 <Text style={[styles.inputHeaderText, themeBackgroundColour, themeColour]}>Store</Text>
-                <StoreSelectList data={data} setSelectedStore={setSelectedStore} />
+                <StoreSelectList data={data} setNewSelectedStore={setNewSelectedStore} />
             </View>
             <Pressable
                 style={[styles.updateButton, themeBackgroundColour]}

@@ -10,10 +10,10 @@ type StoreSlectListProp = {
         key: string;
         value: string;
     }[],
-    setSelectedStore: (value: string) => void; // Optional prop to set selected store
+    setNewSelectedStore: (value: string) => void; // Optional prop to set selected store
 };
 
-const StoreSelectList  = ( { data, setSelectedStore } : StoreSlectListProp ) => {
+const StoreSelectList  = ( { data, setNewSelectedStore } : StoreSlectListProp ) => {
 
   const colorScheme = useColorScheme();
 
@@ -23,7 +23,7 @@ const StoreSelectList  = ( { data, setSelectedStore } : StoreSlectListProp ) => 
 
   return (
     <SelectList 
-        setSelected={setSelectedStore}
+        setSelected={setNewSelectedStore}
         save="key"
         data={data}
         boxStyles={{...styles.boxStyles, ...themeBorder,}}
